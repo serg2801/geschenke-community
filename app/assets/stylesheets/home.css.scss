@@ -1,0 +1,33 @@
+#home {
+  height: 460px;
+  background: url("/assets/intro.jpg");
+  position: relative;
+
+  #signup {
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    bottom: 30px;
+    width: 300px;
+    padding: 30px 25px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 36px;
+    @include box-shadow(0 1px 6px rgba(0,0,0,0.4));
+    color: #2c313f;
+
+    b {
+      font-weight: 600;
+    }
+
+    a {
+      height: 50px;
+      line-height: 50px;
+      border-radius: 5px;
+      display: block;
+      font-weight: 600;
+    }
+  }
+}

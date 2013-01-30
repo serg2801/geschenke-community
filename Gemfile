@@ -7,9 +7,9 @@ gem 'unicorn'
 
 gem 'newrelic_rpm'
 
-gem 'cache_digests'
-gem 'memcachier'
-gem 'dalli'
+# gem 'cache_digests'
+# gem 'memcachier'
+# gem 'dalli'
 
 gem 'tire'
 

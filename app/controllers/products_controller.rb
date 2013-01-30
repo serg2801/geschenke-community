@@ -7,7 +7,7 @@ require 'uri'
 class ProductsController < ApplicationController
 
   def index
-    if params[:commit]
+    if params["utf8"] && params[:query] == nil
       vars = {}
       if params[:sort] && params[:sort] != ""
         vars[:sort] = params[:sort]

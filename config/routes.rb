@@ -1,5 +1,7 @@
 App::Application.routes.draw do
 
+  get "home/index"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -30,7 +32,7 @@ App::Application.routes.draw do
   match "/eigene-geschenkideen" => 'products#own', :as => :own_products
   match "/:slug(/seite-:page)(/:sort)(/preis-:price)" => 'products#index'
 
-  root :to => "products#index"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

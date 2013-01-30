@@ -14,13 +14,9 @@
     </a>
   </div>
   <div class="product-user">
-    <% if product.comment_count > 0 %>
-
-      <div class="product-comments">
-        <a href=""><i class="icon icon-thumbs-up"></i></a>
-        <!-- <a href="<%= product_path(product.slug) %>"><i class="icon icon-comments"></i> <%= product.comment_count %></a> -->
-      </div>
-    <% end %>
+    <div class="product-comments">
+      <a href=""><i class="icon icon-thumbs-up"></i></a>
+    </div>
     <%= image_tag product.user_image, :alt => product.user_name %>    
     <a href="" class="product-user-name"><%= product.user_name %></a>
     <div class="product-user-rank">Geschenkeheld</div>
