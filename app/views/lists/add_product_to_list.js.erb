@@ -1,0 +1,9 @@
+$("#product-<%= @product.id %> .product-list").animate({
+  left: '-360px'
+}, 320);
+
+setTimeout(function() {
+  $("#product-<%= @product.id %> .product-list").animate({
+    left: '240px'
+  }, 320);
+}, 2000);

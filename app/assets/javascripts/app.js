@@ -9,12 +9,37 @@ $(document).ready(function() {
     });
   });
 
-  $("#navigation .topic").on("click", function(event) {
+  $("a[rel=tooltip]").tooltip();
 
+  $("#products-container").on("click", ".add-to-list", function(event) {
+    event.preventDefault();
+    $(this).parent().animate({
+      left: '-61px'
+    }, 320);
+  });
+
+  $("#products-container").on("submit", ".product-list-add form", function(event) {
+    event.preventDefault();
+    $(this).find("button").attr("disabled","disabled");
+    var product_id = $(this).find("input[name='product_id']").val();
+    var list_id = $(this).find("select[name='list_id']").val();
+    $.ajax({
+      type: "POST",
+      dataType: "script",
+      data: {"product_id":product_id,"list_id":list_id},
+      url: $(this).attr('action')
+    });
+  });
+
+  $(".window a.close").on("click", function(event) {
+    event.preventDefault();
+    $(".window-container").hide();
+  });
+
+  $("#navigation .topic").on("click", function(event) {
     if(typeof $(this).attr("href") !== 'undefined' && attr !== false) {
       return false;
     }
-
     if($(this).parent().hasClass("active")) {
       $(this).parent().removeClass("active");
     } else {
@@ -29,9 +54,7 @@ $(document).ready(function() {
 
   $("#more-products").on("click", function(event) {
     event.preventDefault();
-
     $(this).addClass("loading");
-
     $.ajax({
       type: "GET",
       dataType: "script",

@@ -4,12 +4,12 @@
     <%= @title %>
   </h2>
 
-  <%= render "filter" %>
+  <%= render "products/filter" %>
 
   <div id="products-container">
-    <%= render :partial => "product", :collection => @products %>
+    <%= render :partial => "products/product", :collection => @products %>
   </div>
 
-  <%= render "pagination" %>
+  <%= render "products/pagination" %>
 
 </div>

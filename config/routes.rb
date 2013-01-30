@@ -1,5 +1,9 @@
 App::Application.routes.draw do
 
+  get "lists/index"
+
+  get "lists/show"
+
   get "home/index"
 
   ActiveAdmin.routes(self)
@@ -26,9 +30,9 @@ App::Application.routes.draw do
     match 'abmelden', :to => 'devise/sessions#destroy', :as => 'signout'
   end
 
-  # match 
+  match '/wunschzettel' => 'lists#index', :as => :lists
+  match '/wunschzettel/hinzufuegen' => 'lists#add_product_to_list', :as => :add_product_to_list
 
-  # match '/neue-geschenkideen' => 'products#recent', :as => :recent_products
   match "/eigene-geschenkideen" => 'products#own', :as => :own_products
   match "/:slug(/seite-:page)(/:sort)(/preis-:price)" => 'products#index'
 

@@ -1,7 +1,7 @@
 var content = '<%= j render(@products) %>';
 var container = $('#products-container');
 $('#products-container').append(content);
-$("#more-products").attr("href","?seite=<%= @page + 1 %>");
+$("#more-products").attr("href","?seite=<%= params[:seite].to_i + 1 %>");
 
 
 container.imagesLoaded(function(){

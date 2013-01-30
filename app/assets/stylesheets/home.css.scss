@@ -2,21 +2,57 @@
   height: 460px;
   background: url("/assets/intro.jpg");
   position: relative;
+  border-bottom: 1px solid $border-color;
+
+  #user-pictures {
+    position: absolute;
+    top: 155px;
+    left: 115px;
+    width: 480px;
+    height: 220px;
+
+    .user {
+      border: 3px solid #fff;
+      border-radius: 6px;
+      float: left;
+      margin-right: 24px;
+      margin-bottom: 24px;
+      width: 56px;
+      height: 56px;
+      background: #fff url("/assets/loader2.gif");
+      background-position: center center;
+      background-repeat: no-repeat;
+      @include box-shadow(0 1px 3px rgba(0,0,0,0.5));
+
+      img {
+        border-radius: 6px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 
   #signup {
     background: #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     position: absolute;
     top: 30px;
     right: 30px;
     bottom: 30px;
     width: 300px;
-    padding: 30px 25px;
+    padding: 50px 25px 30px 25px;
     text-align: center;
     font-size: 24px;
-    line-height: 36px;
+    line-height: 34px;
     @include box-shadow(0 1px 6px rgba(0,0,0,0.4));
     color: #2c313f;
+
+    &:after {
+      content: url('/assets/bandana.png');
+      position: absolute;
+      top: -6px;
+      right: -6px;
+    }
 
     b {
       font-weight: 600;
@@ -25,7 +61,7 @@
     a {
       height: 50px;
       line-height: 50px;
-      border-radius: 5px;
+      border-radius: 6px;
       display: block;
       font-weight: 600;
     }

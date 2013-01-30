@@ -15,4 +15,6 @@
 //= require masonry
 //= require waitforimages
 //= require jquery.autosize-min
+//= require twitter/bootstrap/bootstrap-transition
+//= require twitter/bootstrap/bootstrap-tooltip
 //= require app

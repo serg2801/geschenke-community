@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :products
   has_many :comments
+  has_many :lists
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
         image:auth.info.image,
         password:Devise.friendly_token[0,20]
       )
+      first_list = user.lists.create!(:name => "Meine Wunschliste")
     end
     return user
   end

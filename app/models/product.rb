@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_and_belongs_to_many :lists
 
   mount_uploader :image, ImageUploader
 
@@ -59,6 +60,9 @@ class Product < ActiveRecord::Base
     when "preis-absteigend"
       sortfield = "price"
       sortorder = "desc"
+    when "recent"
+      sortfield = "created_at"
+      sortorder = "desc"
     else
       sortfield = "comment_count"
       sortorder = "desc"
@@ -80,6 +84,7 @@ class Product < ActiveRecord::Base
           filter :term, name.to_sym => "1" unless value == "0"
         end
       end
+      filter :ids, :values => params[:ids] unless params[:ids].nil?
       filter :range, :price => {operator.to_sym => price.to_f} unless price.nil?
       sort { by sortfield.to_sym, sortorder }
       # raise to_json

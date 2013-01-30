@@ -18,10 +18,9 @@ class ProductsController < ApplicationController
       redirect_to recent_products_path(vars)
     end
 
-    @page = params[:seite].to_i || 1
-
     if params[:slug] == "neue-geschenkideen"
       @title = "Neue Geschenkideen"
+      params[:sort] = "recent"
       @products = Product.search(params)
     else
       @category = Category.find_by_slug(params[:slug])
@@ -37,6 +36,7 @@ class ProductsController < ApplicationController
         end
       end      
     end    
+    sleep 1
   end
 
   def new
@@ -65,7 +65,7 @@ class ProductsController < ApplicationController
     @product.description = params[:product][:description]
     @product.price = params[:product][:price]
     @product.criteria = params[:product][:criteria]
-    # @product.root_url = URI.parse(URI.encode(@product.url)).host
+    @product.root_url = URI.parse(URI.encode(@product.url)).host
     if @product.save
       flash[:notice] = 'Geschenkidee wurde aktualisiert!'
       redirect_to :action => 'show', :slug => @product.slug

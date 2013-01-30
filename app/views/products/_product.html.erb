@@ -1,4 +1,4 @@
-<div class="product">
+<div class="product" id="product-<%= product.id %>">
   <div class="product-image">
     <a href="<%= product_path(product.slug) %>">
       <%= image_tag product.image.url(:thumb), :alt => product.name %>
@@ -13,12 +13,33 @@
       <i class="icon icon-shopping-cart"></i> <b><%= price(product.price) %></b>
     </a>
   </div>
-  <div class="product-user">
-    <div class="product-comments">
-      <a href=""><i class="icon icon-thumbs-up"></i></a>
+  <div class="product-user-list">
+    <div class="product-user">
+      <%= image_tag product.user_image, :alt => product.user_name %>    
+      <a href="" class="product-user-name"><%= product.user_name %></a>
+      <div class="product-user-rank">Geschenkeheld</div>
     </div>
-    <%= image_tag product.user_image, :alt => product.user_name %>    
-    <a href="" class="product-user-name"><%= product.user_name %></a>
-    <div class="product-user-rank">Geschenkeheld</div>
+
+    <% if current_user %>
+    <div class="product-list">
+      <a href="#" class="add-to-list" data-product="<%= product.id %>" rel="tooltip" title="Zum Wunschzettel hinzufügen"><i class="icon icon-pencil"></i></a>
+      <div class="product-list-add">
+        <%= form_tag add_product_to_list_path do %>
+          <%= hidden_field_tag :product_id, product.id %>   
+          <select name="list_id">
+            <% current_user.lists.each do |list| %>
+              <option value="<%= list.id %>"><%= list.name %></option>
+            <% end %>
+          </select>
+          <%= button_tag :type => "submit", :class => "btn btn-success" do %>
+            <i class="icon icon-ok"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="product-list-added">
+        Geschenk zur Liste hinzugefügt!
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

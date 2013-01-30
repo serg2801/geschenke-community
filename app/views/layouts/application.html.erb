@@ -27,7 +27,7 @@
           <b><%= current_user.name %></b> (<i class="icon icon-star"></i> <%= current_user.points %>)
         </div>
         <div id="login">
-          <%= link_to "Mein Wunschzettel", nil %>
+          <%= link_to "Meine Wunschzettel", lists_path %>
           <%= link_to "Meine Geschenkideen", own_products_path %>
           <%= link_to "Profil", profile_path %>
           <%= link_to "Abmelden", signout_path %>
@@ -35,7 +35,7 @@
       <% else %>
         <h1>Werde auch ein Geschenkeheld und präsentiere Deine Geschenkideen!</h1>
         <div id="login">
-          <%= link_to "<i class='icon icon-facebook-sign'></i> Mit Facebook anmelden".html_safe,
+          <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe,
             user_omniauth_authorize_path(:facebook), :class => "btn btn-primary"
           %>
         </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130130128) do
+ActiveRecord::Schema.define(:version => 20130130213149) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,6 +66,25 @@ ActiveRecord::Schema.define(:version => 20130130130128) do
 
   add_index "comments", ["product_id"], :name => "index_comments_on_product_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "lists", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "lists", ["permalink"], :name => "index_lists_on_permalink"
+  add_index "lists", ["user_id"], :name => "index_lists_on_user_id"
+
+  create_table "lists_products", :id => false, :force => true do |t|
+    t.integer "list_id"
+    t.integer "product_id"
+  end
+
+  add_index "lists_products", ["list_id", "product_id"], :name => "index_lists_products_on_list_id_and_product_id"
+  add_index "lists_products", ["product_id", "list_id"], :name => "index_lists_products_on_product_id_and_list_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"

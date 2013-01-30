@@ -453,7 +453,7 @@
 
   .product-description {
     padding: 25px;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $border-color;    
 
     a {
       font-size: 20px;
@@ -468,6 +468,7 @@
 
   .product-actions {
     padding: 0 25px 25px 25px;
+    border-bottom: 1px solid $border-color;
 
     a {
       margin-top: -5px;
@@ -497,24 +498,67 @@
     }
   }
 
-  .product-user {
-    border-top: 1px solid $border-color;
+  .product-user-list {
     line-height: 15px;
     height: 60px;
+    width: 300px;
     @include box-shadow(inset 0 0 20px 0 rgba(0,0,0,0.06));
+    position: relative;
+    overflow: hidden;
 
-    .product-comments {
-      float: right;
+    .product-list {
       border-left: 1px solid $border-color;
       line-height: 60px;
       text-align: center;
-      width: 60px;
+      width: 660px;
+      position: absolute;
+      top: 0;
+      left: 240px;
       font-size: 18px;
+      @include box-shadow(inset 0 0 20px 0 rgba(0,0,0,0.06));
+
+      .product-list-add {
+        position: absolute;
+        left: 60px;
+        right: 300px;
+        top: 0;
+        bottom: 0;
+        background: #fff;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        select {
+          width: 200px;
+          display: inline;
+          margin: 0;
+          padding: 0;
+        }
+
+        button {
+          width: 45px;
+          display: inline;
+          border-radius: 3px;
+        }
+      }
+
+      .product-list-added {
+        position: absolute;
+        left: 360px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 14px;
+        background: #fff;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
 
       a {
         display: block;
         text-align: center;
         font-weight: 700;
+        width: 60px;
+        height: 60px;
 
         i {
           margin-right: 5px;

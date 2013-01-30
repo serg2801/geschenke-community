@@ -12,4 +12,11 @@
     <a class="btn btn-primary btn-large">Mit Facebook anmelden</a>
   </div>
 
+  <div id="user-pictures">
+    <% @users.each_with_index do |user, index| %>
+      <div class="user"><%= image_tag user.image %></div>
+    <% end %>
+  </div>
+
+
 </div>
