@@ -1,0 +1,141 @@
+<% if @product.errors.full_messages.any? %>
+  <div id="errors">
+    <h3>Oops, ein paar Probleme, aber nichts schlimmes...</h3>
+    <% @product.errors.full_messages.each do |error| %>
+    <div class="error">
+      <%= error %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+
+  <% if @product.new_record? %>
+  <div class="step">
+    <h3>Internet-Adresse eingeben</h3>
+    <div class="content" id="url">
+      <%= form_tag find_images_products_path, :remote => true do %>
+        <input type="text" name="url" id="url-value" placeholder="http://..." value="<%= @product.url %>" />
+        <%= button_tag(:type => 'submit', :class => "btn btn-red") do %>
+          <i class="icon icon-search"></i> Bilder suchen
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="step disabled">
+    <h3>Bild auswählen</h3>
+    <div class="loading">
+      Noch keine Adresse eingegeben
+    </div>
+    <div class="content" id="images"></div>
+  </div>
+  <% end %>
+
+  <%= form_for @product do |f| %>
+    <%= f.hidden_field :url %>
+    <%= f.hidden_field :remote_image_url %>
+    <div class="step <%= '' if @product.new_record? %>">
+      <h3>Geschenk beschreiben</h3>
+      <div class="loading">
+        Noch kein Bild ausgewählt
+      </div>
+      <div class="content" id="info">
+        <div class="field wide">
+          <%= f.label :name, "Titel der Geschenkidee" %>
+          <%= f.text_area :name, :rows => 3, :data => {:target => "preview-name"}%>
+        </div>
+
+        <div class="field wide">
+          <%= f.label :description, "Beschreibung in 1-2 Sätzen" %>
+          <%= f.text_area :description, :rows => 3, :data => {:target => "preview-description"} %>
+        </div>
+
+        <div class="field">
+          <%= f.label :price, "Preis in Euro" %>
+          <%= f.text_field :price, :placeholder => "Zum Beispiel: 10,40", :data => {:target => "preview-price"} %>
+        </div>
+
+        <div id="categories">
+          <%= render :partial => "shared/criteria", :locals => {:model_name => "product", :object => @product} %>
+        </div>
+      </div>  
+    </div>
+
+    <% unless @product.new_record? %>
+    <div id="product-delete">
+      Oder möchtest Du diese Geschenkidee
+      <%= link_to "löschen?", delete_product_path(@product.slug), :confirm => "Bist Du sicher?" %>
+    </div>
+    <% end %>
+
+    <div id="finish">
+      <div class="product">
+        <div class="product-image">
+          <% if @product.new_record? %>
+            <img id="preview-image" src="http://www.placehold.it/300x100&amp;text=Platzhalter" %>
+          <% else %>
+            <%= image_tag @product.image.url(:thumb) %>
+          <% end %>
+        </div>
+        <div class="product-description">
+          <a href="" id="preview-name"><%= @product.name || "Noch kein Name" %></a>
+          <p id="preview-description">
+            <%= @product.description || "Noch keine Beschreibung" %>
+          </p>
+        </div>
+        <div class="product-actions">
+          <a href="">Für <span id="preview-price"><%= number_with_precision(@product.price, :precision => 2) || "0.00" %></span>&euro; gefunden</a>
+        </div>
+        <div class="product-user">
+          <img src="/assets/user1.jpg" />
+          <a href="" class="product-user-name"><%= current_user.name %></a>
+          <div class="product-user-rank"><i class="icon icon-star"></i> <%= current_user.points %></div>
+        </div>
+      </div>
+
+      <div id="send" class="arrow_box">
+        <%= f.submit "Okay, jetzt absenden!" %>
+      </div>
+    </div>
+  <% end %>
+
+
+<% content_for :javascript do %>  
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      $("#url form").on('submit', function(event) {
+        $("#images").siblings(".loading").html("<img src='/assets/loading.gif' alt='Loading' />");
+      });
+
+      $("#new_product textarea, #new_product input").on("keyup", function(event) {
+        $("#" + $(this).data('target')).html($(this).val());
+      });
+
+      $("#images").on('click',".image", function() {
+        $("#images .image.active").removeClass("active");
+        $(this).addClass("active");
+        $("#product_remote_image_url").val($(this).find("img").first().attr("src"));
+        $("#preview-image").attr("src", $(this).find("img").first().attr("src"));
+        $("#info").parent(".step").removeClass("disabled");
+      });
+
+      var bt = $('#finish').position().top;
+      var threshold = $("#finish").offset().top;
+
+      $(window).scroll(function() {
+        var wst = $(window).scrollTop();
+
+        if(wst <= threshold) {
+          $('#finish').css({position: 'absolute', top: bt +'px', bottom: 'auto' });
+        }
+        if(wst >= threshold) {
+          $('#finish').css({position: 'absolute', top: (wst - threshold + bt + 10) +'px', bottom: 'auto' });
+        }
+        if(Math.abs(wst - $("#products").height() - $("#products").offset().top) < $("#finish").height()) {
+          $('#finish').css({position: 'absolute', top: 'auto', bottom: '55px' });
+        }        
+      });
+    });
+  </script>
+<% end %>

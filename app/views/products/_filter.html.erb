@@ -1,0 +1,17 @@
+<div id="filter">
+  <%= form_tag({}, {:method => :get, :id => "filter-form"}) do %>
+  <select name="sort">
+    <%= option_helper("sort", "Beliebteste zuerst", "beliebteste-zuerst", true) %>
+    <%= option_helper("sort", "Kleinste Preise zuerst", "preis-aufsteigend") %>
+    <%= option_helper("sort", "Größte Preise zuerst", "preis-absteigend") %>
+  </select>
+  <select name="price">
+    <%= option_helper("price", "Preis ist egal", "") %>
+    <%= option_helper("price", "Preis bis 10&euro;", "bis-10") %>
+    <%= option_helper("price", "Preis bis 25&euro;", "bis-25") %>
+    <%= option_helper("price", "Preis bis 50&euro;", "bis-50") %>
+    <%= option_helper("price", "Preis bis 100&euro;", "bis-100") %>
+    <%= option_helper("price", "Preis ab 100&euro;", "ab-100") %>
+  </select>
+  <% end %>
+</div>

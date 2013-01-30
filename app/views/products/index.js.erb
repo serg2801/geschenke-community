@@ -1,0 +1,14 @@
+var content = '<%= j render(@products) %>';
+var container = $('#products-container');
+$('#products-container').append(content);
+$("#more-products").attr("href","?seite=<%= @page + 1 %>");
+
+
+container.imagesLoaded(function(){
+  container.masonry('reload');
+  $("#more-products").removeClass("loading");
+});
+
+<% if @products.length < 1 %>
+  $("#more-products").hide();
+<% end %>

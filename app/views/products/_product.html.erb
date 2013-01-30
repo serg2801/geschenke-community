@@ -1,0 +1,28 @@
+<div class="product">
+  <div class="product-image">
+    <a href="<%= product_path(product.slug) %>">
+      <%= image_tag product.image.url(:thumb), :alt => product.name %>
+    </a>
+  </div>
+  <div class="product-description">
+    <a href="<%= product_path(product.slug) %>"><%= product.name %></a>
+    <p><%= product.description %></p>
+  </div>
+  <div class="product-actions">
+    <a href="<%= product.url %>" target="_blank">
+      <i class="icon icon-shopping-cart"></i> <b><%= price(product.price) %></b>
+    </a>
+  </div>
+  <div class="product-user">
+    <% if product.comment_count > 0 %>
+
+      <div class="product-comments">
+        <a href=""><i class="icon icon-thumbs-up"></i></a>
+        <!-- <a href="<%= product_path(product.slug) %>"><i class="icon icon-comments"></i> <%= product.comment_count %></a> -->
+      </div>
+    <% end %>
+    <%= image_tag product.user_image, :alt => product.user_name %>    
+    <a href="" class="product-user-name"><%= product.user_name %></a>
+    <div class="product-user-rank">Geschenkeheld</div>
+  </div>
+</div>

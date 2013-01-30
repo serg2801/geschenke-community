@@ -1,0 +1,18 @@
+<div id="products">
+
+  <h2>
+    <img src="<%= @user.image %>" alt="<%= @user.name %>" />
+    <%= @title %>
+  </h2>
+
+  <%= render "filter" %>
+
+  <div id="products-container">
+    <%= render :partial => "product", :collection => @products %>
+  </div>
+
+  <a href="" id="more-products">
+    Weitere Geschenkideen zeigen
+  </a>
+
+</div>

@@ -1,0 +1,10 @@
+development:
+  adapter: postgresql
+  host: localhost
+  port: 5432
+  username: postgres
+  password: root
+  database: geschenkeheld4
+  schema_search_path: public
+  encoding: utf8
+  template: template0

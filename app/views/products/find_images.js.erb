@@ -1,0 +1,25 @@
+$("#images").html("");
+$("#images").parent(".step").addClass("disabled");
+$("#info").parent(".step").addClass("disabled");
+
+$("#product_url").val($("#url-value").val());
+
+<% @results.each_with_index do |src, index| %>
+  $("#images").append("<div class='image'><img src='<%= src %>' id='image-<%= index %>' /></div>");
+<% end %>
+
+$("#images").waitForImages(function() {
+  var element = null;
+  <% @results.size.times do |i| %>
+    element = $("#image-<%= i %>");
+    if(element.height() < 120 && element.width() < 120) {
+      element.parent().remove();
+    }
+  <% end %>
+
+  if($("#images .image").length < 1) {
+    $("#images").html("Keine Bilder gefunden :(");
+  }
+
+  $("#images").parent(".step").removeClass("disabled");
+});

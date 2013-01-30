@@ -1,0 +1,15 @@
+<%= semantic_form_for [:admin, @category] do |f| %>
+  <%= f.inputs :name => "Basics" do %>
+    <%= f.input :name %>
+    <%= f.input :slug %>
+  <% end %>
+
+  <%= f.inputs :name => "Criteria", :id => "criteria" do %>
+    <%= render :partial => "shared/criteria", :locals => {:model_name => "category", :object => @category} %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => "Button" %>
+  <% end %> 
+
+<% end %>

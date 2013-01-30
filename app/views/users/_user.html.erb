@@ -1,0 +1,5 @@
+<div class="user">
+  <%= image_tag user.image, :alt => user.name %>
+  <%= link_to user.name, user_path(user) %>
+  <i class="icon icon-star"></i> <%= user.points %>
+</div>

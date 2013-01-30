@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <link href="/favicon.png" rel="shortcut icon">
+
+  <script type='text/javascript'>
+  (function () { 
+  var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://'; 
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.src = scriptProto+'js.cdn.yieldkit.com/v1/js?api_key=498139e9a7ced5547119f21edefc3a15&site='+document.domain+'';
+  (document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
+  })();
+  </script>
+</head>
+<body>
+
+  <div id="page">
+    <div id="top">
+      <% if user_signed_in? %>
+        <div class="user">
+          <%= image_tag current_user.image %>
+          <b><%= current_user.name %></b> (<i class="icon icon-star"></i> <%= current_user.points %>)
+        </div>
+        <div id="login">
+          <%= link_to "Mein Wunschzettel", nil %>
+          <%= link_to "Meine Geschenkideen", own_products_path %>
+          <%= link_to "Profil", profile_path %>
+          <%= link_to "Abmelden", signout_path %>
+        </div>
+      <% else %>
+        <h1>Werde auch ein Geschenkeheld und präsentiere Deine Geschenkideen!</h1>
+        <div id="login">
+          <%= link_to "<i class='icon icon-facebook-sign'></i> Mit Facebook anmelden".html_safe,
+            user_omniauth_authorize_path(:facebook), :class => "btn btn-primary"
+          %>
+        </div>
+      <% end %>
+    </div>
+    <div id="header">
+      <% if user_signed_in? %>
+        <a class="btn btn-red" id="add-product" href="<%= new_product_path %>">
+          <i class="icon icon-plus"></i> Neue Geschenkidee hinzufügen
+        </a>
+      <% end %>
+      <a href="/"><%= image_tag "logo.png", :alt => "Geschenkeheld | Die Geschenke-Community" %></a>
+    </div>
+    <div id="navigation">
+      <div class="top">
+        <a class="topic" href="/">Startseite</a>
+      </div>
+      <div class="top">
+        <%= link_to "Ganz Neu", recent_products_path, :class => "topic" %>
+      </div>
+      <div class="top">
+        <a class="topic">Anlässe</a>
+        <div class="megamenu">
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Geburtstag</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Freunde</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für den Freund oder Ehemann</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für die Freundin oder Ehefrau</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Babies</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Kinder</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Jugendliche</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Mütter und Omas</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Väter und Opas</a>
+              </li>
+            </ul>  
+          </div>  
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Weihnachten</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Freunde</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für den Freund oder Ehemann</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für die Freundin oder Ehefrau</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Babies</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Kinder</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Jugendliche</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Mütter und Omas</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für Väter und Opas</a>
+              </li>
+            </ul>  
+          </div>  
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Valentinstag</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für die Geliebte</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für den Gebliebten</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für ganz besondere Freunde</a>
+              </li>
+            </ul>  
+          </div> 
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Hochzeit</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für die Braut</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für den Bräutigam</a>
+              </li>
+            </ul>  
+          </div> 
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Muttertag</a>
+          </div> 
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Vatertag</a>
+          </div> 
+        </div>
+      </div>
+      <div class="top">
+        <a class="topic">Kategorien</a>
+        <div class="megamenu">
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="/weihnachten" class="headline">Hochzeit</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für die Braut</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="/weihnachtsgeschenke-fuer-den-freund">Für den Bräutigam</a>
+              </li>
+            </ul>  
+          </div> 
+        </div>
+      </div>   
+      <div class="top">
+        <a class="topic">Personen</a>
+        <div class="megamenu">
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Weihnachten</a>
+            <ul>
+              <% rand(3..12).times do %>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke für den Freund</a>
+              </li>
+              <% end %>
+            </ul>  
+          </div>  
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Geburtstag</a>
+            <ul>
+              <% rand(1..6).times do %>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburstatgsgeschenke für den Freund</a>
+              </li>
+              <% end %>
+            </ul>  
+          </div>        
+        </div>
+        <div id="search">
+          <%= form_tag products_path, :method => :get do %>
+            <%= text_field_tag :query, params[:query], :placeholder => "Suche" %>
+            <%= button_tag :type => :submit, :class => "btn btn-red" do %>
+              <i class='icon icon-search'></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="top">
+        <%= link_to "Geschenkehelden", users_path, :class => "topic" %>
+      </div>      
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <div id="newsletter">
+        <h3>Newsletter</h3>
+        <p>
+          Meld Dich für unseren "Held des Monats" Newsletter an und erhalte unsere besten Geschenkideen in Deinem EMail Postfach!
+        </p>
+        <input type="text" placeholder="Deine Email Adresse" />
+        <a href="" class="btn btn-success">Anmelden</a>
+      </div>
+      <div id="about">
+        <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo" />
+        <h3>Wir sind Geschenkehelden</h3>
+        <p>
+          Der Geschenkeheld ist die Geschenkesuchmaschine, mit der Du ausgefallene Geschenkideen für unterschiedliche Anlässe finden kannst. Bei uns kannst Du ausgefallene Geschenke online kaufen und mit dem Heldenvorteil auch noch ordentlich Prozente bei vielen Geschenken im Geschenke Shop einsparen.
+        </p>
+      </div>
+      <div id="copyright">
+        © 2009 - 2013
+        | Alle Rechte vorbehalten
+        | Besuchen Sie auch unser Partnerprogramm:
+        <a href="http://www.auto-radio-code.com">Auto Radio Code</a>
+        |
+        <a href="http://www.baby-wunderbar.de">www.baby-wunderbar.de</a>
+        <div id="author">
+          Layout und Programmierung von <a href="http://jubari.com">jubari.com – Bastian Halbach</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= javascript_include_tag "application" %>
+  <%= yield :javascript %>
+
+</body>
+</html>
