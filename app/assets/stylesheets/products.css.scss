@@ -13,6 +13,13 @@
   }
 }
 
+#list-info {
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 20px;
+  padding-left: 70px;
+}
+
 #no-products {
   padding: 40px 0 20px 0;
   text-align: center;
@@ -197,8 +204,43 @@
 
   h2 {
     img {
-      border-radius: 10px;
-      margin-right: 5px;
+      width: 50px;
+      height: 50px;
+      float: left;
+      margin-right: 20px;
+      border-radius: 5px;
+    }
+
+    #list-select {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      bottom: 0;
+      font-size: 14px;
+      line-height: 30px;
+
+      form {
+        margin-top: 20px;
+      }
+
+      select {
+        margin: 0 0 0 0;
+        width: 255px;
+      }
+
+      input {
+        width: 210px;
+        height: 30px;
+      }
+
+      .btn {
+        border-radius: 2px;
+
+        i {
+          padding: 0;
+          margin: 0;
+        }
+      }
     }
   }
 
@@ -553,6 +595,7 @@
           width: 45px;
           display: inline;
           border-radius: 3px;
+          margin-top: -1px;
         }
       }
 

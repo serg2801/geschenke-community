@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
 
     if params[:slug] == "neue-geschenkideen"
       @title = "Neue Geschenkideen"
+      params[:sort] = "recent"
       @products = Product.search(params)
     else
       @category = Category.find_by_slug(params[:slug])

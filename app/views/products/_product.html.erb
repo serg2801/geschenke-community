@@ -27,7 +27,7 @@
         <%= form_tag add_product_to_list_path do %>
           <%= hidden_field_tag :product_id, product.id %>   
           <select name="list_id">
-            <% current_user.lists.each do |list| %>
+            <% current_user.lists.order("created_at ASC").each do |list| %>
               <option value="<%= list.id %>"><%= list.name %></option>
             <% end %>
           </select>

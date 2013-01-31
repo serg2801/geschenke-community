@@ -3,7 +3,12 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!, :only => [:index]
 
   def index
-    @list = current_user.lists.first
+    @lists = current_user.lists.order("created_at ASC")
+    if params[:permalink] 
+      @list = @lists.find_by_permalink(params[:permalink])
+    else
+      @list = @lists.first
+    end
     if @list.nil?      
       @list = current_user.lists.create(:name => "Mein Wunschzettel")
     end
@@ -18,9 +23,13 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by_slug(params[:permalink])
+    @list = List.find_by_permalink(params[:permalink])
+    if current_user
+      @lists = current_user.lists.order("created_at ASC")
+    end
     @title = @list.name
     @products = @list.products
+    render "products/index"
   end
 
   def add_product_to_list
@@ -32,6 +41,13 @@ class ListsController < ApplicationController
       rescue
 
       end
+    end
+  end
+
+  def create
+    if current_user
+      @list = current_user.lists.create(:name => params[:list_name])
+      redirect_to list_path(@list.permalink)
     end
   end
 

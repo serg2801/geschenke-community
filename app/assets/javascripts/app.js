@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
   });
 
-  $("a[rel=tooltip]").tooltip();
+  $("[rel=tooltip]").tooltip();
 
   $("#products-container").on("click", ".add-to-list", function(event) {
     event.preventDefault();
@@ -17,6 +17,10 @@ $(document).ready(function() {
     $(this).parent().animate({
       left: '-61px'
     }, 320);
+  });
+
+  $("#list-select select").on("change", function(event) {
+    $(this).parent("form").submit();
   });
 
   $("#products-container").on("submit", ".product-list-add form", function(event) {
