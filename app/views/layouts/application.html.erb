@@ -31,7 +31,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           <%= link_to "Abmelden", signout_path %>
         </div>
       <% else %>
-        <h1>Werde auch ein Geschenkeheld und präsentiere Deine Geschenkideen!</h1>
+        <h1><%= @title %></h1>
         <div id="login">
           <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe,
             user_omniauth_authorize_path(:facebook), :class => "btn btn-primary",

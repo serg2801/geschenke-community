@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order("points DESC")
+    @title = "Unsere Geschenkehelden auf GeschenkeHeld.de | Die Geschenke-Community"
   end
 
   def edit
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def signed_up
+    @title = "Willkommen als Geschenkeheld auf GeschenkeHeld.de | Die Geschenke-Community"
   end
 
 end

@@ -1,7 +1,7 @@
 <div id="products">
 
   <h2>
-    <%= @title %>
+    <%= @h2 || @title %>
 
     <% if controller.controller_name == "lists" %>
       <%= image_tag @list.user.image, :alt => @list.user.name %>

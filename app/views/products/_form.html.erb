@@ -94,7 +94,7 @@
       </div>
 
       <div id="send" class="arrow_box">
-        <%= f.submit "Okay, jetzt absenden!" %>
+        <%= f.submit "Okay, jetzt absenden!", :onClick => "mixpanel.track('Neues Geschenk');" %>
       </div>
     </div>
   <% end %>

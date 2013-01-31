@@ -12,7 +12,7 @@ class ListsController < ApplicationController
     if @list.nil?      
       @list = current_user.lists.create(:name => "Mein Wunschzettel")
     end
-    @title = @list.name
+    @title = "#{@list.name} auf GeschenkeHeld.de | Die Geschenke-Community"
     params[:ids] = @list.products.map(&:id)
     begin
       @products = Product.search(params)
@@ -27,7 +27,7 @@ class ListsController < ApplicationController
     if current_user
       @lists = current_user.lists.order("created_at ASC")
     end
-    @title = @list.name
+    @title = "#{@list.name} auf GeschenkeHeld.de | Die Geschenke-Community"
     @products = @list.products
     render "products/index"
   end

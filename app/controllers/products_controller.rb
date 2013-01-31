@@ -20,7 +20,8 @@ class ProductsController < ApplicationController
     end
 
     if params[:slug] == "neue-geschenkideen"
-      @title = "Neue Geschenkideen"
+      @title = "Neue Geschenkideen auf GeschenkeHeld.de | Die Geschenke-Community"
+      @h2 = "Die neusten Geschenkideen"
       params[:sort] = "recent"
       @products = Product.search(params)
     else
@@ -41,10 +42,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @title = "Neue Geschenkidee"
   end
 
   def edit
     @product = current_user.products.find_by_slug(params[:slug])
+    @title = "#{@product.name} bearbeiten"
   end
 
   def show
