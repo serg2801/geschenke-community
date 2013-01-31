@@ -6,12 +6,11 @@ class ListsController < ApplicationController
     @list = current_user.lists.first
     @title = @list.name
     params[:ids] = @list.products.map(&:id)
-    # begin
-    #   @products = Product.search(params)
-    # rescue
-    #   @products = []
-    # end
-    @products = Product.search(params)
+    begin
+      @products = Product.search(params)
+    rescue
+      @products = []
+    end
     render "products/index"
   end
 

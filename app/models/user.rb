@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
         image:auth.info.image,
         password:Devise.friendly_token[0,20]
       )
-      first_list = user.lists.create!(:name => "Meine Wunschliste")
     end
     return user
   end
