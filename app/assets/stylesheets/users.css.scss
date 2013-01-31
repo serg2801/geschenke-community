@@ -6,6 +6,20 @@
   overflow: hidden;
   clear: both;
 
+  #signed-up {
+    p {
+      padding: 40px;
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+    a {
+      margin-left: 40px;
+      line-height: 40px;
+      height: 40px;
+    }
+  }  
+
   .user {
     width: 300px;
     float: left;

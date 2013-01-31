@@ -1,0 +1,30 @@
+<div id="users">
+
+  <h2>Hey <%= current_user.name %>, Du bist jetzt ein Geschenkeheld!</h2>
+
+  <div id="signed-up">
+    <p>
+      Wir freuen uns auf Deine tollen Geschenkideen und<br />wünschen Dir ganz viel Spaß
+      auf Geschenkeheld...
+      <br />
+      – Dein GeschenkeHeld Team
+    </p>
+
+    <a href="/neue-geschenkideen" class="btn btn-red">Hier geht's zu den neusten Geschenken!</a>
+  </div>
+
+</div>
+
+<%= content_for :javascript do %>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      <% if current_user %>
+        mixpanel.track('Neues Mitglied');
+        mixpanel.alias("<%= "#{current_user.id}-#{current_user.name}" %>");
+        mixpanel.identify("<%= "#{current_user.id}-#{current_user.name}" %>");
+      <% end %>
+    });
+  </script>
+
+<% end %>

@@ -8,12 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # if current_user.sign_in_count == 1
-    #   profile_path
-    # else
-    #   session[:previous_url] || root_path
-    # end
-    session[:previous_url] || root_path
+    if current_user.sign_in_count == 1
+      "/angemeldet"
+    else
+      session[:previous_url] || root_path
+    end
   end
 
   def after_sign_out_path_for(resource)

@@ -9,4 +9,7 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def signed_up
+  end
+
 end

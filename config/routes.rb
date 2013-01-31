@@ -15,6 +15,7 @@ App::Application.routes.draw do
     end
   end
 
+  match '/angemeldet' => 'users#signed_up'
   match '/helden' => 'users#index', :as => :users
   match '/helden/:id' => 'users#show', :as => :user
   match '/profil' => 'users#edit', :as => :profile
