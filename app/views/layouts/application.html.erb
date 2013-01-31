@@ -6,16 +6,8 @@
   <%= csrf_meta_tags %>
   <link href="/favicon.png" rel="shortcut icon">
 
-  <script type='text/javascript'>
-  (function () { 
-  var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://'; 
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = scriptProto+'js.cdn.yieldkit.com/v1/js?api_key=498139e9a7ced5547119f21edefc3a15&site='+document.domain+'';
-  (document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
-  })();
-  </script>
+  <script type="text/javascript" src="//use.typekit.net/fjh3mmf.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
 
@@ -200,28 +192,136 @@
         <div class="megamenu">
           <div class="category">
             <i class="icon icon-angle-right"></i>
-            <a href="" class="headline">Weihnachten</a>
+            <a href="" class="headline">Freunde &amp; Bekannte</a>
             <ul>
-              <% rand(3..12).times do %>
               <li>
                 <i class="icon icon-double-angle-right"></i>
-                <a href="#">Weihnachtsgeschenke für den Freund</a>
+                <a href="#">Geburtstagsgeschenke</a>
               </li>
-              <% end %>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Hochzeitsgeschenke</a>
+              </li>
             </ul>  
           </div>  
           <div class="category">
             <i class="icon icon-angle-right"></i>
-            <a href="" class="headline">Geburtstag</a>
+            <a href="" class="headline">Ehefrau / Freundin</a>
             <ul>
-              <% rand(1..6).times do %>
               <li>
                 <i class="icon icon-double-angle-right"></i>
-                <a href="#">Geburstatgsgeschenke für den Freund</a>
+                <a href="#">Geburtstagsgeschenke</a>
               </li>
-              <% end %>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Valentinstagsgeschenke</a>
+              </li>
             </ul>  
-          </div>        
+          </div>
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Ehemann / Freund</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Valentinstagsgeschenke</a>
+              </li>
+            </ul>  
+          </div> 
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Baby</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+            </ul>  
+          </div>
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Kind</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+            </ul>  
+          </div>
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Jugendlich</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+            </ul>  
+          </div>  
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Mutter / Oma</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Muttertagsgeschenke</a>
+              </li>
+            </ul>  
+          </div> 
+          <div class="category">
+            <i class="icon icon-angle-right"></i>
+            <a href="" class="headline">Vater / Opa</a>
+            <ul>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Geburtstagsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Weihnachtsgeschenke</a>
+              </li>
+              <li>
+                <i class="icon icon-double-angle-right"></i>
+                <a href="#">Vatertagsgeschenke</a>
+              </li>
+            </ul>  
+          </div>  
         </div>
         <div id="search">
           <%= form_tag products_path, :method => :get do %>

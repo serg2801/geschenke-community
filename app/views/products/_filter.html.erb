@@ -1,3 +1,4 @@
+<% unless params[:slug] == "neue-geschenkideen" %>
 <div id="filter">
   <%= form_tag({}, {:method => :get, :id => "filter-form"}) do %>
   <select name="sort">
@@ -15,3 +16,4 @@
   </select>
   <% end %>
 </div>
+<% end %>

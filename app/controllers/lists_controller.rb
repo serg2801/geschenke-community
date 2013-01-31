@@ -4,6 +4,9 @@ class ListsController < ApplicationController
 
   def index
     @list = current_user.lists.first
+    if @list.nil?      
+      @list = current_user.lists.create(:name => "Mein Wunschzettel")
+    end
     @title = @list.name
     params[:ids] = @list.products.map(&:id)
     begin

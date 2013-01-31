@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :lists
 
+  after_create :setup_list
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -25,4 +27,10 @@ class User < ActiveRecord::Base
     return user
   end
   
+  private
+
+  def setup_list
+    self.lists.create(:name => "Mein Wunschzettel")
+  end
+
 end

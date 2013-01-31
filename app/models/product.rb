@@ -12,8 +12,8 @@ class Product < ActiveRecord::Base
 
   validates_uniqueness_of :url, :name, :slug
   validates_presence_of :name, :description, :url, :image, :price, :root_url
-  validates_length_of :name, :minimum => 3, :maximum => 70
-  validates_length_of :description, :minimum => 3, :maximum => 300
+  validates_length_of :name, :minimum => 3, :maximum => 60
+  validates_length_of :description, :minimum => 3, :maximum => 120
 
   belongs_to :user
   has_many :comments
