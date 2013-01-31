@@ -9,7 +9,7 @@
     <p><%= product.description %></p>
   </div>
   <div class="product-actions">
-    <a href="<%= product.url %>" target="_blank">
+    <a href="<%= product.url %>" target="_blank" onClick="mixpanel.track('Zum Anbieter',{'slug':<%= product.slug %>});">
       <i class="icon icon-shopping-cart"></i> <b><%= price(product.price) %></b>
     </a>
   </div>
@@ -32,7 +32,7 @@
             <% end %>
           </select>
           <%= button_tag :type => "submit", :class => "btn btn-success" do %>
-            <i class="icon icon-ok"></i>
+            <i class="icon icon-ok" onClick="mixpanel.track('Zum Wunschzettel',{'slug':<%= product.slug %>});"></i>
           <% end %>
         <% end %>
       </div>
