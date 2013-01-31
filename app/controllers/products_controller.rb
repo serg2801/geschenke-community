@@ -9,18 +9,18 @@ class ProductsController < ApplicationController
   def index
     if params["utf8"] && params[:query] == nil
       vars = {}
+      vars[:slug] = params[:slug]
       if params[:sort] && params[:sort] != ""
         vars[:sort] = params[:sort]
       end
       if params[:price] && params[:price] != ""
         vars[:price] = params[:price]
       end
-      redirect_to recent_products_path(vars)
+      redirect_to product_category_path(vars)
     end
 
     if params[:slug] == "neue-geschenkideen"
       @title = "Neue Geschenkideen"
-      params[:sort] = "recent"
       @products = Product.search(params)
     else
       @category = Category.find_by_slug(params[:slug])
@@ -90,7 +90,7 @@ class ProductsController < ApplicationController
   def delete
     @product = current_user.products.find_by_slug(params[:slug])
     if @product
-      @product.delete
+      @product.destroy
     end
     redirect_to own_products_path
   end

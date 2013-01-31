@@ -443,11 +443,19 @@
   .product-image {
     text-align: center;
 
+    a {
+      width: 300px;
+      height: auto;
+      display: block;
+      overflow: hidden;
+    }
+
     img {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       max-width: 100%;
       height: auto;
+      overflow: hidden;
     }    
   }
 

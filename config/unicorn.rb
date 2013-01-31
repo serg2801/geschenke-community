@@ -1,8 +1,13 @@
 worker_processes 3
 timeout 30
 preload_app true
+ 
+@sidekiq_pid = nil
 
 before_fork do |server, worker|
+
+  # sidekiq
+  @sidekiq_pid ||= spawn("bundle exec sidekiq")
 
   # Replace with MongoDB or whatever
   if defined?(ActiveRecord::Base)

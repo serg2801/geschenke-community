@@ -28,8 +28,13 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'bourbon'
 
 gem 'carrierwave'
+gem 'carrierwave_backgrounder'
 gem 'rmagick'
 gem 'fog'
+
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 # Gems used only for assets and not required
 # in production environments by default.

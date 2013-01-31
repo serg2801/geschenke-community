@@ -34,7 +34,7 @@ App::Application.routes.draw do
   match '/wunschzettel/hinzufuegen' => 'lists#add_product_to_list', :as => :add_product_to_list
 
   match "/eigene-geschenkideen" => 'products#own', :as => :own_products
-  match "/:slug(/seite-:page)(/:sort)(/preis-:price)" => 'products#index'
+  match "/:slug(/seite-:page)(/:sort)(/preis-:price)" => 'products#index', :as => :product_category
 
   root :to => "home#index"
 

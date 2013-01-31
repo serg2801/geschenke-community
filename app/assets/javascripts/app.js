@@ -13,6 +13,7 @@ $(document).ready(function() {
 
   $("#products-container").on("click", ".add-to-list", function(event) {
     event.preventDefault();
+    $(this).tooltip('hide');
     $(this).parent().animate({
       left: '-61px'
     }, 320);

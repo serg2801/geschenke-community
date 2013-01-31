@@ -20,6 +20,7 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :lists
 
   mount_uploader :image, ImageUploader
+  process_in_background :image
 
   serialize :criteria, Hash
 
@@ -28,15 +29,16 @@ class Product < ActiveRecord::Base
     indexes :user_image
     indexes :user_name
     indexes :name
+    indexes :image
     indexes :description
+    indexes :clicks, :type => 'integer'
     indexes :price, :type => 'float'
     indexes :created_at, :type => 'date'
     indexes :updated_at, :type => 'date'
-    indexes :comment_count, :type => 'integer'
   end
 
   def to_indexed_json
-    to_json(methods: [:user_name, :user_image, :comment_count])
+    to_json(methods: [:user_name, :user_image])
   end
 
   def user_name
@@ -46,13 +48,9 @@ class Product < ActiveRecord::Base
   def user_image
     user.image
   end
-    
-  def comment_count
-    comments.size
-  end
+
 
   def self.search(params, criteria=nil)
-
     case params[:sort]
     when "preis-aufsteigend"
       sortfield = "price"
@@ -64,7 +62,7 @@ class Product < ActiveRecord::Base
       sortfield = "created_at"
       sortorder = "desc"
     else
-      sortfield = "comment_count"
+      sortfield = "clicks"
       sortorder = "desc"
     end
 
@@ -88,6 +86,7 @@ class Product < ActiveRecord::Base
       filter :range, :price => {operator.to_sym => price.to_f} unless price.nil?
       sort { by sortfield.to_sym, sortorder }
       # raise to_json
+      # raise to_curl
     end
 
   end

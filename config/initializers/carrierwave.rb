@@ -6,5 +6,5 @@ CarrierWave.configure do |config|
     :region                 => 'eu-west-1'
   }
   config.fog_directory  = 'geschenkeheld-community'
-  config.fog_public     = true
+  # config.fog_public     = true
 end
