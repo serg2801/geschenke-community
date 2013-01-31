@@ -1,15 +1,18 @@
 App::Application.routes.draw do
 
+  match '/impressum' => "home#imprint"
+  match '/sitemap' => "home#sitemap"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   match '/neue-geschenkidee' => 'products#new', :as => :new_product
-  match '/geschenkidee/:slug' => 'products#show', :as => :product, :via => :get
-  match '/geschenkidee/:slug/bearbeiten' => 'products#edit', :as => :edit_product
-  match '/geschenkidee/:slug/neuer-kommentar' => 'products#add_comment', :as => :add_comment_product
-  match '/geschenkidee/:slug/loeschen' => 'products#delete', :as => :delete_product
-  resources :products, :path => "geschenkidee" do   
+  match '/geschenk/:slug' => 'products#show', :as => :product, :via => :get
+  match '/geschenk/:slug/bearbeiten' => 'products#edit', :as => :edit_product
+  match '/geschenk/:slug/neuer-kommentar' => 'products#add_comment', :as => :add_comment_product
+  match '/geschenk/:slug/loeschen' => 'products#delete', :as => :delete_product
+  resources :products, :path => "geschenk" do   
     collection do
       post 'find_images', :as => :find_images
     end

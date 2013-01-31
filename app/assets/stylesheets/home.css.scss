@@ -1,33 +1,36 @@
 #home {
-  height: 460px;
-  background: url("/assets/intro.jpg");
-  position: relative;
-  border-bottom: 1px solid $border-color;
 
-  #user-pictures {
-    position: absolute;
-    top: 155px;
-    left: 115px;
-    width: 480px;
-    height: 220px;
+  #intro {
+    height: 460px;
+    background: url("/assets/intro.jpg");
+    position: relative;
+    border-bottom: 1px solid $border-color;
 
-    .user {
-      border: 3px solid #fff;
-      border-radius: 6px;
-      float: left;
-      margin-right: 24px;
-      margin-bottom: 24px;
-      width: 56px;
-      height: 56px;
-      background: #fff url("/assets/loader2.gif");
-      background-position: center center;
-      background-repeat: no-repeat;
-      @include box-shadow(0 1px 3px rgba(0,0,0,0.5));
+    #user-pictures {
+      position: absolute;
+      top: 155px;
+      left: 115px;
+      width: 480px;
+      height: 220px;
 
-      img {
+      .user {
+        border: 3px solid #fff;
         border-radius: 6px;
-        width: 50px;
-        height: 50px;
+        float: left;
+        margin-right: 24px;
+        margin-bottom: 24px;
+        width: 56px;
+        height: 56px;
+        background: #fff url("/assets/loader2.gif");
+        background-position: center center;
+        background-repeat: no-repeat;
+        @include box-shadow(0 1px 3px rgba(0,0,0,0.5));
+
+        img {
+          border-radius: 6px;
+          width: 50px;
+          height: 50px;
+        }
       }
     }
   }
@@ -64,6 +67,19 @@
       border-radius: 6px;
       display: block;
       font-weight: 600;
+    }
+  }
+
+  #imprint {
+    padding: 40px;
+
+    p {
+      margin-top: 20px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
     }
   }
 }
