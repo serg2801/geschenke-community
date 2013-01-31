@@ -206,7 +206,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, "102969429752310", "1310e048ea8b9774b06eb294ea242bac", :image_size => :square #, :display => 'popup'
+  if Rails.env.development?
+    config.omniauth :facebook, "422248231184684", "be8a451a1c6e6966302b10e0f5d641b", :image_size => :square #, :display => 'popup'
+  else
+    config.omniauth :facebook, "102969429752310", "1310e048ea8b9774b06eb294ea242bac", :image_size => :square #, :display => 'popup'
+  end
   # {:client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
       
 

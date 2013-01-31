@@ -36,7 +36,6 @@ class ProductsController < ApplicationController
         end
       end      
     end    
-    sleep 1
   end
 
   def new
