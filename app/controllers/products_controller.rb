@@ -53,6 +53,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @products = Product.search(params)
+    @title = "Suche nach #{params[:query]}"
+    render "products/index"
+  end
+
   def new
     @product = Product.new
     @title = "Neue Geschenkidee"

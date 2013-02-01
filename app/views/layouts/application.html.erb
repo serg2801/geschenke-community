@@ -364,7 +364,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           </div>  
         </div>
         <div id="search">
-          <%= form_tag products_path, :method => :get do %>
+          <%= form_tag product_search_path, :method => :get do %>
             <%= text_field_tag :query, params[:query], :placeholder => "Suche" %>
             <%= button_tag :type => :submit, :class => "btn btn-red" do %>
               <i class='icon icon-search'></i>

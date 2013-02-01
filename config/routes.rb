@@ -8,6 +8,7 @@ App::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   match '/neue-geschenkidee' => 'products#new', :as => :new_product
+  match '/geschenk/suche' => 'products#search', :as => :product_search
   match '/geschenk/:slug' => 'products#show', :as => :product, :via => :get
   match '/geschenk/:slug/bearbeiten' => 'products#edit', :as => :edit_product
   match '/geschenk/:slug/neuer-kommentar' => 'products#add_comment', :as => :add_comment_product

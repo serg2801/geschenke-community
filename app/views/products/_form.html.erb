@@ -34,7 +34,7 @@
   <%= form_for @product do |f| %>
     <%= f.hidden_field :url %>
     <%= f.hidden_field :remote_image_url %>
-    <div class="step <%= '' if @product.new_record? %>">
+    <div class="step <%= 'disabled' if @product.new_record? %>">
       <h3>Geschenk beschreiben</h3>
       <div class="loading">
         Noch kein Bild ausgewählt
@@ -87,7 +87,7 @@
           <a href="#">Für <span id="preview-price"><%= number_with_precision(@product.price, :precision => 2) || "0.00" %></span>&euro; gefunden</a>
         </div>
         <div class="product-user-list">
-          <img src="/assets/user1.jpg" />
+          <img src="<%= current_user.image %>" />
           <a href="#" class="product-user-name"><%= current_user.name %></a>
           <div class="product-user-rank"><i class="icon icon-star"></i> <%= current_user.points %></div>
         </div>
