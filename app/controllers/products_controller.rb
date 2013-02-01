@@ -6,6 +6,8 @@ require 'uri'
 
 class ProductsController < ApplicationController
 
+  before_filter :authenticate_user!, :only => [:own]
+
   def index
     if params["utf8"] && params[:query] == nil
       vars = {}
@@ -20,6 +22,7 @@ class ProductsController < ApplicationController
     end
 
     if params[:slug] == "neue-geschenkideen"
+      @category = "1"
       @title = "Neue Geschenkideen auf GeschenkeHeld.de | Die Geschenke-Community"
       @h2 = "Die neusten Geschenkideen"
       params[:sort] = "recent"
@@ -38,6 +41,16 @@ class ProductsController < ApplicationController
         end
       end      
     end    
+
+    # legacy check
+    if @category.nil?
+      @legacy = LegacyLink.find_by_slug(params[:slug])
+      if @legacy
+        redirect_to @legacy.new_url, :status => 301
+      else
+        render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404 
+      end
+    end
   end
 
   def new

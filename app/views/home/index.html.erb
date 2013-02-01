@@ -9,9 +9,9 @@
       <br /><br />
       Dann werde auch ein
       <br />
-      <b>GeschenkeHeld</b>
+      <b>GeschenkeHeld :)</b>
       <br /><br />
-      <a class="btn btn-primary btn-large" onClick="mixpanel.track('Zu Facebook',{'origin':'home'});">Mit Facebook anmelden</a>
+      <%= link_to "Mit Facebook anmelden", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large" %>
     </div>
 
     <div id="user-pictures">

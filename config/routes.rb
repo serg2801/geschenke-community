@@ -22,13 +22,15 @@ App::Application.routes.draw do
   match '/helden' => 'users#index', :as => :users
   match '/helden/:id' => 'users#show', :as => :user
   match '/profil' => 'users#edit', :as => :profile
+  match "/users/sign_up" => "home#index"
+  match "/users/sign_in" => "home#index"
   devise_for :users, :controllers => { 
     :omniauth_callbacks => "users/omniauth_callbacks",
     :registrations => "users/registrations",
   }
 
   devise_scope :user do
-    match 'abmelden', :to => 'devise/sessions#destroy', :as => 'signout'
+    match 'abmelden', :to => 'devise/sessions#destroy', :as => 'signout'    
   end
   
   match '/wunschzettel/erstellen' => 'lists#create', :as => :create_list

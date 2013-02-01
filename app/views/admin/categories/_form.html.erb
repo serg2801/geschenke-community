@@ -2,6 +2,7 @@
   <%= f.inputs :name => "Basics" do %>
     <%= f.input :name %>
     <%= f.input :slug %>
+    <%= f.input :description, :input_html => {:rows => 3} %>
   <% end %>
 
   <%= f.inputs :name => "Criteria", :id => "criteria" do %>

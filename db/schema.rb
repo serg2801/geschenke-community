@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130213149) do
+ActiveRecord::Schema.define(:version => 20130201075647) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(:version => 20130130213149) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.text     "criteria"
+    t.text     "description"
   end
 
   add_index "categories", ["slug"], :name => "index_categories_on_slug"
@@ -66,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20130130213149) do
 
   add_index "comments", ["product_id"], :name => "index_comments_on_product_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "legacy_links", :force => true do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "new_url"
+  end
+
+  add_index "legacy_links", ["slug"], :name => "index_legacy_links_on_slug"
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
