@@ -41,6 +41,11 @@ $(document).ready(function() {
     $(".window-container").hide();
   });
 
+  $(".cta-signup").on("click", function(event) {
+    event.preventDefault();
+    $("#signup").fadeIn("fast");
+  });
+
   $("#navigation .topic").on("click", function(event) {
     if(typeof $(this).attr("href") !== 'undefined' && attr !== false) {
       return false;

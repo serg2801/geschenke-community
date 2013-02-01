@@ -44,8 +44,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
       <% else %>
         <h1><%= @title %></h1>
         <div id="login">
-          <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe,
-            user_omniauth_authorize_path(:facebook), :class => "btn btn-primary"
+          <%= link_to "Jetzt anmelden", nil, :class => "btn btn-primary cta-signup"
           %>
         </div>
       <% end %>
@@ -219,11 +218,11 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           </div> 
           <div class="category">
             <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-reisen" class="headline">Reisen</a>
+            <a href="/geschenke-erlebnisse" class="headline">Erlebnisse</a>
           </div> 
           <div class="category">
             <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-romantisch" class="headline">Romantisch</a>
+            <a href="/geschenke-romantisch" class="headline">Romantisches</a>
           </div> 
           <div class="category">
             <i class="icon icon-angle-right"></i>
@@ -235,7 +234,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           </div> 
           <div class="category">
             <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-ausgefallen" class="headline">Ausgefallenes</a>
+            <a href="/geschenke-entertainment" class="headline">Entertainment</a>
           </div> 
         </div>
       </div>   
@@ -395,7 +394,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
       <div id="newsletter">
         <h3>Newsletter</h3>
         <p>
-          Meld Dich für unseren "Held des Monats" Newsletter an und erhalte unsere besten Geschenkideen in Deinem EMail Postfach!
+          Meld Dich für unseren Newsletter an und erhalte unsere besten Geschenkideen in Deinem EMail Postfach!
         </p>
         <input type="text" placeholder="Deine Email Adresse" />
         <a href="" class="btn btn-success">Anmelden</a>
@@ -429,6 +428,27 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           <a href="http://www.baby-wunderbar.de">www.baby-wunderbar.de</a>
         </div>
         <a href="https://mixpanel.com/f/partner" id="mixpanel"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+      </div>
+    </div>
+
+    <div id="signup" class="window-container">
+      <div class="window">
+        <div class="window-header">
+          <a href="#" class="close">&times;</a>
+          <h3>Werde jetzt GeschenkeHeld</h3>
+        </div>
+        <div class="window-content">
+          <p>
+            Hey, Du kannst Dich ganz einfach mit Deinem 
+            Facebook-Profil anmelden.
+          </p>
+          <p>
+            <b>Keine Sorge:</b><br />
+            Wir posten <u>nichts</u> auf Deine Pinnwand.
+          </p>
+          <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe, user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large" %>
+          <%= image_tag "losgehts.png", :alt => "Geschenkeheld werden" %>
+        </div>
       </div>
     </div>
   </div>

@@ -472,7 +472,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.18);
+    background: rgba(255,255,255,0.5);
     display: none;
 
     .window {
@@ -483,10 +483,15 @@ body {
       position: relative;
       @include box-shadow(0 1px 10px rgba(0,0,0,0.4));
       border-radius: 6px;
+      text-align: center;
 
       .window-header {
         border-bottom: 1px solid $border-color;
         padding: 15px 25px;
+
+        h3 {
+          font-weight: 500;
+        }
 
         a {
           float: right;
@@ -497,7 +502,7 @@ body {
           border: 1px solid $border-color;
           border-radius: 5px;
           text-align: center;
-          line-height: 20px;
+          line-height: 18px;
 
           &:hover { 
             color: #fff !important;
@@ -513,14 +518,31 @@ body {
         height: auto;
         overflow: auto;
 
-        label {
-          font-weight: 600;
-          color: #808080;
+        p {
+          font-size: 17px;
+          line-height: 27px;
+          margin-bottom: 20px;
+        }
+
+        b {
+          font-weight: 700;
+        }
+
+        a {
+          height: 50px;
+          line-height: 50px;
+          padding: 0 20px;
+          border-radius: 30px;
+
+          i {
+            margin-right: 10px;
+          }
         }
 
         img {
-          max-width: 100%;
-          height: auto;
+          margin-top: 15px;
+          margin-left: 170px;
+          display: block;
         }
       }
 
