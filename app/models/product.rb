@@ -26,6 +26,7 @@ class Product < ActiveRecord::Base
 
   mapping do
     indexes :id, :type => 'integer'
+    indexes :user_id
     indexes :user_image
     indexes :user_name
     indexes :name

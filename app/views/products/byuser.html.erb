@@ -5,14 +5,12 @@
     <%= @title %>
   </h2>
 
-  <%= render "filter" %>
+  <%= render "products/filter" %>
 
   <div id="products-container">
-    <%= render :partial => "product", :collection => @products %>
+    <%= render :partial => "products/product", :collection => @products %>
   </div>
 
-  <a href="" id="more-products">
-    Weitere Geschenkideen zeigen
-  </a>
+  <%= render "products/pagination" %>
 
 </div>

@@ -16,7 +16,7 @@
   <div class="product-user-list">
     <div class="product-user">
       <%= image_tag product.user_image, :alt => product.user_name %>    
-      <a href="" class="product-user-name"><%= product.user_name %></a>
+      <a href="/helden/<%= product.user_id %>" class="product-user-name"><%= product.user_name %></a>
       <div class="product-user-rank">Geschenkeheld</div>
     </div>
 

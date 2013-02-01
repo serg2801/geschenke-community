@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @title = "Unsere Geschenkehelden auf GeschenkeHeld.de | Die Geschenke-Community"
   end
 
+  def show
+    @user = User.find(params[:id])
+    @products = @user.products
+    @title = "#{@user.name}'s Geschenkideen"
+    render "products/byuser"
+  end
+
   def edit
     @user = current_user
   end
