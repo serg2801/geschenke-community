@@ -391,9 +391,17 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
       <div id="about">
         <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo" />
         <h3>Wir sind Geschenkehelden</h3>
+        <% if @description %>
         <p>
-          Der Geschenkeheld ist die Geschenkesuchmaschine, mit der Du ausgefallene Geschenkideen für unterschiedliche Anlässe finden kannst. Bei uns kannst Du ausgefallene Geschenke online kaufen und mit dem Heldenvorteil auch noch ordentlich Prozente bei vielen Geschenken im Geschenke Shop einsparen.
+          <%= @description %>
         </p>
+        <% else %>
+        <p>
+          GeschenkeHeld ist eine Geschenke-Community. Hier treffen sich Helden,
+          die tolle Geschenkideen im Internet gefunden haben und Sie präsentieren möchten.
+          Durch die Kategorisierung erleichterst Du es allen Besuchern, Deine Geschenkideen zu finden.
+        </p>
+        <% end %>
       </div>
       <div id="bottom">
         <div id="copyright">

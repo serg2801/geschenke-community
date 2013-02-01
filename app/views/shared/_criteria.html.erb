@@ -17,6 +17,15 @@
   </div>
   <div class="checkbox">
     <%= criteria_checkbox model_name, "vatertag", object %>
+  </div>   
+  <div class="checkbox">
+    <%= criteria_checkbox model_name, "kommunion", object, "Kommunion & Konfirmation" %>
+  </div>
+  <div class="checkbox">
+    <%= criteria_checkbox model_name, "geburt", object %>
+  </div>
+  <div class="checkbox">
+    <%= criteria_checkbox model_name, "taufe", object %>
   </div>             
 </div> 
 <div class="category">
@@ -64,10 +73,10 @@
     <%= criteria_checkbox model_name, "beauty", object, "Beauty & Gesundheit" %>
   </div>
   <div class="checkbox">
-    <%= criteria_checkbox model_name, "reisen", object, "Reisen" %>
+    <%= criteria_checkbox model_name, "reisen", object, "Erlebnisse" %>
   </div>
   <div class="checkbox">
-    <%= criteria_checkbox model_name, "romantisch", object, "Romantisch" %>
+    <%= criteria_checkbox model_name, "romantisch", object, "Romantisches" %>
   </div>
   <div class="checkbox">
     <%= criteria_checkbox model_name, "mode", object, "Mode" %>
@@ -76,6 +85,6 @@
     <%= criteria_checkbox model_name, "spielzeug", object, "Spielzeug" %>
   </div>
   <div class="checkbox">
-    <%= criteria_checkbox model_name, "ausgefallenes", object, "Ausgefallenes" %>
+    <%= criteria_checkbox model_name, "ausgefallenes", object, "Entertainment" %>
   </div>
 </div>    

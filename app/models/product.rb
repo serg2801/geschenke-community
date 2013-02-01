@@ -29,7 +29,7 @@ class Product < ActiveRecord::Base
     indexes :user_id
     indexes :user_image
     indexes :user_name
-    indexes :name
+    indexes :name, :analyzer => 'snowball'
     indexes :image
     indexes :description
     indexes :clicks, :type => 'integer'

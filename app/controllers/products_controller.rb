@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
       if @category
         @products = Product.search(params, @category.criteria)
         @title = @category.name
+        @description = @category.description
       else
         @products = Product.search(params)
         if params[:query]
