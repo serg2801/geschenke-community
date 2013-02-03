@@ -24,30 +24,36 @@ class Product < ActiveRecord::Base
 
   serialize :criteria, Hash
 
-  # tire.mapping do
-  #   indexes :id, :type => 'integer'
-  #   indexes :user_id, :type => 'integer', :index => 'not_analyzed'
-  #   indexes :user_image, :index => 'not_analyzed'
-  #   indexes :user_name, :index => 'not_analyzed'
-  #   indexes :name, :analyzer => 'snowball'
-  #   indexes :image
-  #   indexes :description
-  #   indexes :clicks, :type => 'integer'
-  #   indexes :price, :type => 'float'
-  #   indexes :created_at, :type => 'date'
-  #   indexes :updated_at, :type => 'date'
-  # end
+  mapping do
+    indexes :id,          :type => 'integer'
+    indexes :user_id,     :type => 'integer', :index => 'not_analyzed'
+    indexes :user_image,  :index => 'not_analyzed'
+    indexes :user_name,   :index => 'not_analyzed'
+    indexes :name
+    indexes :image
+    indexes :slug
+    indexes :description
+    indexes :clicks,      :type => 'integer'
+    indexes :price,       :type => 'float'
+    indexes :created_at,  :type => 'date'
+    indexes :updated_at,  :type => 'date'
+  end
 
   def to_indexed_json
-    to_json(methods: [:user_name, :user_image])
-  end
-
-  def user_name
-    user.name
-  end
-
-  def user_image
-    user.image
+    return {
+      :name   => name,
+      :slug => slug,
+      :description => description,
+      :user_id => user_id,
+      :user_name => user.name,
+      :user_image => user.image,
+      :price => price.to_f,
+      :image => {
+        :url => image.url(:thumb)
+      },
+      :created_at => created_at,
+      :updated_at => updated_at
+    }.to_json
   end
 
   def self.search(params, criteria=nil)
@@ -68,7 +74,7 @@ class Product < ActiveRecord::Base
 
     if params[:price] && params[:price] != ""
       if params[:price].include? "bis"
-        operator = "lte"
+        operator = "lt"
       else
         operator = "gte"
       end
