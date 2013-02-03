@@ -55,17 +55,24 @@
   font-weight: 300;
 
   #cta {
-    float: right;
     font-size: 15px;
     font-weight: 700;
-    background: rgba(0,0,0,0.025);
     border: 1px solid $border-color;
     line-height: 40px;
-    display: block;
+    padding: 0 15px;
+    display: inline-block;
     text-align: center;
-    width: 300px;
     border-radius: 30px;
-    margin-left: 40px;
+
+    &:hover {
+      background: $green;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    i {
+      margin-right: 10px;
+    }
   }
 }
 
