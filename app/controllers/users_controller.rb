@@ -8,9 +8,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @products = @user.products
+    params[:ids] = @user.products.map(&:id) # TO-DO: Let ES look for user_id
+    @products = Product.search(params)
     @title = "#{@user.name}'s Geschenkideen"
-    render "products/byuser"
+    render 'products/byuser'
   end
 
   def edit
