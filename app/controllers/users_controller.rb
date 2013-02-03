@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order("points DESC")
+    10.times do
+      @users << User.first
+    end
     @title = "Unsere Geschenkehelden auf GeschenkeHeld.de | Die Geschenke-Community"
   end
 

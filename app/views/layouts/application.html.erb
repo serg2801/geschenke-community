@@ -44,7 +44,9 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
       <% else %>
         <h1><%= @title %></h1>
         <div id="login">
-          <%= link_to "Jetzt anmelden", nil, :class => "btn btn-primary cta-signup"
+          <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook) %>
+          oder
+          <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
           %>
         </div>
       <% end %>
@@ -444,7 +446,7 @@ mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
           </p>
           <p>
             <b>Keine Sorge:</b><br />
-            Wir posten <u>nichts</u> auf Deine Pinnwand.
+            Wir schreiben <u>nichts</u> auf Deine Pinnwand.
           </p>
           <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe, user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large" %>
           <%= image_tag "losgehts.png", :alt => "Geschenkeheld werden" %>

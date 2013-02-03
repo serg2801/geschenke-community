@@ -50,7 +50,6 @@ class Product < ActiveRecord::Base
     user.image
   end
 
-
   def self.search(params, criteria=nil)
     case params[:sort]
     when "preis-aufsteigend"
@@ -59,7 +58,7 @@ class Product < ActiveRecord::Base
     when "preis-absteigend"
       sortfield = "price"
       sortorder = "desc"
-    when "recent"
+    when "neuste-zuerst"
       sortfield = "created_at"
       sortorder = "desc"
     else
@@ -86,6 +85,7 @@ class Product < ActiveRecord::Base
       filter :ids, :values => params[:ids] unless params[:ids].nil?
       filter :range, :price => {operator.to_sym => price.to_f} unless price.nil?
       sort { by sortfield.to_sym, sortorder }
+
       # raise to_json
       # raise to_curl
     end

@@ -156,8 +156,12 @@ body {
   #login {
     float: right;
 
+    a.btn {
+      margin-top: -1px;
+    }
+
     a {
-      margin-left: 20px;
+      margin-left: 10px;
       font-weight: 600;
 
       i {

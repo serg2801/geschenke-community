@@ -21,11 +21,17 @@ class ProductsController < ApplicationController
       redirect_to product_category_path(vars)
     end
 
+    if params[:seite].nil?
+      params[:seite] = 1
+    end
+
     if params[:slug] == "neue-geschenkideen"
       @category = "1"
       @title = "Neue Geschenkideen auf GeschenkeHeld.de | Die Geschenke-Community"
       @h2 = "Die neusten Geschenkideen"
-      params[:sort] = "recent"
+      if params[:sort] == nil
+        params[:sort] = "neuste-zuerst"
+      end
       @products = Product.search(params)
     else
       @category = Category.find_by_slug(params[:slug])
@@ -77,7 +83,7 @@ class ProductsController < ApplicationController
 
   def own    
     @user = current_user
-    @products = @user.products
+    @products = Product.search(params, "user_id" => @user.id)
     @title = "#{@products.size} eigene Geschenkideen auf GeschenkeHeld.de"
     render 'byuser'
   end
@@ -102,7 +108,7 @@ class ProductsController < ApplicationController
     @product.price = params[:product][:price].gsub(",",".")
     @product.root_url = URI.parse(URI.encode(@product.url)).host
     if @product.save
-      current_user.points += 25
+      current_user.points += 15
       current_user.save
       redirect_to product_path(@product.slug)
     else

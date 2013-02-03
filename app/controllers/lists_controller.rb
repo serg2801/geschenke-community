@@ -18,7 +18,7 @@ class ListsController < ApplicationController
     begin
       @products = Product.search(params)
     rescue
-      @products = []
+      @products = nil
     end
     render "products/index"
   end

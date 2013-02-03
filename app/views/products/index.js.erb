@@ -9,6 +9,6 @@ container.imagesLoaded(function(){
   $("#more-products").removeClass("loading");
 });
 
-<% if @products.length < 1 %>
+<% if @products.total <= @products.options[:size].to_i * params[:seite].to_i %>
   $("#more-products").hide();
 <% end %>

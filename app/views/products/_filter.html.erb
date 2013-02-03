@@ -1,10 +1,11 @@
-<% unless params[:slug] == "neue-geschenkideen" %>
+
 <div id="filter">
   <%= form_tag({}, {:method => :get, :id => "filter-form"}) do %>
   <select name="sort">
-    <%= option_helper("sort", "Beliebteste zuerst", "beliebteste-zuerst", true) %>
+    <%= option_helper("sort", "Beliebteste zuerst", "beliebteste-zuerst") %>
     <%= option_helper("sort", "Kleinste Preise zuerst", "preis-aufsteigend") %>
     <%= option_helper("sort", "Größte Preise zuerst", "preis-absteigend") %>
+    <%= option_helper("sort", "Neuste zuerst", "neuste-zuerst") %>
   </select>
   <select name="price">
     <%= option_helper("price", "Preis ist egal", "") %>
@@ -16,4 +17,3 @@
   </select>
   <% end %>
 </div>
-<% end %>

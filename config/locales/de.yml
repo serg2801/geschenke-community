@@ -200,16 +200,11 @@ de:
       <<: *errors
   activerecord:
     attributes:
-      order:
-        firstname: Name
-        address: Adresse
-        card_bank: Bankleitzahl
-        card_number: Kontonummer
-        card_name: Kontoinhaber
-        delivery_day: Liefertag
-        delivery_time: Lieferzeit
-        telephone: Telefon
-        email: Email
-        tos: AGB
+      product:
+        description: Beschreibung
+        url: Internet-Adresse
+        image: Bild
+        price: Preis
+        root_url: Ziel Adresse
     errors:
       <<: *errors
