@@ -40,7 +40,7 @@ class Product < ActiveRecord::Base
   end
 
   def to_indexed_json
-    return {
+    maps = {
       :name   => name,
       :slug => slug,
       :description => description,
@@ -53,8 +53,12 @@ class Product < ActiveRecord::Base
         :url => image.url(:thumb)
       },
       :created_at => created_at,
-      :updated_at => updated_at
-    }.to_json
+      :updated_at => updated_at,
+    }.merge(criteria)
+
+
+
+    return maps.to_json
   end
 
   def self.search(params, criteria=nil)
