@@ -48,6 +48,7 @@ class Product < ActiveRecord::Base
       :user_name => user.name,
       :user_image => user.image,
       :price => price.to_f,
+      :url => url,
       :image => {
         :url => image.url(:thumb)
       },
