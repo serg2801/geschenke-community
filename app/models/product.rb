@@ -24,19 +24,19 @@ class Product < ActiveRecord::Base
 
   serialize :criteria, Hash
 
-  mapping do
-    indexes :id, :type => 'integer'
-    indexes :user_id
-    indexes :user_image
-    indexes :user_name
-    indexes :name, :analyzer => 'snowball'
-    indexes :image
-    indexes :description
-    indexes :clicks, :type => 'integer'
-    indexes :price, :type => 'float'
-    indexes :created_at, :type => 'date'
-    indexes :updated_at, :type => 'date'
-  end
+  # tire.mapping do
+  #   indexes :id, :type => 'integer'
+  #   indexes :user_id, :type => 'integer', :index => 'not_analyzed'
+  #   indexes :user_image, :index => 'not_analyzed'
+  #   indexes :user_name, :index => 'not_analyzed'
+  #   indexes :name, :analyzer => 'snowball'
+  #   indexes :image
+  #   indexes :description
+  #   indexes :clicks, :type => 'integer'
+  #   indexes :price, :type => 'float'
+  #   indexes :created_at, :type => 'date'
+  #   indexes :updated_at, :type => 'date'
+  # end
 
   def to_indexed_json
     to_json(methods: [:user_name, :user_image])
@@ -66,7 +66,7 @@ class Product < ActiveRecord::Base
       sortorder = "desc"
     end
 
-    if params[:price]
+    if params[:price] && params[:price] != ""
       if params[:price].include? "bis"
         operator = "lte"
       else
@@ -76,7 +76,7 @@ class Product < ActiveRecord::Base
     end
 
     tire.search(page: params[:seite], per_page: 12) do
-      query { string params[:query], default_operator: "AND" } if params[:query].present?
+      query { string params[:query], default_operator: "AND" } if params[:query].present? 
       unless criteria.nil?
         criteria.each do |name, value|
           filter :term, name.to_sym => "1" unless value == "0"

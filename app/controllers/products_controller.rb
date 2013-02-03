@@ -21,10 +21,6 @@ class ProductsController < ApplicationController
       redirect_to product_category_path(vars)
     end
 
-    if params[:seite].nil?
-      params[:seite] = 1
-    end
-
     if params[:slug] == "neue-geschenkideen"
       @category = "1"
       @title = "Neue Geschenkideen auf GeschenkeHeld.de | Die Geschenke-Community"
@@ -83,7 +79,8 @@ class ProductsController < ApplicationController
 
   def own    
     @user = current_user
-    @products = Product.search(params, "user_id" => @user.id)
+    params[:ids] = @user.products.map(&:id) # TO-DO: Let ES look for user_id
+    @products = Product.search(params)
     @title = "#{@products.size} eigene Geschenkideen auf GeschenkeHeld.de"
     render 'byuser'
   end
