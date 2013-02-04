@@ -74,7 +74,11 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_slug(params[:slug])
-    @title = "#{@product.name} auf GeschenkeHeld.de | Die Geschenke-Community"
+    if @product
+      @title = "#{@product.name} auf GeschenkeHeld.de | Die Geschenke-Community"
+    else
+      redirect_to '/neue-geschenkideen'
+    end
   end
 
   def own    
