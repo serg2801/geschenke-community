@@ -22,19 +22,23 @@
     </div>
   </div>
 
-  <div class="step disabled">
+  <div class="step <%= 'disabled' if @product.new_record? && @product.errors.full_messages.any? == false %>">
     <h3>Bild auswählen</h3>
     <div class="loading">
       Noch keine Adresse eingegeben
     </div>
-    <div class="content" id="images"></div>
+    <div class="content" id="images">
+      <% unless @product.url == "" || @product.url.nil? %>
+        <img src='/assets/loading.gif' alt='Loading' />
+      <% end %>
+    </div>
   </div>
   <% end %>
 
   <%= form_for @product do |f| %>
     <%= f.hidden_field :url %>
     <%= f.hidden_field :remote_image_url %>
-    <div class="step <%= 'disabled' if @product.new_record? %>">
+    <div class="step <%= 'disabled' if @product.new_record? && @product.errors.full_messages.any? == false %>">
       <h3>Geschenk beschreiben</h3>
       <div class="loading">
         Noch kein Bild ausgewählt
@@ -107,6 +111,12 @@
       $("#url form").on('submit', function(event) {
         $("#images").siblings(".loading").html("<img src='/assets/loading.gif' alt='Loading' />");
       });
+
+      console.log($("#url-value").val());
+
+      if($("#url-value").val() != "") {
+        $("#url form").submit();
+      }
 
       $("#new_product textarea, #new_product input").on("keyup", function(event) {
         $("#" + $(this).data('target')).html($(this).val());
