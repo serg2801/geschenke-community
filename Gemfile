@@ -36,7 +36,9 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 
-gem "airbrake"
+group :production do
+  gem "airbrake"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

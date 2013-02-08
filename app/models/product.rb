@@ -24,20 +24,20 @@ class Product < ActiveRecord::Base
 
   serialize :criteria, Hash
 
-  mapping do
-    indexes :id,          :type => 'integer'
-    indexes :user_id,     :type => 'integer', :index => 'not_analyzed'
-    indexes :user_image,  :index => 'not_analyzed'
-    indexes :user_name,   :index => 'not_analyzed'
-    indexes :name
-    indexes :image
-    indexes :slug
-    indexes :description
-    indexes :clicks,      :type => 'integer'
-    indexes :price,       :type => 'float'
-    indexes :created_at,  :type => 'date'
-    indexes :updated_at,  :type => 'date'
-  end
+  # tire.mapping do
+  #   indexes :id,          :type => 'integer'
+  #   indexes :user_id,     :type => 'integer', :index => 'not_analyzed'
+  #   indexes :user_image,  :index => 'not_analyzed'
+  #   indexes :user_name,   :index => 'not_analyzed'
+  #   indexes :name
+  #   indexes :image
+  #   indexes :slug
+  #   indexes :description
+  #   indexes :clicks,      :type => 'integer'
+  #   indexes :price,       :type => 'float'
+  #   indexes :created_at,  :type => 'date'
+  #   indexes :updated_at,  :type => 'date'
+  # end
 
   def to_indexed_json
     maps = {
@@ -55,8 +55,6 @@ class Product < ActiveRecord::Base
       :created_at => created_at,
       :updated_at => updated_at,
     }.merge(criteria)
-
-
 
     return maps.to_json
   end
