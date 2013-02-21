@@ -10,7 +10,7 @@
   <h2><%= @product.name %></h2>
 
   <div id="product-info">
-    <a href="<%= @product.url %>" id="cta" target="_blank" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= @product.slug %>'});"><i class="icon icon-shopping-cart"></i> Für <%= price(@product.price) %> auf <%= @product.root_url %> gefunden</a>
+    <a href="<%= @product.url %>" id="cta" rel="nofollow" target="_blank" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= @product.slug %>'});"><i class="icon icon-shopping-cart"></i> Für <%= price(@product.price) %> auf <%= @product.root_url %> gefunden</a>
   </div>
 
   <div id="product-sidebar">
