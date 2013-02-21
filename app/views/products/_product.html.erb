@@ -9,7 +9,7 @@
     <p><%= product.description %></p>
   </div>
   <div class="product-actions">
-    <a href="<%= product.url %>" target="_blank" rel="nofollow" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= product.slug %>'});">
+    <a href="<%= product.url %>" target="_blank" rel="nofollow" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= product.slug %>'});_gaq.push(['_trackPageview', '/zum-anbieter/#{product.slug}']);">
       <i class="icon icon-shopping-cart"></i> <b><%= price(product.price) %></b>
     </a>
   </div>
