@@ -1,7 +1,6 @@
 <div id="home">
 
   <div id="intro">
-
     <div id="panel">
       Hast Du tolle <b>Geschenkideen</b><br />
       und möchtest sie</br />
@@ -19,7 +18,20 @@
         <div class="user"><%= image_tag user.image %></div>
       <% end %>
     </div>
+  </div>
 
+  <div id="products">
+    <div id="products-container">
+      <% @products.each do |product| %>
+        <div class="product" id="product-<%= product.id %>">
+          <div class="product-image">
+            <a href="<%= product_path(product.slug) %>">
+              <%= image_tag product.image.url(:thumb), :alt => product.name %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 

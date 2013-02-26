@@ -6,3 +6,15 @@
     </a>
   <% end %>
 <% end %>
+
+<% if current_user.nil? %>
+  <div class="end-page-cta">
+    <h3>Komm zu uns, werde auch ein GeschenkeHeld!</h3>
+    <div class="users">
+      <% User.order("RANDOM()").limit(12).each_with_index do |user, index| %>
+        <div class="user"><%= image_tag user.image %></div>
+      <% end %>
+    </div>
+    <%= link_to "Ganz einfach anmelden", nil, :class => "btn btn-primary cta-signup" %>
+  </div>
+<% end %>

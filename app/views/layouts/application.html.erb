@@ -16,16 +16,18 @@ e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("c488779e234e364badeb40d394b52b3e");</script>
   <!-- end Mixpanel -->
 
-  <script type='text/javascript'>
-  (function () { 
-  var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://'; 
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = scriptProto+'js.cdn.yieldkit.com/v1/js?api_key=498139e9a7ced5547119f21edefc3a15&site='+document.domain+'';
-  (document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
-  })();
-  </script>
+  <% if Rails.env.production? %>
+    <script type='text/javascript'>
+    (function () { 
+    var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://'; 
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = scriptProto+'js.cdn.yieldkit.com/v1/js?api_key=498139e9a7ced5547119f21edefc3a15&site='+document.domain+'';
+    (document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
+    })();
+    </script>
+  <% end %>
   <%= yield :head %>
 </head>
 <body>

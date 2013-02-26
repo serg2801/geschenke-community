@@ -1,10 +1,16 @@
 $(document).ready(function() {
 
+  if($(".product").length > 0) {
+    var column_width = $(".product").width();
+  } else {
+    var column_width = 300;
+  }
+
   var $container = $('#products-container');
   $container.imagesLoaded(function(){
     $container.masonry({
       itemSelector: '.product',
-      columnWidth: 300,
+      columnWidth: column_width,
       gutterWidth: 20
     });
   });

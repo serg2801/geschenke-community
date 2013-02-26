@@ -35,6 +35,18 @@
     }
   }
 
+  .product {
+    width: 172px !important;
+
+    &:nth-child(3n+3) {
+      margin-right: 20px;
+    }
+
+    &:nth-child(5n+5) {
+      margin-right: 0;
+    }
+  }
+
   #panel {
     background: #fff;
     border-radius: 6px;
