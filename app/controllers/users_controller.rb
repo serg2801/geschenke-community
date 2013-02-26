@@ -8,10 +8,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    params[:ids] = @user.products.map(&:id) # TO-DO: Let ES look for user_id
-    @products = Product.search(params)
-    @title = "#{@user.name}'s Geschenkideen"
-    render 'products/byuser'
+    if @user
+      params[:user_id] = @user.id
+      @products = Product.search(params)
+      @title = "#{@user.name}'s Geschenkideen"
+      render 'products/byuser'
+    else
+      render :text => "Geschenkeheld nicht gefunden :("
+    end
   end
 
   def edit

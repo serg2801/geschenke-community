@@ -92,7 +92,10 @@ class Product < ActiveRecord::Base
           filter :term, name.to_sym => "1" unless value == "0"
         end
       end
-      filter :ids, :values => params[:ids] unless params[:ids].nil?
+      if params[:ids].nil? == false
+        filter :ids, :values => params[:ids] unless params[:ids].length < 1
+      end
+      filter :term, :user_id => params[:user_id] unless params[:user_id].nil?
       filter :range, :price => {operator.to_sym => price.to_f} unless price.nil?
       sort { by sortfield.to_sym, sortorder }
 

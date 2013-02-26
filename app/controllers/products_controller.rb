@@ -6,7 +6,7 @@ require 'uri'
 
 class ProductsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:own]
+  before_filter :authenticate_user!, :only => [:own, :new, :edit, :update, :create, :delete, :add_comment]
 
   def index
     if params["utf8"] && params[:query] == nil
@@ -127,10 +127,12 @@ class ProductsController < ApplicationController
 
   def find_images
     url = params[:url]
-    doc = Nokogiri::HTML(open(url))
-    @results = []
-    doc.xpath("//img/@src").each do |src|
-      @results.push(make_absolute(src,url))
+    if params[:url]
+      doc = Nokogiri::HTML(open(url).read)
+      @results = []
+      doc.xpath("//img/@src").each do |src|
+        @results.push(make_absolute(src,url))
+      end
     end
   end
 
