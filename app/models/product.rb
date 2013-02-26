@@ -85,7 +85,7 @@ class Product < ActiveRecord::Base
       price = params[:price].split("-")[1].to_f + 0.01
     end
 
-    tire.search(page: params[:seite], per_page: 12) do
+    tire.search(page: params[:seite], per_page: params[:per_page] ||= 12) do
       query { string params[:query], default_operator: "AND" } if params[:query].present? 
       unless criteria.nil?
         criteria.each do |name, value|
