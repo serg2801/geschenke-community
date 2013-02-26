@@ -30,7 +30,8 @@ class ListsController < ApplicationController
     end
     @title = "#{@list.name} auf GeschenkeHeld.de | Die Geschenke-Community"
     @h2 = @list.name
-    @products = @list.products
+    params[:ids] = @list.products.map(&:id)
+    @products = Product.search(params)
     render "products/index"
   end
 
