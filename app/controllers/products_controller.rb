@@ -109,7 +109,7 @@ class ProductsController < ApplicationController
     @product.price = params[:product][:price].gsub(",",".")
     @product.root_url = URI.parse(URI.encode(@product.url)).host
     if @product.save
-      current_user.points += 15
+      current_user.points += 5
       current_user.save
       redirect_to product_path(@product.slug)
     else

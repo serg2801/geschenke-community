@@ -79,11 +79,16 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".go", function(event) {
+    var slug = $(event.target).data("slug")
+    if(slug == null) {
+      slug = $(event.target).parent().data("slug")
+    }
+
     $.ajax({
       type: "post",
       url: "/track/click",
       data: {
-        "slug": $(event.target).data("slug")
+        "slug": slug
       }
     });
   });
