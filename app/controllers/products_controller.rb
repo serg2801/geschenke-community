@@ -151,6 +151,17 @@ class ProductsController < ApplicationController
     redirect_to :back
   end
 
+  def track_click
+    @product = Product.find_by_slug(params[:slug])
+    if @product
+      if session["product-#{@product.id}"].nil?
+        @product.user.update_attribute(:points, @product.user.points + 1)
+        session["product-#{@product.id}"] = true
+      end
+    end
+    render :json => "OK"
+  end
+
   private 
 
   def make_absolute(href, root)

@@ -21,8 +21,10 @@
     $(document).ready(function() {
       <% if current_user %>
         mixpanel.track('Neues Mitglied');
-        mixpanel.alias("<%= "#{current_user.id}-#{current_user.name}" %>");
-        mixpanel.identify("<%= "#{current_user.id}-#{current_user.name}" %>");
+        mixpanel.people.set({
+          "$email": "<%= current_user.email %>",
+          "$created": new Date()
+        });
       <% end %>
     });
   </script>

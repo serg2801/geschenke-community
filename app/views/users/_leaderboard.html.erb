@@ -1,0 +1,13 @@
+<div id="leaderboard">
+  <div id="leaders">
+    <% leaders.each do |leader| %>
+      <a href="<%= user_path(leader) %>" class="leader">
+        <%= image_tag leader.image.gsub('type=square','width=80&height=80'), :alt => leader.name %>
+      </a>
+    <% end %>
+  </div>
+  <div id="leaderboard-description">
+    Durch ihre fantastische Geschenkideen haben
+    <%= leaders[0].name %>, <%= leaders[1].name %> und <%= leaders[2].name %> sich den Titel <b>– Held des April 2013 –</b> verdient!
+  </div>
+</div>

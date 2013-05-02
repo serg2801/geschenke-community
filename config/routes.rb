@@ -39,6 +39,9 @@ App::Application.routes.draw do
   match '/wunschzettel/:permalink' => 'lists#show', :as => :list
   match '/wunschzettel' => 'lists#index', :as => :lists
 
+   # TRACKING
+  post '/track/click' => 'products#track_click'
+
   match "/eigene-geschenkideen" => 'products#own', :as => :own_products
   match "/:slug(/seite-:page)(/:sort)(/preis-:price)" => 'products#index', :as => :product_category
 

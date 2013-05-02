@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       if current_user.sign_in_count == 1
         "/angemeldet"
       else
+        @just_logged_in = true
         session[:previous_url]
       end
     elsif resource.is_a?(AdminUser) 

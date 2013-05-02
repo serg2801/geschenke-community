@@ -1,11 +1,8 @@
 source "https://rubygems.org"
-ruby "1.9.3"
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 gem 'unicorn'
-
-gem 'newrelic_rpm'
 
 # gem 'cache_digests'
 # gem 'memcachier'
@@ -38,6 +35,7 @@ gem 'slim'
 
 group :production do
   gem "airbrake"
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required

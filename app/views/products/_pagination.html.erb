@@ -1,6 +1,6 @@
 <% unless @products.nil? %>
   <% if @products.total >= @products.options[:size].to_i * (params[:seite].nil? ? 1 : params[:seite].to_i) %>
-    <a href="?seite=2" id="more-products">
+    <a href="?seite=2" id="more-products" rel="nofollow">
       <span class="loading-text"><%= image_tag "loader.gif", :alt => "Lade weitere Geschenkideen" %></span>
       <span class="normal-text">Weitere Geschenkideen zeigen</span>
     </a>

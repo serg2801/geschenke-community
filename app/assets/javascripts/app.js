@@ -78,4 +78,14 @@ $(document).ready(function() {
     });
   });
 
+  $(document).on("click", ".go", function(event) {
+    $.ajax({
+      type: "post",
+      url: "/track/click",
+      data: {
+        "slug": $(event.target).data("slug")
+      }
+    });
+  });
+
 });

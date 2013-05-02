@@ -92,7 +92,7 @@
   color: #808080;
   font-weight: 300;
 
-  #cta {
+  .go {
     font-size: 15px;
     font-weight: 600;
     border: 1px solid $green;
@@ -531,7 +531,7 @@
   margin-right: 20px;
   background: #fff;
   border-radius: 5px;
-  @include box-shadow(0 1px 4px 0 rgba(0,0,0,0.25));
+  @include box-shadow(0 1px 4px 0 rgba(0,0,0,0.5));
 
   &:nth-child(3n+3) {
     margin-right: 0;
