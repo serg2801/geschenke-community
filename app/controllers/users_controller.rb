@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.order("points DESC")
-    @leaders = User.where("id in (?)", [8,5,3]).order("id DESC")
+    @heroes = User.where("hero IS true")
     @title = "Unsere Geschenkehelden auf GeschenkeHeld.de | Die Geschenke-Community"
 
     @max_points = User.maximum("points")
