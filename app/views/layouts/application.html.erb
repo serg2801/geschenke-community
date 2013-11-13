@@ -436,12 +436,10 @@
           Layout und Programmierung von <a href="http://jubari.com">jubari.com – Bastian Halbach</a>
         </div>
         <div id="sponsors">
-          Besuchen Sie auch unser Partnerprogramm:<br />
-          <a href="http://www.auto-radio-code.com">Auto Radio Code</a>
-          |
-          <a href="http://www.baby-wunderbar.de">www.baby-wunderbar.de</a>
-          |
-          <a href="http://www.horoto.de">www.horoto.de</a>
+          <% if request.path == "/" %>
+            Besuchen Sie auch unser Partnerprogramm:<br />
+            <a href="http://www.auto-radio-code.com">www.auto-radio-code.com</a>
+          <% end %>
         </div>
         <a href="https://mixpanel.com/f/partner" id="mixpanel"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
       </div>
