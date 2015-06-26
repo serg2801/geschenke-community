@@ -92,7 +92,7 @@ class Product < ActiveRecord::Base
           filter :term, name.to_sym => "1" unless value == "0"
         end
       end
-      if params[:ids].nil? == false
+      unless params[:ids].nil?
         filter :ids, :values => params[:ids] unless params[:ids].length < 1
       end
       filter :term, :user_id => params[:user_id] unless params[:user_id].nil?

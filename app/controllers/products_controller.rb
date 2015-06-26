@@ -84,8 +84,9 @@ class ProductsController < ApplicationController
   def own    
     @user = current_user
     params[:ids] = @user.products.map(&:id) # TO-DO: Let ES look for user_id
+    params[:sort] = "neuste-zuerst" if params[:sort].nil?
     @products = Product.search(params)
-    @title = "#{@products.size} eigene Geschenkideen auf GeschenkeHeld.de"
+    @title = "#{@products.total} eigene Geschenkideen auf GeschenkeHeld.de"
     render 'byuser'
   end
 
