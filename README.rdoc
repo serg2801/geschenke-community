@@ -1,11 +1,115 @@
-== DOCUMENTATION
+= DOCUMENTATION
 
-Redis starten:
-redis-server /usr/local/etc/redis.conf
+== Admin Zugang
 
-Elastic Search starten:
-- nicht nötig
+http://www.geschenkeheld.de/admin
+Username: main@geschenkeheld.de
+Passwort: geschenkeheld90210
 
-Server Starten:
-bundle exec foreman start -p 3000
+*   Passwort ist nur temporär und sollte geändert werden ;-)
+
+*   Alle Admin-Interfaces können sehr einfach individualisiert werden.
+    Siehe /app/admin
+
+*   "Legacy Links" im Adminbereich war eine SEO Aktion und hat keine Relevanz mehr
+
+== Backend Technologien
+
+* Ruby on Rails 3.2
+* PostgreSQL
+* Elastic Search
+  - tire gem
+  - bonsai addon auf heroku
+* Sidekiq (hintergrund jobs, momentan nicht genutzt)
+  - sidekiq gem
+  - redis addon auf heroku
+* Amazon S3 für Bilder
+  - carrierwave gem
+  - config/initializers/carrierwave.rb für Zugangsdaten
+* Unicorn Server
+  - unicorn gem
+  - Erwähnenswert: Unicorn startet pro Web Prozess 3 Worker Prozesse,
+    ohne dass man bei heroku extra worker starten/bezahlen muss
+* Nokogiri
+  - zum Finden des Produktbildes
+  - nokogiri gem
+
+== Frontend Technologien
+
+* SCSS für dynamisches CSS
+  - Eine reset.css um browser auf die selbe Augenhöhe zu bringen
+  - Eine global.scss, die praktische Standards definiert
+
+* Bootstrap für eine praktische Helper
+  - es werden keine Grids oder ähnliches genutzt
+
+* jQuery & masonry
+  - masonry ist eine helper library, die das pinterest-ähnliche
+  Layout der Geschenkideen ermöglicht
+
+* Font-Awesome für Icons (http://fortawesome.github.io/Font-Awesome/)
+
+== Eventuell veraltet:
+
+* Airbrake (https://airbrake.io/)
+  Dieser Service tracked Fehler auf der Seite.
+  Ich bin mir nicht sicher ob der Service noch funktioniert,
+  da heroku eventuell das Addon verabschiedet hat.
+  Es gibt in config/initializers/airbrake.rb zwar noch
+  einen API-Key, aber ich glaube der Account ist inaktiv.
+  Kann problemslos entfernt werden (initializer & "airbrake" gem) 
+
+== Lokale Installation
+
+1)  Git Installieren (abhängig von Betriebssystem)
+
+2)  Die config/database.yml anpassen oder so lassen
+
+3)  ElasticSearch installieren
+    brew install elasticsearch (http://brew.sh/ ist ein OSX Paket Manager)
+
+4)  Folgende Befehle ausführen (UNIX / Mac OS)
+
+git clone git@heroku.com:geschenke-community.git
+cd geschenke-community
+bundle install (installiert alle ruby gems)
+bundle exec rake db:create:all (erstellt die Datenbank)
+bundle exec rake db:migrate (erstellt alle Tabellen)
+bundle exec elasticsearch:reindex (siehe lib/taks/elasticsearch.rake)
+rails s (startet den Server)
+
+4) http://localhost:3000 öffnen
+
+
+== CHECKLISTE / TO-DO's
+
+1)  NewRelic überprüfen oder entfernen
+    NewRelic ist ein Tool zum Überprüfen der Performance.
+    Das Interface kann über das heroku dashboard geöffnet werden
+    (New Relic in der Liste unter "Resources" anklicken).
+    Zum entfernen einfach "newrelic_rpm" aus der Gemfile entfernen
+    und optional die config/newrelic.yml
+
+2)  Amazon S3 Zugangsdaten bitte bald austauschen!
+    Siehe: config/initializers/carrierwave.rb
+
+3)  Mixpanel aktualisieren oder entfernen
+    https://mixpanel.com ist ein Service zum tracken und analysieren
+    von Benutzern und deren Aktionen.
+    Entweder einen neuen Account erstellen oder das JS-Snippet aus 
+    app/views/layouts/application.html.erb entfernen
+    Falls entfernt wird: Einmal jedes Template unter app/views überprüfen
+    und entsprechende Verweise auf Mixpanel entfernen.
+
+4)  Google Analytics aktualisieren
+    Snippet befindet sich unter
+    app/views/layouts/application.html.erb
+
+5)  Typekit aktualisieren oder entfernen
+    https://typekit.com/ ist ein Service für Schriftarten.
+    Wir nutzen auf Geschenkeheld momentan "Proxima Nova Soft".
+    Ich glaube für die Schriftart ist der Plan "Portfolio" für
+    49,90 Euro im Jahr nötig. Falls Typekit nicht genutzt wird
+    das Snippet von app/views/layouts/application.html.erb entfernen
+    und das CSS anpassen.
 
