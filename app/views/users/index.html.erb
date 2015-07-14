@@ -1,18 +1,4 @@
 <div id="users">
-
-  <h2>Unsere Helden des Monats</h2>
-
-  <div id="heros">
-    <div id="leaderboard-price">
-      <div id="price-box">
-        Dafür schenkt das GeschenkeHeld-Team<br />
-        <%= @heroes[0].name %>, <%= @heroes[1].name %> und <%= @heroes[2].name %><br />
-        <div class="chocri">eine schokoladige Überraschung von <a href="http://www.chocri.de/">chocri.de</a></div>
-      </div>
-
-      <%= image_tag "chocri.png", :alt => "chocri für GeschenkeHelden" %>
-    </div>
-
     <%= render :partial => "leaderboard", :locals => {:heroes => @heroes} %>
   </div>
 
