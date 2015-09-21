@@ -4,10 +4,18 @@ ActiveAdmin.register_page "Helden" do
 
   content :title => "Helden" do
     div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span 
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
-      end
+      <%= form_tag("/heroes/add", :method => "post") do %>
+        <%= text_field_tag(:heroe_name) %>
+        <%= submit_tag("Add Heroe", :class => "btn ") %>
+      <% end %>
+    end
+
+    div do
+       ActiveRecord::Base.connection.tables.each do |table|
+          next if table.match(/\Aschema_migrations\Z/)
+          klass = table.singularize.camelize.constantize      
+          puts "#{klass.name} has #{klass.count} records"
+       end
     end
 
   end # content
