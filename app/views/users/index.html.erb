@@ -10,7 +10,7 @@
       </div>
         </div>
 
-    <%= render :partial => "leaderboard", :locals => {:heroes => @heroes.sort! { |a,b| a.points <=> b.points }} %>
+    <%= render :partial => "leaderboard", :locals => {:heroes => @heroes.sort! { |a,b| b.points <=> a.points }} %>
   </div>
 
   <h2>Unsere Kandidaten für den nächsten Held des Monats</h2>
