@@ -10,13 +10,5 @@ ActiveAdmin.register_page "Helden" do
       end
     end
 
-    div do
-       ActiveRecord::Base.connection.tables.each do |table|
-          next if table.match(/\Aschema_migrations\Z/)
-          klass = table.singularize.camelize.constantize      
-          puts "#{klass.name} has #{klass.count} records"
-       end
-    end
-
   end # content
 end
