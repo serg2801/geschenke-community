@@ -1,6 +1,6 @@
 class CreateHerodata < ActiveRecord::Migration
   def change
-    create_table :herodata, :primary_key => :name do |t|
+    create_table :herodata do |t|
       t.string :name
       t.text :value
     end
