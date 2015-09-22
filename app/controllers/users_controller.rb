@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def index
     @users = User.order("points DESC")
     @heroes = User.where("hero IS true")
+    @hero1 = Herodata.find_by(name: 'img1')
+    @hero2 = Herodata.find_by(name: 'img2')
+    @hero3 = Herodata.find_by(name: 'img3')
+    @herotext1 = Herodata.find_by(name: 'text1')
+    @herotext2 = Herodata.find_by(name: 'text2')
     @title = "Unsere Geschenkehelden auf GeschenkeHeld.de | Die Geschenke-Community"
 
     @max_points = User.maximum("points")
