@@ -2,11 +2,11 @@ ActiveAdmin.register_page "Helden" do
 
   controller do
     def index
-      @hero1 = Herodata.where(name: 'img1').first
-      @hero2 = Herodata.where(name: 'img2').first
-      @hero3 = Herodata.where(name: 'img3').first
-      @herotext1 = Herodata.where(name: 'text1').first
-      @herotext2 = Herodata.where(name: 'text2').first
+      params[:hero1] = Herodata.where(name: 'img1').first
+      params[:hero2] = Herodata.where(name: 'img2').first
+      params[:hero3] = Herodata.where(name: 'img3').first
+      params[:herotext1] = Herodata.where(name: 'text1').first
+      params[:herotext2] = Herodata.where(name: 'text2').first
     end
   end
 
@@ -19,8 +19,17 @@ ActiveAdmin.register_page "Helden" do
         text_area_tag :post, :description
         submit_tag("Add Hero", :class => "btn")
       end
-      span "This is some_var: #{@arbre_context.assigns[:hero1].name}"
     end
-
+    form do |f|
+      inputs 'Held 1' do
+        input :value, :input_html => { :value => params[:hero1].name }
+      end
+      inputs 'Held 2' do
+        input :value, :input_html => { :value => params[:hero2].name }
+      end
+      inputs 'Held 3' do
+        input :value, :input_html => { :value => params[:hero3].name }
+      end
+    end
   end # content
 end
