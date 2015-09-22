@@ -19,7 +19,7 @@ ActiveAdmin.register_page "Helden" do
         text_area_tag :post, :description
         submit_tag("Add Hero", :class => "btn")
       end
-      puts @hero1.name
+      span "This is some_var: #{@arbre_context.assigns[:hero1].name}"
     end
 
   end # content
