@@ -14,7 +14,7 @@ ActiveAdmin.register_page "Helden" do
 
   content :title => "Helden" do
     div do
-      form_tag("/heroes", :method => "post") do |f|
+      form_tag("/heroes", :method => "post") do
         text_field_tag 'hero1_name', params[:hero1].name
         text_field_tag 'hero2_name', params[:hero2].name
         text_field_tag 'hero3_name', params[:hero3].name
