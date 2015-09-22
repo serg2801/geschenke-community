@@ -1,14 +1,22 @@
 <div id="leaderboard">
   <div id="leaders">
     <div class="leader">
-      <%= image_tag hero1.value.gsub('type=square','width=80&height=80'), :alt => hero1.name %>
+      <% if !hero1.value.blank? %>
+      <%= image_tag hero1.value, :alt => "Held 1" %>
+      <% end %>
     </div>
-    <% heroes.each do |hero| %>
-      <a href="<%= user_path(hero) %>" class="leader">
-        <%= image_tag hero.image.gsub('type=square','width=80&height=80'), :alt => hero.name %>
-      </a>
-    <% end %>
+    <div class="leader">
+      <% if !hero2.value.blank? %>
+      <%= image_tag hero2.value, :alt => "Held 2" %>
+      <% end %>
+    </div>
+    <div class="leader">
+      <% if !hero3.value.blank? %>
+      <%= image_tag hero3.value, :alt => "Held 3" %>
+      <% end %>
+    </div>
   </div>
   <div id="leaderboard-description">
+    <%= herotext1.value %>
   </div>
 </div>

@@ -1,5 +1,11 @@
 ActiveAdmin.register_page "Helden" do
 
+  @hero1 = Herodata.where(name: 'img1').first
+  @hero2 = Herodata.where(name: 'img2').first
+  @hero3 = Herodata.where(name: 'img3').first
+  @herotext1 = Herodata.where(name: 'text1').first
+  @herotext2 = Herodata.where(name: 'text2').first
+
   menu :label => "Helden"
 
   content :title => "Helden" do
@@ -9,6 +15,7 @@ ActiveAdmin.register_page "Helden" do
         text_area_tag :post, :description
         submit_tag("Add Hero", :class => "btn")
       end
+      puts @hero1.name
     end
 
   end # content
