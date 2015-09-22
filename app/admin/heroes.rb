@@ -1,10 +1,14 @@
 ActiveAdmin.register_page "Helden" do
 
-  @hero1 = Herodata.where(name: 'img1').first
-  @hero2 = Herodata.where(name: 'img2').first
-  @hero3 = Herodata.where(name: 'img3').first
-  @herotext1 = Herodata.where(name: 'text1').first
-  @herotext2 = Herodata.where(name: 'text2').first
+  controller do
+    def index
+      @hero1 = Herodata.where(name: 'img1').first
+      @hero2 = Herodata.where(name: 'img2').first
+      @hero3 = Herodata.where(name: 'img3').first
+      @herotext1 = Herodata.where(name: 'text1').first
+      @herotext2 = Herodata.where(name: 'text2').first
+    end
+  end
 
   menu :label => "Helden"
 
