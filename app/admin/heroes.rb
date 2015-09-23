@@ -15,15 +15,6 @@ ActiveAdmin.register_page "Helden" do
   content :title => "Helden" do
     div do
       render :partial => 'form'
-      #para(params[:hero1].name)
-      #form_tag("/admin/helden", :method => "post") do
-      #  text_field_tag('hero1_name', params[:hero1].name)
-      #  text_field_tag('hero2_name', params[:hero2].name)
-      #  text_field_tag('hero3_name', params[:hero3].name)
-      #  text_area_tag('herotext1', params[:herotext1].value)
-      #  text_area_tag('herotext2', params[:herotext2].value)
-      #  submit_tag("Speichern", :class => "btn")
-      #end
     end
   end # content
 

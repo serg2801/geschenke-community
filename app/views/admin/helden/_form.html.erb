@@ -1,8 +1,26 @@
 <form action="/admin/helden" method="post">
- <input type="text" id="hero1" name="hero1" value="<%= params[:hero1].name%>"><br>
- <input type="text" id="hero2" name="hero2" value="<%= params[:hero2].value%>"><br>
- <input type="text" id="hero3" name="hero3" value="<%= params[:hero3].value%>"><br>
- <textarea id="herotext1" name="herotext1"><%= params[:herotext1].value %></textarea><br>
- <textarea id="herotext2" name="herotext2"><%= params[:herotext2].value %></textarea><br>
+ <label>Held 1</label><br>
+ <% if !params[:hero1].value.blank? %>
+ <img src="<%=params[:hero1].value%>">
+ <% end %>
+ <input type="text" id="hero1" name="hero1"><br>
+ <label>Held 2</label><br>
+ <% if !params[:hero2].value.blank? %>
+ <img src="<%=params[:hero2].value%>">
+ <% end %>
+ <input type="text" id="hero2" name="hero2"><br>
+ <label>Held 3</label><br>
+ <% if !params[:hero3].value.blank? %>
+ <img src="<%=params[:hero3].value%>">
+ <% end %>
+ <input type="text" id="hero3" name="hero3"><br>
+ <label>Heldentext</label><br>
+ <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1].value %></textarea><br>
+ <label>Preistext</label><br>
+ <textarea id="herotext2" name="herotext2" class="ckeditor"><%= params[:herotext2].value %></textarea><br>
  <input type="submit" class="btn" value="Speichern">
+ <script>
+  CKEDITOR.replace( 'herotext1' );
+  CKEDITOR.replace( 'herotext2' );
+ </script>
 </form>
