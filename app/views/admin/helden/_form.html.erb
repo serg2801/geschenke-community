@@ -1,12 +1,8 @@
-<% form_tag("/admin/helden", :method => "post") do %>
-  <%= text_field_tag 'hero1_name', params[:hero1].name %>
-  <%= text_field_tag 'hero2_name', params[:hero2].name %>
-  <%= text_field_tag 'hero3_name', params[:hero3].name %>
-  <%= text_area_tag :herotext1, params[:herotext1].value %>
-  <%= text_area_tag :herotext2, params[:herotext2].value %>
-  <%= submit_tag "Speichern", :class => "btn" %>
-<% end %>
 <form action="/admin/helden" method="post">
- <input type="text" value="<%= params[:hero1].name%>">
+ <input type="text" id="hero1" name="hero1" value="<%= params[:hero1].name%>"><br>
+ <input type="text" id="hero2" name="hero2" value="<%= params[:hero2].value%>"><br>
+ <input type="text" id="hero3" name="hero3" value="<%= params[:hero3].value%>"><br>
+ <textarea id="herotext1" name="herotext1"><%= params[:herotext1].value %></textarea><br>
+ <textarea id="herotext2" name="herotext2"><%= params[:herotext2].value %></textarea><br>
  <input type="submit" class="btn" value="Speichern">
 </form>
