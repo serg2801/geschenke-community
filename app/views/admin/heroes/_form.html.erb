@@ -1,11 +1,8 @@
-<%= semantic_form_for [:admin, :hero1] do |f| %>
-  <%= f.inputs :name => "Basics" do %>
-    <%= f.input :name %>
-    <%= f.input :value %>
-  <% end %>
-
-  <%= f.actions do %>
-    <%= f.action :submit, :as => "Button" %>
-  <% end %> 
-
-<% end %>
+<% form_tag "/admin/helden", :method => "post" do %>
+  <%= text_field_tag 'hero1_name', params[:hero1].name %>
+  <%= text_field_tag 'hero2_name', params[:hero2].name %>
+  <%= text_field_tag 'hero3_name', params[:hero3].name %>
+  <%= text_area_tag :herotext1, params[:herotext1].value %>
+  <%= text_area_tag :herotext2, params[:herotext2].value %>
+  <%= submit_tag "Speichern", :class => "btn" %>
+<% end -%>
