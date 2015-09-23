@@ -14,14 +14,27 @@ ActiveAdmin.register_page "Helden" do
 
   content :title => "Helden" do
     div do
-      form_tag("/heroes", :method => "post") do
-        text_field_tag 'hero1_name', params[:hero1].name
-        text_field_tag 'hero2_name', params[:hero2].name
-        text_field_tag 'hero3_name', params[:hero3].name
-        text_area_tag :herotext1, params[:herotext1].value
-        text_area_tag :herotext2, params[:herotext2].value
-        submit_tag("Add Hero", :class => "btn")
-      end
+      #form_tag("/helden", :method => "post") do
+      #  text_field_tag 'hero1_name', params[:hero1].name
+      #  text_field_tag 'hero2_name', params[:hero2].name
+      #  text_field_tag 'hero3_name', params[:hero3].name
+      #  text_area_tag :herotext1, params[:herotext1].value
+      #  text_area_tag :herotext2, params[:herotext2].value
+      #  submit_tag("Add Hero", :class => "btn")
+      #end
+      
     end
+
+    form :partial => "form"
   end # content
+
+  #page_action :add_event, method: :post do
+  ## ...
+  #  redirect_to 'admin/helden', notice: "Your event was added"
+  #end
+
+  #action_item :add do
+  #  link_to "Add Event", admin_calendar_add_event_path, method: :post
+  #end
+
 end
