@@ -22,10 +22,8 @@ ActiveAdmin.register_page "Helden" do
       #  text_area_tag :herotext2, params[:herotext2].value
       #  submit_tag("Add Hero", :class => "btn")
       #end
-      
     #end
-
-    render :partial 'form'
+    render :partial => 'form'
   end # content
 
   page_action :update, method: :post do
