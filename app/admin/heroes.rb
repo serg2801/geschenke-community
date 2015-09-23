@@ -26,13 +26,13 @@ ActiveAdmin.register_page "Helden" do
     #render :partial => 'form'
   end # content
 
-  page_action :update, method: :post do
-  # ...
-    redirect_to 'admin/helden', notice: "Your event was added"
-  end
+  #page_action :update, method: :post do
+  ## ...
+  #  redirect_to 'admin/helden', notice: "Your event was added"
+  #end
 
-  action_item :update do
-    link_to "Update", admin_helden_update_path, method: :post
-  end
+  #action_item :update do
+  #  link_to "Update", admin_helden_update_path, method: :post
+  #end
 
 end
