@@ -7,6 +7,7 @@ ActiveAdmin.register_page "Helden" do
          hero1 = Herodata.where(name: 'img1').first
          hero1.value = Base64.encode64(h1data)
          hero1.save
+         params[:hero1] = hero1.value
       elsif !params[:hero1].nil?
          hero1 = Herodata.where(name: 'img1').first
          hero1.value = params[:hero1]
@@ -18,7 +19,7 @@ ActiveAdmin.register_page "Helden" do
          hero2 = Herodata.where(name: 'img2').first
          hero2.value = params[:hero2]
          hero2.save
-         params[:hero2] = params[:hero2]
+         params[:hero2] = hero2.value
       else
         params[:hero2] = Herodata.where(name: 'img2').first.value
       end
@@ -26,6 +27,7 @@ ActiveAdmin.register_page "Helden" do
          hero3 = Herodata.where(name: 'img3').first
          hero3.value = params[:hero3]
          hero3.save
+         params[:hero3] = hero3.value
       else
          params[:hero3] = Herodata.where(name: 'img3').first.value
       end
