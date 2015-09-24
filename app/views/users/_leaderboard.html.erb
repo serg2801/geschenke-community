@@ -2,17 +2,29 @@
   <div id="leaders">
     <div class="leader">
       <% if !hero1.value.blank? %>
-      <%= image_tag hero1.value, :alt => "Held 1" %>
+        <% if hero1.value.start_with?("http") %>
+          <%= image_tag hero1.value, :alt => "Held 1" %>
+        <% else %>
+          <%= image_tag "data:image/png;base64,#{hero1.value}", :alt => "Held 1" %>
+        <% end %>
       <% end %>
     </div>
     <div class="leader">
       <% if !hero2.value.blank? %>
-      <%= image_tag hero2.value, :alt => "Held 2" %>
+        <% if hero2.value.start_with?("http") %>
+          <%= image_tag hero2.value, :alt => "Held 2" %>
+        <% else %>
+          <%= image_tag "data:image/png;base64,#{hero2.value}", :alt => "Held 2" %>
+        <% end %>
       <% end %>
     </div>
     <div class="leader">
       <% if !hero3.value.blank? %>
-      <%= image_tag hero3.value, :alt => "Held 3" %>
+        <% if hero3.value.start_with?("http") %>
+          <%= image_tag hero3.value, :alt => "Held 3" %>
+        <% else %>
+          <%= image_tag "data:image/png;base64,#{hero3.value}", :alt => "Held 3" %>
+        <% end %>
       <% end %>
     </div>
   </div>
