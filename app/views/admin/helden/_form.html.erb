@@ -5,8 +5,8 @@
  <% end %>
  <input type="text" id="hero1" name="hero1"><br>
  <label>Held 2</label><br>
- <% if !params[:hero2].value.blank? %>
- <img src="<%=params[:hero2].value%>">
+ <% if !params[:hero2].blank? %>
+ <img src="<%=params[:hero2]%>">
  <% end %>
  <input type="text" id="hero2" name="hero2"><br>
  <label>Held 3</label><br>
