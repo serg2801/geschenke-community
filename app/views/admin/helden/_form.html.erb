@@ -15,9 +15,9 @@
  <% end %>
  <input type="text" id="hero3" name="hero3"><br>
  <label>Heldentext</label><br>
- <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1] %></textarea><br>
+ <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1].html_safe %></textarea><br>
  <label>Preistext</label><br>
- <textarea id="herotext2" name="herotext2" class="ckeditor"><%= params[:herotext2] %></textarea><br>
+ <textarea id="herotext2" name="herotext2" class="ckeditor"><%= params[:herotext2].html_safe %></textarea><br>
  <input type="submit" class="btn" value="Speichern">
  <script>
   CKEDITOR.replace( 'herotext1' );
