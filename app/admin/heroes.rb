@@ -8,6 +8,12 @@ ActiveAdmin.register_page "Helden" do
       params[:herotext1] = Herodata.where(name: 'text1').first
       params[:herotext2] = Herodata.where(name: 'text2').first
     end
+
+    def create
+      hero1 = Herodata.where(name: 'img1').first
+      hero1.value = params[:hero1]
+      hero1.save
+    end
   end
 
   menu :label => "Helden"
