@@ -15,19 +15,29 @@ ActiveAdmin.register_page "Helden" do
       else
          params[:hero1] = Herodata.where(name: 'img1').first.value
       end
-      if !params[:hero2].nil?
+      if !params[:hero2file].nil?
+         h2data = params[:hero2file].read
+         hero2 = Herodata.where(name: 'img2').first
+         hero2.value = Base64.encode64(h2data)
+         hero2.save
+         params[:hero2] = hero2.value
+      elsif !params[:hero2].nil?
          hero2 = Herodata.where(name: 'img2').first
          hero2.value = params[:hero2]
          hero2.save
-         params[:hero2] = hero2.value
       else
         params[:hero2] = Herodata.where(name: 'img2').first.value
       end
-      if !params[:hero3].nil?
+      if !params[:hero3file].nil?
+         h3data = params[:hero3file].read
+         hero3 = Herodata.where(name: 'img3').first
+         hero3.value = Base64.encode64(h3data)
+         hero3.save
+         params[:hero3] = hero3.value
+      elsif !params[:hero3].nil?
          hero3 = Herodata.where(name: 'img3').first
          hero3.value = params[:hero3]
          hero3.save
-         params[:hero3] = hero3.value
       else
          params[:hero3] = Herodata.where(name: 'img3').first.value
       end
