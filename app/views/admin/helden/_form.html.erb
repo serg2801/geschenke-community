@@ -1,4 +1,4 @@
-<form action="/admin/helden" method="post">
+<% form_tag ("/admin/helden", :method => "post") %>
  <label>Held 1</label><br>
  <% if !params[:hero1].value.blank? %>
  <img src="<%=params[:hero1].value%>">
