@@ -1,23 +1,23 @@
 <%= form_tag("/admin/helden") do %>
  <label>Held 1</label><br>
- <% if !params[:hero1].value.blank? %>
- <img src="<%=params[:hero1].value%>">
+ <% if !params[:hero1].blank? %>
+ <img src="<%=params[:hero1]%>"><br>
  <% end %>
  <input type="text" id="hero1" name="hero1"><br>
  <label>Held 2</label><br>
  <% if !params[:hero2].blank? %>
- <img src="<%=params[:hero2]%>">
+ <img src="<%=params[:hero2]%>"><br>
  <% end %>
  <input type="text" id="hero2" name="hero2"><br>
  <label>Held 3</label><br>
- <% if !params[:hero3].value.blank? %>
- <img src="<%=params[:hero3].value%>">
+ <% if !params[:hero3].blank? %>
+ <img src="<%=params[:hero3]%>"><br>
  <% end %>
  <input type="text" id="hero3" name="hero3"><br>
  <label>Heldentext</label><br>
- <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1].value %></textarea><br>
+ <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1] %></textarea><br>
  <label>Preistext</label><br>
- <textarea id="herotext2" name="herotext2" class="ckeditor"><%= params[:herotext2].value %></textarea><br>
+ <textarea id="herotext2" name="herotext2" class="ckeditor"><%= params[:herotext2] %></textarea><br>
  <input type="submit" class="btn" value="Speichern">
  <script>
   CKEDITOR.replace( 'herotext1' );
