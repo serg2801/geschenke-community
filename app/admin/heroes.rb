@@ -6,7 +6,7 @@ ActiveAdmin.register_page "Helden" do
       if params[:hero2].present?
         params[:hero2].value = params[:hero2]
       else
-        params[:hero2] = Herodata.where(name: 'img2').first.pluck(:value)
+        params[:hero2] = Herodata.where(name: 'img2').first.value
       end
       params[:hero3] = Herodata.where(name: 'img3').first
       params[:herotext1] = Herodata.where(name: 'text1').first
