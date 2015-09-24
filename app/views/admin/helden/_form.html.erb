@@ -1,8 +1,14 @@
 <%= form_tag("/admin/helden") do %>
  <label>Held 1</label><br>
  <% if !params[:hero1].blank? %>
- <img src="<%=params[:hero1]%>"><br>
+   <% if params[:hero1].start_with?("http") %>
+     <img src="<%=params[:hero1]%>"><br>
+   <% else %>
+     <img src="data:image/png;base64,<%=params[:hero1]%>"><br>
+   <% end %>
  <% end %>
+ <input type="file" id="hero1file" name="hero1file">
+ <p>oder</p>
  <input type="text" id="hero1" name="hero1"><br>
  <label>Held 2</label><br>
  <% if !params[:hero2].blank? %>

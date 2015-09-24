@@ -2,23 +2,19 @@ ActiveAdmin.register_page "Helden" do
 
   controller do
     def index
-      if !params[:hero1].nil?
+      if !params[:hero1file].nil?
+         h1data = params[:herofile].read
          hero1 = Herodata.where(name: 'img1').first
-         if params[:hero1].blank? || params[:hero1].start_with?("http")
-            hero1.value = params[:hero1]
-            if params[:hero1].start_with?("http")
-               h1data = open(params[:hero1]).read
-               hero1.value = Base64.encode64(h1data)
-            end
-         else
-            h1data = open(params[:hero1]).read
-            hero1.value = Base64.encode64(h1data)
-         end
+         hero1.value = Base64.encode64(h1data)
+         hero1.save
+      elsif !params[:hero1].nil?
+         hero1 = Herodata.where(name: 'img1').first
+         hero1.value = params[:hero1]
          hero1.save
       else
          params[:hero1] = Herodata.where(name: 'img1').first.value
       end
-      if params[:hero2].present?
+      if !params[:hero2].nil?
          hero2 = Herodata.where(name: 'img2').first
          hero2.value = params[:hero2]
          hero2.save
@@ -26,21 +22,21 @@ ActiveAdmin.register_page "Helden" do
       else
         params[:hero2] = Herodata.where(name: 'img2').first.value
       end
-      if params[:hero3].present?
+      if !params[:hero3].nil?
          hero3 = Herodata.where(name: 'img3').first
          hero3.value = params[:hero3]
          hero3.save
       else
          params[:hero3] = Herodata.where(name: 'img3').first.value
       end
-      if params[:herotext1].present?
+      if !params[:herotext1].nil?
          hero1 = Herodata.where(name: 'text1').first
          hero1.value = params[:herotext1]
          hero1.save
       else
          params[:herotext1] = Herodata.where(name: 'text1').first.value
       end
-      if params[:herotext2].present?
+      if !params[:herotext2].nil?
          herotext2 = Herodata.where(name: 'text2').first
          herotext2.value = params[:herotext2]
          herotext2.save
