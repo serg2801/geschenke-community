@@ -3,7 +3,7 @@ ActiveAdmin.register_page "Helden" do
   controller do
     def index
       if !params[:hero1file].nil?
-         h1data = params[:herofile].read
+         h1data = params[:hero1file].read
          hero1 = Herodata.where(name: 'img1').first
          hero1.value = Base64.encode64(h1data)
          hero1.save
