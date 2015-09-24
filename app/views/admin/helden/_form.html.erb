@@ -9,7 +9,7 @@
  <% end %>
  <input type="file" id="hero1file" name="hero1file">
  <p>oder</p>
- <input type="text" id="hero1" name="hero1"><br>
+ <input type="text" id="hero1" name="hero1" value="<%=params[:hero1]%>"><br>
  <label>Held 2</label><br>
  <% if !params[:hero2].blank? %>
    <% if params[:hero2].start_with?("http") %>
@@ -20,7 +20,7 @@
  <% end %>
  <input type="file" id="hero2file" name="hero2file">
  <p>oder</p>
- <input type="text" id="hero2" name="hero2"><br>
+ <input type="text" id="hero2" name="hero2" value="<%=params[:hero2]%>"><br>
  <label>Held 3</label><br>
  <% if !params[:hero3].blank? %>
    <% if params[:hero3].start_with?("http") %>
@@ -31,7 +31,7 @@
  <% end %>
  <input type="file" id="hero3file" name="hero3file">
  <p>oder</p>
- <input type="text" id="hero3" name="hero3"><br>
+ <input type="text" id="hero3" name="hero3" value="<%=params[:hero3]%>"><br>
  <label>Heldentext</label><br>
  <textarea id="herotext1" name="herotext1" class="ckeditor"><%= params[:herotext1].html_safe %></textarea><br>
  <label>Preistext</label><br>
