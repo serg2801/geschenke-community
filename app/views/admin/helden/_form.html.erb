@@ -1,4 +1,4 @@
-<%= form_tag("/admin/helden") do %>
+<%= form_tag("/admin/helden", multipart: true) do %>
  <label>Held 1</label><br>
  <% if !params[:hero1].blank? %>
    <% if params[:hero1].start_with?("http") %>
