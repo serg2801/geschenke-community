@@ -4,7 +4,7 @@ ActiveAdmin.register_page "Helden" do
     def index
       params[:hero1] = Herodata.where(name: 'img1').first
       if params[:hero2].present?
-        params[:hero2].value = params[:hero2]
+        params[:hero2] = params[:hero2]
       else
         params[:hero2] = Herodata.where(name: 'img2').first.value
       end
