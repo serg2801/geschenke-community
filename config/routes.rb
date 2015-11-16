@@ -7,6 +7,8 @@ App::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  match '/admin/helden' => 'admin/helden#update', via: :post
+
   match '/neue-geschenkidee' => 'products#new', :as => :new_product
   match '/geschenk/suche' => 'products#search', :as => :product_search
   match '/geschenk/:slug' => 'products#show', :as => :product, :via => :get
