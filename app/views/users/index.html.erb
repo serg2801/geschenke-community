@@ -1,6 +1,5 @@
 <div id="users">
-
-  <h2>Helden des Monats<h2>
+  <h2>Helden des Monats</h2>
 
   <div id="heros">
     <div id="leaderboard-price">
@@ -10,12 +9,8 @@
         </div>
       </div>
     </div>
-
-    <%= render :partial => "leaderboard", :locals => {:heroes => @heroes.sort! { |a,b| b.points <=> a.points }, :hero1 => @hero1, :hero2 => @hero2, :hero3 => @hero3, :herotext1 => @herotext1, :herotext2 => @herotext2} %>
+    <%= render :partial => "leaderboard", :locals => {:heroes => @heroes.sort! { |a, b| b.points <=> a.points }, :hero1 => @hero1, :hero2 => @hero2, :hero3 => @hero3, :herotext1 => @herotext1, :herotext2 => @herotext2} %>
   </div>
-
   <h2>Unsere Kandidaten für den nächsten Held des Monats</h2>
-
   <%= render :partial => "user", :collection => @users %>
-
 </div>
