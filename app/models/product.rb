@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  attr_accessible :clicks, :description, :name, :price, :slug, :url, :user_id 
+  attr_accessible :clicks, :description, :name, :price, :slug, :url, :user_id
   attr_accessible :image, :remote_image_url, :root_url
   attr_accessible :criteria
 
@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   process_in_background :image
 
-  serialize :criteria, Hash
+  serialize :criteria #, Hash
 
   # tire.mapping do
   #   indexes :id,          :type => 'integer'
@@ -40,6 +40,8 @@ class Product < ActiveRecord::Base
   # end
 
   def to_indexed_json
+    string_criteria = criteria
+    criteria = eval(string_criteria)
     maps = {
       :name   => name,
       :slug => slug,

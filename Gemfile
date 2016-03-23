@@ -11,6 +11,7 @@ gem 'unicorn'
 gem 'tire'
 
 gem 'pg'
+gem 'pry'
 
 gem 'nokogiri'
 
