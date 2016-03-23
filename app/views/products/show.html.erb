@@ -1,16 +1,17 @@
 <div id="products">
 
   <% if @product.user == current_user %>
-    <div id="product-edit">
-      <i class="icon icon-info-sign"></i> Dies ist Deine Geschenkidee. Möchtest Du sie
-      <a href="<%= edit_product_path(@product.slug) %>">bearbeiten oder löschen?</a>
-    </div>
+      <div id="product-edit">
+        <i class="icon icon-info-sign"></i> Dies ist Deine Geschenkidee. Möchtest Du sie
+        <a href="<%= edit_product_path(@product.slug) %>">bearbeiten oder löschen?</a>
+      </div>
   <% end %>
 
   <h2><%= @product.name %></h2>
 
   <div id="product-info">
-    <a href="<%= @product.url %>" class="go" rel="nofollow" target="_blank" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= @product.slug %>'});_gaq.push(['_trackPageview', '/zum-anbieter/#{product.slug}']);"  data-slug="<%= @product.slug %>"><i class="icon icon-shopping-cart"></i> Für <%= price(@product.price) %> auf <%= @product.root_url %> gefunden</a>
+    <a href="<%= @product.url %>" class="go" rel="nofollow" target="_blank" onClick="mixpanel.track('Zum Anbieter',{'slug':'<%= @product.slug %>'});_gaq.push(['_trackPageview', '/zum-anbieter/#{product.slug}']);" data-slug="<%= @product.slug %>"><i class="icon icon-shopping-cart"></i>
+      Für <%= price(@product.price) %> auf <%= @product.root_url %> gefunden</a>
   </div>
 
   <div id="product-sidebar">
@@ -19,6 +20,7 @@
     </div>
     <div id="product-socials">
       <h3>Zeige dieses Geschenk Deinen Freunden!</h3>
+
       <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-width="300" data-layout="button_count" data-show-faces="true" data-font="arial"></div>
     </div>
   </div>
@@ -28,6 +30,7 @@
       <div class="comment-user">
         <%= image_tag @product.user.image, :alt => @product.user.name %>
         <a href="" class="comment-user-name"><%= @product.user.name %></a>
+
         <div class="product-user-rank"><i class="icon icon-star"></i> <%= @product.user.points %></div>
       </div>
       <div class="comment-content">
@@ -36,56 +39,61 @@
     </div>
 
     <% @product.comments.each do |comment| %>
-      <div class="comment">
-        <div class="comment-user">
-          <%= image_tag comment.user.image, :alt => comment.user.name %>
-          <a href="" class="comment-user-name"><%= comment.user.name %></a>
-          <div class="product-user-rank"><i class="icon icon-star"></i> <%= comment.user.points %></div>
+        <div class="comment">
+          <div class="comment-user">
+            <%= image_tag comment.user.image, :alt => comment.user.name %>
+            <a href="" class="comment-user-name"><%= comment.user.name %></a>
+
+            <div class="product-user-rank"><i class="icon icon-star"></i> <%= comment.user.points %></div>
+          </div>
+          <div class="comment-content">
+            <%= comment.content %>
+          </div>
         </div>
-        <div class="comment-content">
-          <%= comment.content %>
-        </div>
-      </div>
     <% end %>
 
     <% if user_signed_in? %>
-      <div id="new-product-comment">
-        <%= form_tag add_comment_product_path(@product.slug) do %>
-        <div class="comment">
-          <div class="comment-user">
-            <%= image_tag current_user.image, :alt => current_user.name %>            
-            <a href="" class="comment-user-name"><%= current_user.name %></a>
-            <div class="product-user-rank"><i class="icon icon-star"></i> <%= current_user.points %></div>
-          </div>
-          <div class="comment-content">
-            <textarea name="content" rows="1" placeholder="Neuen Kommentar verfassen..."></textarea>
-          </div>
-          <div class="comment-actions">
-            <%= submit_tag "Kommentar hinzufügen", :class => "btn btn-success" %>
-          </div>
+        <div id="new-product-comment">
+          <%= form_tag add_comment_product_path(@product.slug) do %>
+              <div class="comment">
+                <div class="comment-user">
+                  <%= image_tag current_user.image, :alt => current_user.name %>
+                  <a href="" class="comment-user-name"><%= current_user.name %></a>
+
+                  <div class="product-user-rank"><i class="icon icon-star"></i> <%= current_user.points %></div>
+                </div>
+                <div class="comment-content">
+                  <textarea name="content" rows="1" placeholder="Neuen Kommentar verfassen..."></textarea>
+                </div>
+                <div class="comment-actions">
+                  <%= submit_tag "Kommentar hinzufügen", :class => "btn btn-success" %>
+                </div>
+              </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
     <% end %>
   </div>
 
 </div>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1&appId=102969429752310";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<!--<div id="fb-root"></div>-->
+<!--<script>-->
+<!--//    (function (d, s, id) {-->
+<!--//        var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--//        if (d.getElementById(id)) return;-->
+<!--//        js = d.createElement(s);-->
+<!--//        js.id = id;-->
+<!--//        js.src = "//connect.facebook.net/de_DE/all.js#xfbml=1&appId=102969429752310";-->
+<!--//        fjs.parentNode.insertBefore(js, fjs);-->
+<!--//    }(document, 'script', 'facebook-jssdk'));-->
+<!--</script>-->
 
-<% content_for :javascript do %>  
-  <script type="text/javascript">
-    $(document).ready(function() {
-
-      $('textarea').autosize();
-
-    });
-  </script>
-<% end %>
+<%# content_for :javascript do %>
+    <!--<script type="text/javascript">-->
+<!--//        $(document).ready(function () {-->
+<!--//-->
+<!--//            $('textarea').autosize();-->
+<!--//-->
+<!--//        });-->
+    <!--</script>-->
+<%# end %>
