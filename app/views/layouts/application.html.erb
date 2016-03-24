@@ -28,10 +28,10 @@
   <%= yield :head %>
 </head>
 <body>
+<% if !cookies[:allow_cookies] %>
+    <%= render 'layouts/cookies_bar' %>
+<% end %>
   <div id="page">
-    <% if !cookies[:allow_cookies] %>
-        <%= render 'layouts/cookies_bar' %>
-    <% end %>
     <div id="top">
       <% if user_signed_in? %>
         <div class="user">
