@@ -12,6 +12,7 @@ gem 'tire'
 
 gem 'pg'
 gem 'pry'
+gem 'faker'
 
 gem 'nokogiri'
 

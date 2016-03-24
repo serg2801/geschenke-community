@@ -2,7 +2,7 @@
 
   #intro {
     height: 460px;
-    background: url("/assets/intro.jpg");
+    background: url("intro.jpg");
     position: relative;
     border-bottom: 1px solid $border-color;
 
@@ -21,7 +21,7 @@
         margin-bottom: 24px;
         width: 56px;
         height: 56px;
-        background: #fff url("/assets/loader2.gif");
+        background: #fff url("/loader2.gif");
         background-position: center center;
         background-repeat: no-repeat;
         @include box-shadow(0 1px 3px rgba(0,0,0,0.5));
@@ -63,7 +63,7 @@
     color: #2c313f;
 
     &:after {
-      content: url('/assets/bandana.png');
+      content: url('bandana.png');
       position: absolute;
       top: -6px;
       right: -6px;
@@ -95,3 +95,48 @@
     }
   }
 }
+
+#cookies-bar {
+  border: 2px solid #000;
+  border-bottom: none;
+  background-color: #e6e6e6;
+
+  a {
+    color: #fff;
+    background-color: #0b610b;
+  }
+}
+
+///* Collapsed version */
+//@media (max-width: 767px) {
+//  .right-part {
+//    text-align: center;
+//    padding-bottom: 5px;
+//
+//    a {
+//      width: 80%;
+//    }
+//  }
+//}
+//
+///* Large version */
+//@media (min-width: 768px) {
+//  #cookies-bar {
+//    width: 80%;
+//    max-width: 950px;
+//    margin: 0 auto;
+//    padding: 5px;
+//
+//    .left-part {
+//      width: 90%;
+//      float: left;
+//    }
+//
+//    .right-part {
+//      width: 10%;
+//      float: right;
+//      padding-top: 2px;
+//      text-align: right;
+//    }
+//  }
+//}

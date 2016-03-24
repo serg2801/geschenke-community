@@ -8,7 +8,7 @@ $border-color: #e0e0e0;
 }
 
 body {
-  background: #eee url("/assets/wood.jpg");
+  background: #eee url("wood.jpg");
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -213,7 +213,7 @@ body {
 
   &:after {
     content: "";
-    background: url("/assets/navigation.png");
+    background: url("navigation.png");
     height: 10px;
     position: absolute;
     top: 50px;
@@ -570,4 +570,66 @@ body {
       }
     }
   }
+  #cookies-bar {
+    border: none;
+    background-color: #e6e6e6;
+    a {
+      color: #000;
+      background-color: #e6e6e6;
+    }
+  }
+  .cookies-container {
+    font: inherit;
+    background: #ddd;
+    z-index: 9999;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 20px 10px;
+
+    .cookies-content {
+      max-width: 960px;
+      width: 100%;
+      overflow: hidden;
+      .cookies-message {
+        float: left;
+      }
+      .cookies-button-container {
+        float: right;
+      }
+    }
+  }
+
+  ///* Collapsed version */
+  //@media (max-width: 767px) {
+  //  .right-part {
+  //    text-align: center;
+  //    padding-bottom: 5px;
+  //
+  //    a {
+  //      width: 80%;
+  //    }
+  //  }
+  //}
+  //
+  ///* Large version */
+  //@media (min-width: 768px) {
+  //  #cookies-bar {
+  //    width: 80%;
+  //    max-width: 950px;
+  //    margin: 0 auto;
+  //    padding: 5px;
+  //
+  //    .left-part {
+  //      width: 90%;
+  //      float: left;
+  //    }
+  //
+  //    .right-part {
+  //      width: 10%;
+  //      float: right;
+  //      padding-top: 2px;
+  //      text-align: right;
+  //    }
+  //  }
+  //}
 }

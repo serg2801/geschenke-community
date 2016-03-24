@@ -17,4 +17,6 @@
 //= require jquery.autosize-min
 //= require twitter/bootstrap/bootstrap-transition
 //= require twitter/bootstrap/bootstrap-tooltip
+//= require js.cookie
 //= require app
+//= require main
