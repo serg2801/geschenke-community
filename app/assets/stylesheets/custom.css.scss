@@ -1,0 +1,829 @@
+#home .product {
+  width: 16.8% !important;
+}
+
+#heros {
+  overflow: hidden;
+}
+
+#leaders {
+  width: 44.1%;
+  float: left;
+}
+
+#leaderboard-price {
+  width: 42.1%;
+  float: left;
+}
+
+#page .btn_menu-mobile {
+
+  border: 1px solid #da155f;
+  cursor: pointer;
+  -khtml-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  width: 45px;
+  padding: 9px 10px;
+  background: none;
+  margin: 0 0 5px 15px;
+  display: none;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: #da155f;
+    margin-bottom: 4px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 479px) {
+  body {
+    padding: 0;
+  }
+  #cookies-bar {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .cookies-content {
+      .cookies-message {
+        font-size: 12px;
+        width: 80%;
+      }
+      .cookies-button-container {
+        padding: 10px;
+      }
+    }
+  }
+  #page {
+    width: 100%;
+
+    .btn_menu-mobile {
+      display: block;
+    }
+
+    .window-container {
+
+      .window {
+        width: 100%;
+
+        .window-content {
+
+          a {
+            font-size: 10px;
+            height: 32px;
+            line-height: 30px;
+            padding: 10px;
+            border-radius: 23px;
+          }
+
+          p {
+            font-size: 12px;
+            line-height: 18px;
+          }
+
+          img {
+            margin-left: 120px;
+          }
+        }
+      }
+    }
+
+    #navigation .top.active .megamenu {
+      width: 95%;
+      top: 330px;
+    }
+    #navigation:after {
+      background: none;
+    }
+    #navigation {
+      display: none;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding-top: 30px;
+
+      .top {
+        float: none;
+        border: none;
+      }
+      #search {
+        left: 58px;
+        width: 250px;
+
+        input[type="text"] {
+          width: 200px;
+        }
+      }
+    }
+    .product {
+      width: 100% !important;
+      margin: 5px 0 10px;
+    }
+    #home {
+      #panel {
+        display: none;
+      }
+      #intro {
+        height: 200px;
+        background-size: cover;
+
+        #user-pictures {
+          top: 55px;
+          left: 84px;
+          width: 70%;
+          height: 150px;
+
+          .user {
+            width: 35px;
+            height: 35px;
+            margin-right: 12px;
+            margin-bottom: 15px;
+
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+      #products {
+        padding: 10px;
+      }
+    }
+    #top {
+      line-height: 30px;
+      height: 60px;
+
+      h1 {
+        font-size: 10px;
+        line-height: 10px;
+        font-weight: 500;
+        float: left;
+        padding-top: 4px;
+      }
+      #login {
+        font-size: 10px;
+      }
+    }
+    #header {
+      padding: 10px 20px;
+      height: 50px;
+    }
+    a .logo {
+      width: 80%;
+    }
+    .btn {
+      border-radius: 20px;
+      padding: 0 7px;
+      height: 22px;
+      line-height: 20px;
+    }
+    #footer {
+      width: 100%;
+
+      #newsletter {
+        width: 33.33%;
+        margin: 20px 0;
+        padding: 0 10px 0 8px;
+
+        h3 {
+          width: 100%;
+          font-size: 15px;
+          margin-bottom: 13px;
+          line-height: 15px;
+        }
+
+        p {
+          width: 100%;
+          font-size: 12px;
+          line-height: 15px;
+        }
+        input {
+          width: 100%;
+          margin: 0 5px 5px;
+        }
+      }
+      #about {
+        width: 60.7%;
+        padding: 20px;
+        height: 250px;
+
+        h3 {
+          width: 74.1%;
+          font-size: 15px;
+          margin-left: 60px;
+          margin-bottom: 13px;
+          line-height: 15px;
+        }
+
+        p {
+          width: 74.2%;
+          font-size: 12px;
+          line-height: 15px;
+          margin-left: 60px;
+        }
+        .logo_about {
+          width: 50px;
+        }
+      }
+      #copyright {
+        width: 60%;
+      }
+    }
+    #bottom {
+      width: 100%;
+    }
+    #users .user {
+      width: 97%;
+    }
+    #heros {
+      height: 500px;
+      #leaderboard-price {
+        float: left;
+        width: 95%;
+      }
+    }
+    h2 {
+      line-height: 20px;
+      padding-bottom: 20px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    #leaders {
+      width: 100%;
+
+      .leader {
+        width: 15% !important;
+        background-size: 100% !important;
+      }
+    }
+    #filter select {
+      width: 100%;
+    }
+  }
+
+}
+
+@media screen and (min-width: 480px) and (max-width: 639px) {
+  body {
+    padding: 0;
+  }
+  #cookies-bar {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .cookies-content {
+      .cookies-message {
+        font-size: 14px;
+        width: 80%;
+      }
+      .cookies-button-container {
+        padding: 10px;
+      }
+    }
+  }
+  #page {
+    width: 100%;
+
+    .btn_menu-mobile {
+      display: block;
+    }
+
+    #navigation .top.active .megamenu {
+      width: 95%;
+      top: 330px;
+    }
+    #navigation:after {
+      background: none;
+    }
+    #navigation {
+      display: none;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding-top: 30px;
+
+      .top {
+        float: none;
+        border: none;
+      }
+      #search {
+        left: 58px;
+      }
+    }
+    .product {
+      width: 166px !important;
+    }
+    #home {
+      #panel {
+        display: none;
+      }
+      #intro {
+        height: 300px;
+        background-size: cover;
+
+        #user-pictures {
+          top: 138px;
+          left: 196px;
+          width: 58%;
+          height: 130px;
+
+          .user {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            margin-bottom: 15px;
+
+            img {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+    #top {
+      line-height: 30px;
+      height: 60px;
+
+      h1 {
+        font-size: 12px;
+        line-height: 13px;
+        font-weight: 500;
+        float: left;
+        padding-top: 6px;
+      }
+      #login {
+        font-size: 10px;
+      }
+    }
+    #header {
+      padding: 4px 39px;
+      height: 50px;
+    }
+    a .logo {
+      width: 80%;
+    }
+    .btn {
+      border-radius: 20px;
+      padding: 0 7px;
+      height: 22px;
+      line-height: 20px;
+    }
+    #footer {
+      width: 100%;
+
+      #newsletter {
+        width: 33.33%;
+        margin: 20px 0;
+        padding: 0 10px 0 8px;
+
+        h3 {
+          width: 100%;
+          font-size: 15px;
+          margin-bottom: 13px;
+          line-height: 15px;
+        }
+
+        p {
+          width: 100%;
+          font-size: 12px;
+          line-height: 15px;
+        }
+        input {
+          width: 100%;
+          margin: 0 5px 5px;
+        }
+      }
+      #about {
+        width: 60.7%;
+        padding: 20px;
+        height: 190px;
+
+        h3 {
+          width: 74.1%;
+          font-size: 15px;
+          margin-left: 60px;
+          margin-bottom: 13px;
+          line-height: 15px;
+        }
+
+        p {
+          width: 74.2%;
+          font-size: 12px;
+          line-height: 15px;
+          margin-left: 60px;
+        }
+        .logo_about {
+          width: 50px;
+        }
+      }
+      #copyright {
+        width: 60%;
+      }
+    }
+    #bottom {
+      width: 100%;
+    }
+    #users .user {
+      width: 80%;
+    }
+    #heros {
+      height: 500px;
+      #leaderboard-price {
+        float: left;
+      }
+    }
+    h2 {
+      line-height: 25px;
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    #leaders {
+      width: 100%;
+
+      .leader {
+        width: 25% !important;
+        background-size: 100% !important;
+      }
+    }
+    #filter select {
+      width: 41%;
+    }
+  }
+
+}
+
+@media screen and (min-width: 639px) and (max-width: 767px) {
+  body {
+    padding: 0;
+  }
+  #cookies-bar {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .cookies-content {
+      .cookies-message {
+        font-size: 14px;
+        width: 80%;
+      }
+      .cookies-button-container {
+        padding: 10px;
+      }
+    }
+  }
+  #page {
+    width: 100%;
+
+    .btn_menu-mobile {
+      display: block;
+    }
+
+    #navigation .top.active .megamenu {
+      width: 95%;
+      top: 330px;
+    }
+    #navigation:after {
+      background: none;
+    }
+    #navigation {
+      display: none;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding-top: 30px;
+
+      .top {
+        float: none;
+        border: none;
+      }
+      #search {
+        left: 58px;
+      }
+    }
+    .product {
+      width: 166px !important;
+    }
+    #home {
+      #panel {
+        display: none;
+      }
+      #intro {
+        height: 300px;
+        background-size: cover;
+
+        #user-pictures {
+          top: 120px;
+          left: 200px;
+          width: 46%;
+          height: 130px;
+
+          .user {
+            width: 45px;
+            height: 45px;
+            margin-right: 12px;
+            margin-bottom: 15px;
+
+            img {
+              width: 40px;
+              height: 40px;
+            }
+          }
+        }
+      }
+    }
+    #top {
+      line-height: 30px;
+      height: 60px;
+
+      h1 {
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+        float: left;
+        padding-top: 8px;
+      }
+      #login {
+        font-size: 13px;
+      }
+    }
+    #header {
+      padding: 7px 50px;
+      height: 60px;
+    }
+    a .logo {
+      width: 80%;
+    }
+    .btn {
+      border-radius: 20px;
+      padding: 0 7px;
+      height: 22px;
+      line-height: 20px;
+    }
+    #footer {
+      width: 100%;
+
+      #newsletter {
+        width: 33.33%;
+        margin: 20px 0;
+        padding: 0 10px 0 8px;
+
+        h3 {
+          width: 100%;
+          font-size: 16px;
+          margin-bottom: 13px;
+          line-height: 17px;
+        }
+
+        p {
+          width: 100%;
+          font-size: 13px;
+          line-height: 16px;
+        }
+        input {
+          width: 100%;
+          margin: 0 5px 5px;
+        }
+      }
+      #about {
+        width: 60.7%;
+        padding: 20px;
+        height: 190px;
+
+        h3 {
+          width: 74.1%;
+          font-size: 16px;
+          margin-left: 60px;
+          margin-bottom: 13px;
+          line-height: 17px;
+        }
+
+        p {
+          width: 74.2%;
+          font-size: 13px;
+          line-height: 16px;
+          margin-left: 60px;
+        }
+        .logo_about {
+          width: 50px;
+        }
+      }
+      #copyright {
+        width: 60%;
+      }
+    }
+    #bottom {
+      width: 100%;
+    }
+    #users .user {
+      width: 46%;
+      margin-right: 20px;
+    }
+
+    #heros {
+      height: 500px;
+      #leaderboard-price {
+        float: left;
+      }
+    }
+    h2 {
+      line-height: 30px;
+      padding-bottom: 25px;
+      margin-bottom: 18px;
+      font-size: 21px;
+    }
+    #filter select {
+      width: 45%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1055px) {
+  body {
+    padding: 0;
+  }
+  #cookies-bar {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+
+    .cookies-content {
+      .cookies-message {
+        font-size: 14px;
+        width: 80%;
+      }
+      .cookies-button-container {
+        padding: 10px;
+      }
+    }
+  }
+  #page {
+    width: 100%;
+
+    #navigation {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+
+      #search {
+        width: 22%;
+        right: 0;
+
+        input[type="text"] {
+          width: 78%;
+        }
+      }
+      .top.active .megamenu {
+        width: 98%;
+      }
+    }
+    #home {
+      #panel {
+        top: 30px;
+        right: 10px;
+        bottom: 93px;
+        width: 200px;
+        padding: 60px 25px 31px 25px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 23px;
+      }
+      #intro {
+        height: 460px;
+        background-size: cover;
+
+        #user-pictures {
+          top: 155px;
+          left: 115px;
+          width: 480px;
+          height: 220px;
+
+          .user {
+            margin-right: 24px;
+            margin-bottom: 24px;
+            width: 50px;
+            height: 50px;
+
+            img {
+              width: 45px;
+              height: 45px;
+            }
+          }
+        }
+      }
+    }
+    #top {
+      line-height: 30px;
+      height: 60px;
+
+      h1 {
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+        float: left;
+        padding-top: 8px;
+      }
+      #login {
+        font-size: 13px;
+      }
+    }
+    #header {
+      padding: 16px 90px;
+      height: 80px;
+    }
+    a .logo {
+      width: 60%;
+    }
+    .btn {
+      border-radius: 20px;
+      padding: 0 7px;
+      height: 22px;
+      line-height: 20px;
+    }
+    #footer {
+      width: 100%;
+
+      #newsletter {
+        width: 33.33%;
+        margin: 20px 0;
+        padding: 0 10px 0 8px;
+
+        h3 {
+          width: 100%;
+          font-size: 16px;
+          margin-bottom: 13px;
+          line-height: 17px;
+        }
+
+        p {
+          width: 100%;
+          font-size: 13px;
+          line-height: 16px;
+        }
+        input {
+          width: 100%;
+          margin: 0 5px 5px;
+        }
+      }
+      #about {
+        width: 60.7%;
+        padding: 20px;
+        height: 190px;
+
+        h3 {
+          width: 74.1%;
+          font-size: 16px;
+          margin-left: 60px;
+          margin-bottom: 13px;
+          line-height: 17px;
+        }
+
+        p {
+          width: 74.2%;
+          font-size: 13px;
+          line-height: 16px;
+          margin-left: 60px;
+        }
+        .logo_about {
+          width: 50px;
+        }
+      }
+      #copyright {
+        width: 60%;
+      }
+    }
+    #bottom {
+      width: 100%;
+    }
+
+    #users .user {
+      width: 47%;
+      margin-right: 20px;
+    }
+    #heros {
+      height: 500px;
+      #leaderboard-price {
+        float: left;
+      }
+    }
+    h2 {
+      line-height: 40px;
+      padding-bottom: 25px;
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+    #filter select {
+      width: 45%;
+    }
+  }
+}

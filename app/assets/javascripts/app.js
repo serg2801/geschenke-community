@@ -93,4 +93,8 @@ $(document).ready(function() {
     });
   });
 
+    $(".js_btn_menu-mobile").click(function(){
+        $("#navigation").toggle();
+    });
+
 });

@@ -59,7 +59,12 @@
           <i class="icon icon-plus"></i> Neue Geschenkidee hinzufügen
         </a>
       <% end %>
-      <a href="/"><%= image_tag "logo.png", :alt => "Geschenkeheld | Die Geschenke-Community" %></a>
+      <a href="/"><%= image_tag "logo.png", :alt => "Geschenkeheld | Die Geschenke-Community", class: 'logo' %></a>
+    </div>
+    <div class="btn_menu-mobile js_btn_menu-mobile">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
     <div id="navigation">
       <div class="top">
@@ -404,7 +409,7 @@
         <a href="" class="btn btn-success">Anmelden</a>
       </div>
       <div id="about">
-        <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo" />
+        <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo", class="logo_about" />
         <h3>Wir sind Geschenkehelden</h3>
         <% if @description %>
         <p>
