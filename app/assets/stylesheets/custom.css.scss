@@ -41,6 +41,10 @@
   }
 }
 
+#page .btn_menu-mobile :last-child {
+  margin: 0;
+}
+
 @media screen and (min-width: 0px) and (max-width: 479px) {
   body {
     padding: 0;
@@ -188,7 +192,7 @@
       width: 100%;
 
       #newsletter {
-        width: 33.33%;
+        width: 100%;
         margin: 20px 0;
         padding: 0 10px 0 8px;
 
@@ -210,9 +214,8 @@
         }
       }
       #about {
-        width: 60.7%;
+        width: 100%;
         padding: 20px;
-        height: 250px;
 
         h3 {
           width: 74.1%;
@@ -319,7 +322,7 @@
       }
     }
     .product {
-      width: 166px !important;
+      width: 180px !important;
     }
     #home {
       #panel {
@@ -381,7 +384,7 @@
       width: 100%;
 
       #newsletter {
-        width: 33.33%;
+        width: 100%;
         margin: 20px 0;
         padding: 0 10px 0 8px;
 
@@ -398,17 +401,16 @@
           line-height: 15px;
         }
         input {
-          width: 100%;
+          width: 65%;
           margin: 0 5px 5px;
         }
       }
       #about {
-        width: 60.7%;
+        width: 100%;
         padding: 20px;
-        height: 190px;
 
         h3 {
-          width: 74.1%;
+          width: 50%;
           font-size: 15px;
           margin-left: 60px;
           margin-bottom: 13px;
@@ -416,7 +418,7 @@
         }
 
         p {
-          width: 74.2%;
+          width: 50%;
           font-size: 12px;
           line-height: 15px;
           margin-left: 60px;
