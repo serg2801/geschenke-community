@@ -28,7 +28,7 @@
   width: 45px;
   padding: 9px 10px;
   background: none;
-  margin: 0 0 5px 15px;
+  margin: 5px 0 5px 15px;
   display: none;
 
   span {
@@ -164,6 +164,10 @@
       line-height: 30px;
       height: 60px;
 
+      #login {
+        font-size: 8px;
+      }
+
       h1 {
         font-size: 10px;
         line-height: 10px;
@@ -171,16 +175,19 @@
         float: left;
         padding-top: 4px;
       }
-      #login {
-        font-size: 10px;
-      }
+
+    }
+    #header a.btn.btn-primary {
+      padding: 10px 10px;
+      line-height: 16px;
+      font-size: 12px;
     }
     #header {
-      padding: 10px 20px;
-      height: 50px;
+      padding: 7px 10px;
+      height: auto;
     }
     a .logo {
-      width: 80%;
+      width: 100%;
     }
     .btn {
       border-radius: 20px;
@@ -354,25 +361,33 @@
     }
     #top {
       line-height: 30px;
-      height: 60px;
+      height: 70px;
 
       h1 {
-        font-size: 12px;
-        line-height: 13px;
+        font-size: 11px;
+        line-height: 18px;
         font-weight: 500;
         float: left;
         padding-top: 6px;
       }
       #login {
         font-size: 10px;
+        line-height: 60px;
       }
     }
+
+    #header a.btn.btn-primary {
+      padding: 10px 10px;
+      line-height: 16px;
+      font-size: 12px;
+    }
+
     #header {
-      padding: 4px 39px;
-      height: 50px;
+      height: auto;
+      padding: 4px 17px;
     }
     a .logo {
-      width: 80%;
+      width: 100%;
     }
     .btn {
       border-radius: 20px;
@@ -548,22 +563,30 @@
       height: 60px;
 
       h1 {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 14px;
         font-weight: 500;
         float: left;
-        padding-top: 8px;
+        padding-top: 11px;
+        margin-bottom: 7px;
       }
       #login {
         font-size: 13px;
+        line-height: 55px;
       }
     }
+    #header a.btn.btn-primary {
+      padding: 10px 10px;
+      line-height: 16px;
+      font-size: 12px;
+    }
+
     #header {
+      height: auto;
       padding: 7px 50px;
-      height: 60px;
     }
     a .logo {
-      width: 80%;
+      width: 100%;
     }
     .btn {
       border-radius: 20px;
@@ -733,18 +756,24 @@
         line-height: 14px;
         font-weight: 500;
         float: left;
-        padding-top: 8px;
+        padding: 20px 0 10px;
       }
       #login {
         font-size: 13px;
+        line-height: 50px;
       }
+    }
+    #header a.btn.btn-primary {
+      padding: 10px 10px;
+      line-height: 16px;
+      font-size: 12px;
     }
     #header {
       padding: 16px 90px;
-      height: 80px;
+      height: auto;
     }
     a .logo {
-      width: 60%;
+      width: 80%;
     }
     .btn {
       border-radius: 20px;
