@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-
+ruby '1.9.2'
 gem 'rails', '3.2.12'
 
 gem 'unicorn'
@@ -13,6 +13,7 @@ gem 'tire'
 gem 'pg'
 gem 'pry'
 gem 'faker'
+gem 'pry'
 
 gem 'nokogiri'
 
