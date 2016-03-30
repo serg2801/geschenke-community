@@ -3,6 +3,8 @@ class ListsController < ApplicationController
   before_filter :authenticate_user!, :only => [:index]
 
   def index
+    @coocie_module = CoocieModule.first
+    @coocie = @coocie_module.body
     @lists = current_user.lists.order("created_at ASC")
     if params[:permalink] 
       @list = @lists.find_by_permalink(params[:permalink])

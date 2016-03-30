@@ -71,6 +71,31 @@
       display: block;
     }
 
+    #content {
+      min-height: 950px;
+    }
+    #products {
+      min-height: 950px;
+      padding: 10px;
+
+      #finish {
+        display: block;
+        width: 65% !important;
+        left: 0;
+        top: 525px;
+      }
+      .step {
+        padding: 20px 10px;
+        width: 100%;
+        .content#url input {
+          width: 75%;
+        }
+      }
+      .disabled {
+        width: 100%;
+      }
+    }
+
     .window-container {
 
       .window {
@@ -305,6 +330,37 @@
     .btn_menu-mobile {
       display: block;
     }
+    #content {
+      height: 950px;
+    }
+    #products {
+      height: 950px;
+      padding: 10px;
+
+      #finish {
+        width: 100% !important;
+        left: 20px;
+        top: 525px;
+      }
+      .step {
+        padding: 20px 10px;
+        width: 80%;
+        .content#url input {
+          width: 75%;
+        }
+      }
+      .disabled {
+        width: 80%;
+      }
+    }
+    .product {
+      //width: 40% !important;
+      float: left;
+
+      .product-user-list {
+        width: 100%;
+      }
+    }
 
     #navigation .top.active .megamenu {
       width: 95%;
@@ -328,9 +384,7 @@
         left: 58px;
       }
     }
-    .product {
-      width: 180px !important;
-    }
+
     #home {
       #panel {
         display: none;
@@ -505,6 +559,38 @@
       display: block;
     }
 
+    #content {
+      height: 950px;
+    }
+    #products {
+      height: 950px;
+      padding: 10px;
+
+      #finish {
+        width: 150%;
+        left: 20px;
+        top: 525px;
+      }
+      .step {
+        padding: 20px 10px;
+        width: 80%;
+        .content#url input {
+          width: 75%;
+        }
+      }
+      .disabled {
+        width: 80%;
+      }
+    }
+    .product {
+      width: 30% !important;
+      float: left;
+
+      .product-user-list {
+        width: 100%;
+      }
+    }
+
     #navigation .top.active .megamenu {
       width: 95%;
       top: 330px;
@@ -526,9 +612,6 @@
       #search {
         left: 58px;
       }
-    }
-    .product {
-      width: 166px !important;
     }
     #home {
       #panel {
@@ -710,6 +793,21 @@
       }
       .top.active .megamenu {
         width: 98%;
+      }
+    }
+    #products {
+      .step {
+        width: 60%;
+        .content#url input {
+          width: 75%;
+        }
+      }
+      .disabled {
+        width: 60%;
+      }
+      #finish {
+        top: 122px;
+        width: 37%;
       }
     }
     #home {

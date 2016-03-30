@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!, :only => [:own, :new, :edit, :update, :create, :delete, :add_comment]
 
   def index
+    @coocie_module = CoocieModule.first
+    @coocie = @coocie_module.body
     if params["utf8"] && params[:query] == nil
       vars = {}
       vars[:slug] = params[:slug]

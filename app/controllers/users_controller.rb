@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:edit]
 
   def index
+    @coocie_module = CoocieModule.first
+    @coocie = @coocie_module.body
     @users = User.order("points DESC")
     @heroes = User.where("hero IS true")
     @hero1 = Herodata.where(name: 'img1').first
