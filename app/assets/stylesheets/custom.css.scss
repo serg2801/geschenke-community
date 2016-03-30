@@ -331,10 +331,10 @@
       display: block;
     }
     #content {
-      height: 950px;
+      min-height: 950px;
     }
     #products {
-      height: 950px;
+      min-height: 950px;
       padding: 10px;
 
       #finish {
@@ -560,10 +560,10 @@
     }
 
     #content {
-      height: 950px;
+      min-height: 950px;
     }
     #products {
-      height: 950px;
+      min-height: 950px;
       padding: 10px;
 
       #finish {
@@ -642,6 +642,7 @@
       }
     }
     #top {
+      padding: 0 10px;
       line-height: 30px;
       height: 60px;
 
