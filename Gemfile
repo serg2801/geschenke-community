@@ -13,9 +13,8 @@ gem 'tire'
 gem 'pg'
 gem 'pry'
 gem 'faker'
-gem 'pry'
 
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.5'
 
 gem 'devise'
 gem 'omniauth'
@@ -30,7 +29,8 @@ gem 'bourbon'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'rmagick'
-gem 'fog'
+gem 'fog', '1.38.0'
+gem 'figaro'
 
 gem 'sidekiq'
 gem 'sinatra', require: false

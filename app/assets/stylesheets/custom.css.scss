@@ -79,20 +79,43 @@
       padding: 10px;
 
       #finish {
-        display: block;
-        width: 65% !important;
+        width: 97% !important;
         left: 0;
-        top: 525px;
+        top: 0 !important;
+        position: static !important;
+        #send {
+          width: 100%;
+        }
       }
       .step {
         padding: 20px 10px;
         width: 100%;
+
         .content#url input {
           width: 75%;
+        }
+        .content#images .image {
+          width: 97%;
         }
       }
       .disabled {
         width: 100%;
+      }
+      #product-sidebar {
+        width: 98%;
+        float: none;
+      }
+      #product-comments {
+        width: 98%;
+        .comment .comment-content {
+          font-size: 15px;
+          line-height: 18px;
+          padding: 10px 20px 10px 20px;
+        }
+      }
+      #product-info .go {
+        padding: 0;
+        font-size: 14px;
       }
     }
 
@@ -339,8 +362,12 @@
 
       #finish {
         width: 100% !important;
-        left: 20px;
-        top: 525px;
+        left: 0;
+        top: 0 !important;
+        position: static !important;
+        #send {
+          width: 50%;
+        }
       }
       .step {
         padding: 20px 10px;
@@ -351,6 +378,13 @@
       }
       .disabled {
         width: 80%;
+      }
+      #product-sidebar {
+        width: 33%;
+        float: none;
+      }
+      #product-comments {
+        width: 98%;
       }
     }
     .product {
@@ -568,8 +602,12 @@
 
       #finish {
         width: 150%;
-        left: 20px;
-        top: 525px;
+        left: 0;
+        top: 0 !important;
+        position: static !important;
+        #send {
+          width: 30%;
+        }
       }
       .step {
         padding: 20px 10px;
@@ -580,6 +618,13 @@
       }
       .disabled {
         width: 80%;
+      }
+      #product-sidebar {
+        width: 33%;
+        float: none;
+      }
+      #product-comments {
+        width: 98%;
       }
     }
     .product {
@@ -809,6 +854,13 @@
       #finish {
         top: 122px;
         width: 37%;
+      }
+      #product-sidebar {
+        width: 33%;
+        float: none;
+      }
+      #product-comments {
+        width: 98%;
       }
     }
     #home {
