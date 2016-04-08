@@ -40,8 +40,9 @@ class Product < ActiveRecord::Base
   # end
 
   def to_indexed_json
-    string_criteria = criteria
-    criteria = eval(string_criteria)
+     string_criteria = criteria.to_s
+     criteria = eval(string_criteria)
+     criteria ||= {}
     maps = {
       :name   => name,
       :slug => slug,
