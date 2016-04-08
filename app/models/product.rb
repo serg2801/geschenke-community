@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   process_in_background :image
 
-  serialize :criteria, Hash
+  serialize :criteria#, Hash
 
   # tire.mapping do
   #   indexes :id,          :type => 'integer'
@@ -40,9 +40,10 @@ class Product < ActiveRecord::Base
   # end
 
   def to_indexed_json
+
      string_criteria = criteria.to_s
      criteria = eval(string_criteria)
-     criteria ||= {}
+    criteria ||= {}
     maps = {
       :name   => name,
       :slug => slug,
@@ -89,7 +90,7 @@ class Product < ActiveRecord::Base
     end
 
     tire.search(page: params[:seite], per_page: params[:per_page] ||= 12) do
-      query { string params[:query], default_operator: "AND" } if params[:query].present? 
+      query { string params[:query], default_operator: "AND" } if params[:query].present?
       unless criteria.nil?
         criteria.each do |name, value|
           filter :term, name.to_sym => "1" unless value == "0"
