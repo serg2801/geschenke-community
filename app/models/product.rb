@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   process_in_background :image
 
-  serialize :criteria #, Hash
+  serialize :criteria, Hash
 
   # tire.mapping do
   #   indexes :id,          :type => 'integer'

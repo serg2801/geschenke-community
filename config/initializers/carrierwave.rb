@@ -1,15 +1,15 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
       :provider               => 'AWS',
-      :aws_access_key_id      => ENV['S3_KEY'],
-      :aws_secret_access_key  => ENV['S3_SECRET'],
+      :aws_access_key_id      => 'AKIAJCJ7ZRT45QMM6GPA',
+      :aws_secret_access_key  => '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',
       # :endpoint               => "https://s3.amazonaws.com",
       # :host                   => 's3.amazonaws.com',
-      :region                 => ENV['S3_REGION']
+      :region                 => 'eu-central-1'
   }
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
-  config.fog_directory  = ENV['S3_BUCKET']
+  config.fog_directory  = 'geschenkeheld'
   config.fog_public     = true
 
 end

@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def criteria_checkbox(model, name, object, label=nil)
-    # object.criteria = {}
+    # object.criteria ||= {}
     checkbox = check_box_tag "#{model}[criteria][#{name}]", "1", instance_variable_set("@#{model}", object).criteria["#{name}".to_sym] == "1" ? true : false
     label = label_tag "#{model}[criteria][#{name}]", "#{label || name.capitalize}"
     return checkbox + "\n" + label
