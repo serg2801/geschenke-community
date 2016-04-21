@@ -1,0 +1,16 @@
+<div id="products">
+
+  <h2>
+    <img src="<%= @user.image %>" alt="<%= @user.name %>" />
+    <%= @title %>
+  </h2>
+
+  <%= render "products/filter" %>
+
+  <div id="products-container">
+    <%= render :partial => "products/product", :collection => @products %>
+  </div>
+
+  <%= render "products/pagination" %>
+
+</div>

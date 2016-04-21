@@ -3,6 +3,7 @@
 <head>
   <title><%= @title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "custom" if mobile_device? %>
   <%= csrf_meta_tags %>
   <link href="/favicon.png" rel="shortcut icon">
 
@@ -48,6 +49,11 @@
       <% else %>
         <h1><%= @title %></h1>
         <div id="login">
+            <% if mobile_device? %>
+                <%= link_to "Full Site", :mobile => 0, class: "version_site" %>
+            <% else %>
+                <%= link_to "Mobile Site", :mobile => 1, class: "version_site" %>
+            <% end %>
           <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary cta-signup" %>
           oder
           <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
@@ -114,8 +120,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/geburtstagsgeschenke-vater-opa">Für Väter und Opas</a>
               </li>
-            </ul>  
-          </div>  
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/weihnachtsgeschenke" class="headline">Weihnachten</a>
@@ -152,8 +158,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/weihnachtsgeschenke-vater-opa">Für Väter und Opas</a>
               </li>
-            </ul>    
-          </div>  
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/hochzeitsgeschenke" class="headline">Hochzeit</a>
@@ -170,8 +176,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/hochzeitsgeschenke-paare">Für Paare</a>
               </li>
-            </ul>  
-          </div> 
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/valentinstagsgeschenke" class="headline">Valentinstag</a>
@@ -184,20 +190,20 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/valentinstagsgeschenke-freund-ehemann">Für den Gebliebten</a>
               </li>
-            </ul>  
-          </div> 
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/muttertagsgeschenke" class="headline">Muttertag</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/vatertagsgeschenke" class="headline">Vatertag</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-kommunion-konfirmation" class="headline">Kommunion &amp; Konfirmation</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-geburt" class="headline">Geburt</a>
@@ -205,7 +211,7 @@
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-taufe" class="headline">Taufe</a>
-          </div> 
+          </div>
         </div>
       </div>
       <div class="top">
@@ -214,11 +220,11 @@
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-haus-tier-garten" class="headline">Haus, Tier &amp; Garten</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-elektronik-technik" class="headline">Elektronik &amp; Technik</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-freizeit-sport" class="headline">Freizeit &amp; Sport</a>
@@ -226,15 +232,15 @@
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-beauty-gesundheit" class="headline">Beauty &amp; Gesundheit</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-erlebnisse" class="headline">Erlebnisse</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-romantisch" class="headline">Romantisches</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-mode" class="headline">Mode</a>
@@ -242,13 +248,13 @@
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-spielzeug" class="headline">Spielzeug</a>
-          </div> 
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-entertainment" class="headline">Entertainment</a>
-          </div> 
+          </div>
         </div>
-      </div>   
+      </div>
       <div class="top">
         <a class="topic">Personen</a>
         <div class="megamenu">
@@ -268,8 +274,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/hochzeitsgeschenke-paare">Hochzeitsgeschenke</a>
               </li>
-            </ul>  
-          </div>  
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-freundin-ehefrau" class="headline">Ehefrau / Freundin</a>
@@ -286,7 +292,7 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/valentinstagsgeschenke-freundin-ehefrau">Valentinstagsgeschenke</a>
               </li>
-            </ul>  
+            </ul>
           </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
@@ -304,8 +310,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/valentinstagsgeschenke-freund-ehemann">Valentinstagsgeschenke</a>
               </li>
-            </ul>  
-          </div> 
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-baby" class="headline">Baby</a>
@@ -318,7 +324,7 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/weihnachtsgeschenke-baby">Weihnachtsgeschenke</a>
               </li>
-            </ul>  
+            </ul>
           </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
@@ -332,7 +338,7 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
               </li>
-            </ul>  
+            </ul>
           </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
@@ -346,8 +352,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
               </li>
-            </ul>  
-          </div>  
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-mutter-oma" class="headline">Mutter / Oma</a>
@@ -364,8 +370,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/muttertagsgeschenke">Muttertagsgeschenke</a>
               </li>
-            </ul>  
-          </div> 
+            </ul>
+          </div>
           <div class="category">
             <i class="icon icon-angle-right"></i>
             <a href="/geschenke-vater-opa" class="headline">Vater / Opa</a>
@@ -382,8 +388,8 @@
                 <i class="icon icon-double-angle-right"></i>
                 <a href="/vatertagsgeschenke">Vatertagsgeschenke</a>
               </li>
-            </ul>  
-          </div>  
+            </ul>
+          </div>
         </div>
         <div id="search">
           <%= form_tag product_search_path, :method => :get do %>
@@ -396,7 +402,7 @@
       </div>
       <div class="top">
         <%= link_to "Helden des Monats", users_path, :class => "topic" %>
-      </div>      
+      </div>
     </div>
     <div id="content">
       <%= yield %>
@@ -430,12 +436,12 @@
           © 2015
           | Alle Rechte vorbehalten | <a href="/impressum">Impressum</a>
           <br />
-          
+
         </div>
         <div id="sponsors">
           <% if request.path == "/" %>
             <br />
-            
+
           <% end %>
         </div>
         <a href="https://mixpanel.com/f/partner" id="mixpanel"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
@@ -450,7 +456,7 @@
         </div>
         <div class="window-content">
           <p>
-            Hey, Du kannst Dich ganz einfach mit Deinem 
+            Hey, Du kannst Dich ganz einfach mit Deinem
             Facebook-Profil anmelden.
           </p>
           <p>
@@ -466,7 +472,7 @@
 
   <% if current_user %>
     <script type="text/javascript">
-      mixpanel.identify(<%= current_user.id %>);    
+      mixpanel.identify(<%= current_user.id %>);
 
       <% if @just_logged_in %>
         mixpanel.people.set({
@@ -476,7 +482,7 @@
     </script>
   <% end %>
   <%= javascript_include_tag "application" %>
-  <%= yield :javascript %> 
+  <%= yield :javascript %>
 
   <script type="text/javascript">
 

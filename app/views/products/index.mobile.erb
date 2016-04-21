@@ -1,0 +1,49 @@
+<div id="products">
+
+  <h2>
+    <%= @h2 || @title %>
+
+    <% if controller.controller_name == "lists" %>
+      <%= image_tag @list.user.image, :alt => @list.user.name %>
+
+      <% if current_user && current_user == @list.user %>
+        <div id="list-info">
+          Dieser Wunschzettel ist <b>privat</b>, aber Du kannst<br />ihn mit folgender Adresse Deinen Freunden zeigen:
+          <br />
+          <a href="/wunschzettel/<%= @list.permalink %>">
+            http://www.geschenkeheld.de/wunschzettel/<%= @list.permalink %>
+          </a>
+        </div>
+
+        <div id="list-select">
+          <%= form_tag lists_path, :method => :get do %>
+          <select name="permalink">
+            <% @lists.each do |list| %>
+              <option value="<%= list.permalink %>" <%= 'selected' if list.permalink == params[:permalink] %>>
+                <%= list.name %>
+              </option>
+            <% end %>
+          </select>
+          <% end %>
+
+          <%= form_tag create_list_path do %>
+            oder<br />
+            <input type="text" name="list_name" placeholder="Neue Liste anlegen" />
+            <%= button_tag :type => :submit, :class => "btn btn-red", :rel => "tooltip", :title => "Hinzufügen" do %>
+              <i class="icon icon-plus"></i>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </h2>
+
+  <%= render "products/filter" %>
+
+  <div id="products-container">
+    <%= render :partial => "products/product", :collection => @products %>
+  </div>
+
+  <%= render "products/pagination" %>
+
+</div>

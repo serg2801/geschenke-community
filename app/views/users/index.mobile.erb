@@ -1,0 +1,17 @@
+<div id="users">
+  <h2>Helden des Monats</h2>
+
+  <div id="heros">
+    <%= render :partial => "leaderboard", :locals => {:heroes => @heroes.sort! { |a, b| b.points <=> a.points }, :hero1 => @hero1, :hero2 => @hero2, :hero3 => @hero3, :herotext1 => @herotext1, :herotext2 => @herotext2} %>
+    <div id="leaderboard-price">
+      <div id="price-box">
+        <div class="chocri">
+          <%= raw @herotext2.value %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <h2>Unsere Kandidaten für den nächsten Held des Monats</h2>
+  <%= render :partial => "user", :collection => @users %>
+</div>

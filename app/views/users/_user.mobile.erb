@@ -1,0 +1,8 @@
+<div class="user">
+  <%= image_tag user.image, :alt => user.name %>
+  <%= link_to user.name, user_path(user) %>
+  <div class="progress">
+    <div class="bar" style="width:<%= 145 * (user.points.to_f / @max_points.to_f) %>px;"></div>
+    <div class="count"><i class="icon icon-star"></i> <%= user.points %></div>
+  </div>
+</div>

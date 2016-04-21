@@ -1,0 +1,20 @@
+<% unless @products.nil? %>
+  <% if @products.total >= @products.options[:size].to_i * (params[:seite].nil? ? 1 : params[:seite].to_i) %>
+    <a href="?seite=2" id="more-products" rel="nofollow">
+      <span class="loading-text"><%= image_tag "loader.gif", :alt => "Lade weitere Geschenkideen" %></span>
+      <span class="normal-text">Weitere Geschenkideen zeigen</span>
+    </a>
+  <% end %>
+<% end %>
+
+<% if current_user.nil? %>
+  <div class="end-page-cta">
+    <h3>Komm zu uns, werde auch ein GeschenkeHeld!</h3>
+    <div class="users">
+      <% User.order("RANDOM()").limit(12).each_with_index do |user, index| %>
+        <div class="user"><%= image_tag user.image %></div>
+      <% end %>
+    </div>
+    <%= link_to "Ganz einfach anmelden", nil, :class => "btn btn-primary cta-signup" %>
+  </div>
+<% end %>
