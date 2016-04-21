@@ -48,7 +48,7 @@
       <% else %>
         <h1><%= @title %></h1>
         <div id="login">
-          <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook) %>
+          <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary cta-signup" %>
           oder
           <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
           %>
