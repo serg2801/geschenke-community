@@ -21,7 +21,14 @@
     <div id="product-socials">
       <h3>Zeige dieses Geschenk Deinen Freunden!</h3>
 
-      <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-width="300" data-layout="button_count" data-show-faces="true" data-font="arial"></div>
+      <!--<div class="fb-like" data-href="<%#= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-width="300" data-layout="button_count" data-show-faces="true" data-font="arial"></div>-->
+    </div>
+    <div class="">
+      <div class="shariff"
+           <%= "data-url=" "#{product_path}" %>
+           data-theme="grey"
+           <%= "data-title=" "#{@product.name}" %>>
+      </div>
     </div>
   </div>
 
@@ -73,7 +80,6 @@
         </div>
     <% end %>
   </div>
-
 </div>
 
 <!--<div id="fb-root"></div>-->
