@@ -21,7 +21,25 @@
     <div id="product-socials">
       <h3>Zeige dieses Geschenk Deinen Freunden!</h3>
 
-      <!--<div class="fb-like" data-href="<%#= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-width="300" data-layout="button_count" data-show-faces="true" data-font="arial"></div>-->
+      <!--<div class="fb-like"-->
+           <!--data-href="<%#= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"-->
+           <!--data-send="false"-->
+           <!--data-width="300"-->
+           <!--data-layout="button_count"-->
+           <!--data-show-faces="true"-->
+           <!--data-font="arial">-->
+        <!-- -->
+      <!--</div>-->
+
+      <div class="fb-like"
+           data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"
+           data-layout="button_count"
+           data-action="like"
+           data-show-faces="true"
+           data-share="false">
+
+      </div>
+
     </div>
     <div class="">
       <div class="shariff"
@@ -82,6 +100,15 @@
   </div>
 </div>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <!--<div id="fb-root"></div>-->
 <!--<script>-->
 <!--//    (function (d, s, id) {-->
@@ -94,12 +121,11 @@
 <!--//    }(document, 'script', 'facebook-jssdk'));-->
 <!--</script>-->
 
-<%# content_for :javascript do %>
+
+<!--<%# content_for :javascript do %>-->
     <!--<script type="text/javascript">-->
 <!--//        $(document).ready(function () {-->
-<!--//-->
 <!--//            $('textarea').autosize();-->
-<!--//-->
 <!--//        });-->
-    <!--</script>-->
+    <!--&lt;!&ndash;</script>&ndash;&gt;-->
 <%# end %>
