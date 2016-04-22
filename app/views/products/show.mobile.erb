@@ -43,9 +43,11 @@
     </div>
     <div class="">
       <div class="shariff"
-           <%= "data-url=" "#{product_path}" %>
+           data-url= <%= "#{product_url}" %>
+                   data-title= <%= "#{@product.name}" %>
+           data-orientation="vertical"
            data-theme="grey"
-           <%= "data-title=" "#{@product.name}" %>>
+           data-services="[&quot;facebook&quot;,&quot;googleplus&quot;,&quot;twitter&quot;]" >
       </div>
     </div>
   </div>
@@ -105,7 +107,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.6";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
