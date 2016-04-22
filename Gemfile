@@ -31,7 +31,7 @@ gem 'carrierwave_backgrounder'
 gem 'rmagick'
 gem 'fog', '1.38.0'
 gem 'figaro'
-# gem "mini_magick"
+gem "koala", "~> 2.2"
 
 gem 'sidekiq'
 gem 'sinatra', require: false

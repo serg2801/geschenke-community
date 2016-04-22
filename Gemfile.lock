@@ -250,6 +250,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    koala (2.3.0)
+      addressable
+      faraday
+      multi_json
     launchy (2.2.0)
       addressable (~> 2.3)
     less (2.2.2)
@@ -417,6 +421,7 @@ DEPENDENCIES
   faker
   figaro
   fog (= 1.38.0)
+  koala (~> 2.2)
   letter_opener
   meta_search (>= 1.1.0.pre)
   newrelic_rpm
