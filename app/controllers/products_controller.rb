@@ -76,8 +76,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_slug(params[:slug])
-    @graph ||= Koala::Facebook::API.new(current_user.oauth_token)
-     @likes = @graph.get_object("#{@product.id}", :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
+    # @graph ||= Koala::Facebook::API.new(current_user.oauth_token)
+    #  @likes = @graph.get_object("#{@product.id}", :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
     if @product
       @title = "#{@product.name} auf GeschenkeHeld.de | Die Geschenke-Community"
     else
