@@ -3,7 +3,6 @@
 <head>
   <title><%= @title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "custom" if mobile_device? %>
   <%= csrf_meta_tags %>
   <link href="/favicon.png" rel="shortcut icon">
 
@@ -12,21 +11,9 @@
   <script type="text/javascript" src="https://use.typekit.net/ugs2qht.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-  <!-- start Mixpanel -->
-  <script type="text/javascript">
-      (function(c,a){window.mixpanel=a;var b,d,h,e;b=c.createElement("script");
-      b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+
-      '//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';d=c.getElementsByTagName("script")[0];
-      d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){
-      var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(
-      Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=a[f]=[]:
-      f="mixpanel";g.people=g.people||[];h=['disable','track','track_pageview','track_links',
-      'track_forms','register','register_once','unregister','identify','alias','name_tag','set_config',
-      'people.set','people.set_once','people.increment','people.track_charge','people.append'];
-      for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.2;})(document,window.mixpanel||[]);
-      mixpanel.init("c488779e234e364badeb40d394b52b3e");
-  </script>
-  <!-- end Mixpanel -->
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+    for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("bdaf6ae4cc2ff603393b504389c511a3");</script><!-- end Mixpanel -->
 
   <%= yield :head %>
 </head>
@@ -34,9 +21,9 @@
 <% if !cookies[:allow_cookies] %>
     <%= render 'layouts/cookies_bar' %>
 <% end %>
-  <div id="page">
-    <div id="top">
-      <% if user_signed_in? %>
+<div id="page">
+  <div id="top">
+    <% if user_signed_in? %>
         <div class="user">
           <%= image_tag current_user.image %>
           <b><%= current_user.name %></b> (<i class="icon icon-star"></i> <%= current_user.points %>)
@@ -46,459 +33,453 @@
           <%= link_to "Meine Geschenkideen", own_products_path %>
           <%= link_to "Abmelden", signout_path %>
         </div>
-      <% else %>
+    <% else %>
         <h1><%= @title %></h1>
         <div id="login">
-            <% if mobile_device? %>
-                <%= link_to "Full Site", :mobile => 0, class: "version_site" %>
-            <% else %>
-                <%= link_to "Mobile Site", :mobile => 1, class: "version_site" %>
-            <% end %>
-          <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary cta-signup" %>
+          <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook) %>
           oder
           <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
           %>
         </div>
-      <% end %>
-    </div>
-    <div id="header">
-      <% if user_signed_in? %>
+    <% end %>
+  </div>
+  <div id="header">
+    <% if user_signed_in? %>
         <a class="btn btn-primary" id="add-product" href="<%= new_product_path %>">
           <i class="icon icon-plus"></i> Neue Geschenkidee hinzufügen
         </a>
-      <% end %>
-      <a href="/"><%= image_tag "logo.png", :alt => "Geschenkeheld | Die Geschenke-Community", class: 'logo' %></a>
+    <% end %>
+    <a href="/"><%= image_tag "logo.png", :alt => "Geschenkeheld | Die Geschenke-Community", class: 'logo' %></a>
+  </div>
+  <div class="btn_menu-mobile js_btn_menu-mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="navigation">
+    <div class="top">
+      <a class="topic" href="/">Startseite</a>
     </div>
-    <div class="btn_menu-mobile js_btn_menu-mobile">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="top">
+      <%= link_to "Ganz Neu", "/neue-geschenkideen", :class => "topic" %>
     </div>
-    <div id="navigation">
-      <div class="top">
-        <a class="topic" href="/">Startseite</a>
-      </div>
-      <div class="top">
-        <%= link_to "Ganz Neu", "/neue-geschenkideen", :class => "topic" %>
-      </div>
-      <div class="top">
-        <a class="topic">Anlässe</a>
-        <div class="megamenu">
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geburtstagsgeschenke" class="headline">Geburtstag</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freunde">Für Freunde</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freund-ehemann">Für den Freund oder Ehemann</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freundin-ehefrau">Für die Freundin oder Ehefrau</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-baby">Für Babies</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-kind">Für Kinder</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-jugendlich">Für Jugendliche</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-mutter-oma">Für Mütter und Omas</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-vater-opa">Für Väter und Opas</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/weihnachtsgeschenke" class="headline">Weihnachten</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freunde">Für Freunde</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freund-ehemann">Für den Freund oder Ehemann</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freundin-ehefrau">Für die Freundin oder Ehefrau</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-baby">Für Babies</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-kind">Für Kinder</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-jugendlich">Für Jugendliche</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-mutter-oma">Für Mütter und Omas</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-vater-opa">Für Väter und Opas</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/hochzeitsgeschenke" class="headline">Hochzeit</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/hochzeitsgeschenke-braut">Für die Braut</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/hochzeitsgeschenke-braeutigam">Für den Bräutigam</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/hochzeitsgeschenke-paare">Für Paare</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/valentinstagsgeschenke" class="headline">Valentinstag</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/valentinstagsgeschenke-freundin-ehefrau">Für die Geliebte</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/valentinstagsgeschenke-freund-ehemann">Für den Gebliebten</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/muttertagsgeschenke" class="headline">Muttertag</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/vatertagsgeschenke" class="headline">Vatertag</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-kommunion-konfirmation" class="headline">Kommunion &amp; Konfirmation</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-geburt" class="headline">Geburt</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-taufe" class="headline">Taufe</a>
-          </div>
+    <div class="top">
+      <a class="topic">Anlässe</a>
+      <div class="megamenu">
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geburtstagsgeschenke" class="headline">Geburtstag</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freunde">Für Freunde</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freund-ehemann">Für den Freund oder Ehemann</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freundin-ehefrau">Für die Freundin oder Ehefrau</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-baby">Für Babies</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-kind">Für Kinder</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-jugendlich">Für Jugendliche</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-mutter-oma">Für Mütter und Omas</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-vater-opa">Für Väter und Opas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/weihnachtsgeschenke" class="headline">Weihnachten</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freunde">Für Freunde</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freund-ehemann">Für den Freund oder Ehemann</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freundin-ehefrau">Für die Freundin oder Ehefrau</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-baby">Für Babies</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-kind">Für Kinder</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-jugendlich">Für Jugendliche</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-mutter-oma">Für Mütter und Omas</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-vater-opa">Für Väter und Opas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/hochzeitsgeschenke" class="headline">Hochzeit</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/hochzeitsgeschenke-braut">Für die Braut</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/hochzeitsgeschenke-braeutigam">Für den Bräutigam</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/hochzeitsgeschenke-paare">Für Paare</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/valentinstagsgeschenke" class="headline">Valentinstag</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/valentinstagsgeschenke-freundin-ehefrau">Für die Geliebte</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/valentinstagsgeschenke-freund-ehemann">Für den Gebliebten</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/muttertagsgeschenke" class="headline">Muttertag</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/vatertagsgeschenke" class="headline">Vatertag</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-kommunion-konfirmation" class="headline">Kommunion &amp; Konfirmation</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-geburt" class="headline">Geburt</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-taufe" class="headline">Taufe</a>
         </div>
       </div>
-      <div class="top">
-        <a class="topic">Kategorien</a>
-        <div class="megamenu">
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-haus-tier-garten" class="headline">Haus, Tier &amp; Garten</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-elektronik-technik" class="headline">Elektronik &amp; Technik</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-freizeit-sport" class="headline">Freizeit &amp; Sport</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-beauty-gesundheit" class="headline">Beauty &amp; Gesundheit</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-erlebnisse" class="headline">Erlebnisse</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-romantisch" class="headline">Romantisches</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-mode" class="headline">Mode</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-spielzeug" class="headline">Spielzeug</a>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-entertainment" class="headline">Entertainment</a>
-          </div>
+    </div>
+    <div class="top">
+      <a class="topic">Kategorien</a>
+      <div class="megamenu">
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-haus-tier-garten" class="headline">Haus, Tier &amp; Garten</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-elektronik-technik" class="headline">Elektronik &amp; Technik</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-freizeit-sport" class="headline">Freizeit &amp; Sport</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-beauty-gesundheit" class="headline">Beauty &amp; Gesundheit</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-erlebnisse" class="headline">Erlebnisse</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-romantisch" class="headline">Romantisches</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-mode" class="headline">Mode</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-spielzeug" class="headline">Spielzeug</a>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-entertainment" class="headline">Entertainment</a>
         </div>
       </div>
-      <div class="top">
-        <a class="topic">Personen</a>
-        <div class="megamenu">
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-freunde" class="headline">Freunde &amp; Bekannte</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freunde">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freunde">Weihnachtsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/hochzeitsgeschenke-paare">Hochzeitsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-freundin-ehefrau" class="headline">Ehefrau / Freundin</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freundin-ehefrau">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freundin-ehefrau">Weihnachtsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/valentinstagsgeschenke-freundin-ehefrau">Valentinstagsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-freund-ehemann" class="headline">Ehemann / Freund</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-freund-ehemann">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-freund-ehemann">Weihnachtsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/valentinstagsgeschenke-freund-ehemann">Valentinstagsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-baby" class="headline">Baby</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-baby">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-baby">Weihnachtsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-kind" class="headline">Kind</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-kind">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-jugendlich" class="headline">Jugendlich</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-kind">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-mutter-oma" class="headline">Mutter / Oma</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-mutter-oma">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-mutter-oma">Weihnachtsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/muttertagsgeschenke">Muttertagsgeschenke</a>
-              </li>
-            </ul>
-          </div>
-          <div class="category">
-            <i class="icon icon-angle-right"></i>
-            <a href="/geschenke-vater-opa" class="headline">Vater / Opa</a>
-            <ul>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/geburtstagsgeschenke-vater-opa">Geburtstagsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/weihnachtsgeschenke-vater-opa">Weihnachtsgeschenke</a>
-              </li>
-              <li>
-                <i class="icon icon-double-angle-right"></i>
-                <a href="/vatertagsgeschenke">Vatertagsgeschenke</a>
-              </li>
-            </ul>
-          </div>
+    </div>
+    <div class="top">
+      <a class="topic">Personen</a>
+      <div class="megamenu">
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-freunde" class="headline">Freunde &amp; Bekannte</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freunde">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freunde">Weihnachtsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/hochzeitsgeschenke-paare">Hochzeitsgeschenke</a>
+            </li>
+          </ul>
         </div>
-        <div id="search">
-          <%= form_tag product_search_path, :method => :get do %>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-freundin-ehefrau" class="headline">Ehefrau / Freundin</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freundin-ehefrau">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freundin-ehefrau">Weihnachtsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/valentinstagsgeschenke-freundin-ehefrau">Valentinstagsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-freund-ehemann" class="headline">Ehemann / Freund</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-freund-ehemann">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-freund-ehemann">Weihnachtsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/valentinstagsgeschenke-freund-ehemann">Valentinstagsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-baby" class="headline">Baby</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-baby">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-baby">Weihnachtsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-kind" class="headline">Kind</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-kind">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-jugendlich" class="headline">Jugendlich</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-kind">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-kind">Weihnachtsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-mutter-oma" class="headline">Mutter / Oma</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-mutter-oma">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-mutter-oma">Weihnachtsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/muttertagsgeschenke">Muttertagsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+        <div class="category">
+          <i class="icon icon-angle-right"></i>
+          <a href="/geschenke-vater-opa" class="headline">Vater / Opa</a>
+          <ul>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/geburtstagsgeschenke-vater-opa">Geburtstagsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/weihnachtsgeschenke-vater-opa">Weihnachtsgeschenke</a>
+            </li>
+            <li>
+              <i class="icon icon-double-angle-right"></i>
+              <a href="/vatertagsgeschenke">Vatertagsgeschenke</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="search">
+        <%= form_tag product_search_path, :method => :get do %>
             <%= text_field_tag :query, params[:query], :placeholder => "Suche" %>
             <%= button_tag :type => :submit, :class => "btn btn-red" do %>
-              <i class='icon icon-search'></i>
+                <i class='icon icon-search'></i>
             <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div class="top">
-        <%= link_to "Helden des Monats", users_path, :class => "topic" %>
-      </div>
-    </div>
-    <div id="content">
-      <%= yield %>
-    </div>
-    <div id="footer">
-      <div id="newsletter">
-        <h3>Newsletter</h3>
-        <p>
-          Meld Dich für unseren Newsletter an und erhalte unsere besten Geschenkideen in Deinem EMail Postfach!
-        </p>
-        <input type="text" placeholder="Deine Email Adresse" />
-        <a href="" class="btn btn-success">Anmelden</a>
-      </div>
-      <div id="about">
-        <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo", class="logo_about" />
-        <h3>Wir sind Geschenkehelden</h3>
-        <% if @description %>
-        <p>
-          <%= @description %>
-        </p>
-        <% else %>
-        <p>
-          GeschenkeHeld ist eine Geschenke-Community. Hier treffen sich Helden,
-          die tolle Geschenkideen im Internet gefunden haben und sie präsentieren möchten.
-          Durch die Kategorisierung erleichterst Du es allen Besuchern, Deine Geschenkidee zu finden.
-        </p>
         <% end %>
       </div>
-      <div id="bottom">
-        <div id="copyright">
-          © 2015
-          | Alle Rechte vorbehalten | <a href="/impressum">Impressum</a>
-          <br />
+    </div>
+    <div class="top">
+      <%= link_to "Helden des Monats", users_path, :class => "topic" %>
+    </div>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+  <div id="footer">
+    <div id="newsletter">
+      <h3>Newsletter</h3>
+      <p>
+        Meld Dich für unseren Newsletter an und erhalte unsere besten Geschenkideen in Deinem EMail Postfach!
+      </p>
+      <input type="text" placeholder="Deine Email Adresse" />
+      <a href="" class="btn btn-success">Anmelden</a>
+    </div>
+    <div id="about">
+      <img src="/assets/logo_icon.png" alt="Geschenkeheld Logo", class="logo_about" />
+      <h3>Wir sind Geschenkehelden</h3>
+      <% if @description %>
+          <p>
+            <%= @description %>
+          </p>
+      <% else %>
+          <p>
+            GeschenkeHeld ist eine Geschenke-Community. Hier treffen sich Helden,
+            die tolle Geschenkideen im Internet gefunden haben und sie präsentieren möchten.
+            Durch die Kategorisierung erleichterst Du es allen Besuchern, Deine Geschenkidee zu finden.
+          </p>
+      <% end %>
+    </div>
+    <div id="bottom">
+      <div id="copyright">
+        © 2015
+        | Alle Rechte vorbehalten | <a href="/impressum">Impressum</a>
+        <br />
 
-        </div>
-        <div id="sponsors">
-          <% if request.path == "/" %>
+      </div>
+      <div id="sponsors">
+        <% if request.path == "/" %>
             <br />
 
-          <% end %>
-        </div>
-        <a href="https://mixpanel.com/f/partner" id="mixpanel"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+        <% end %>
       </div>
-    </div>
-
-    <div id="signup" class="window-container">
-      <div class="window">
-        <div class="window-header">
-          <a href="#" class="close">&times;</a>
-          <h3>Werde jetzt GeschenkeHeld</h3>
-        </div>
-        <div class="window-content">
-          <p>
-            Hey, Du kannst Dich ganz einfach mit Deinem
-            Facebook-Profil anmelden.
-          </p>
-          <p>
-            <b>Keine Sorge:</b><br />
-            Wir schreiben <u>nichts</u> auf Deine Pinnwand.
-          </p>
-          <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe, user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large" %>
-          <%= image_tag "losgehts.png", :alt => "Geschenkeheld werden" %>
-        </div>
-      </div>
+      <a href="https://mixpanel.com/f/partner" id="mixpanel"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
     </div>
   </div>
 
-  <% if current_user %>
+  <div id="signup" class="window-container">
+    <div class="window">
+      <div class="window-header">
+        <a href="#" class="close">&times;</a>
+        <h3>Werde jetzt GeschenkeHeld</h3>
+      </div>
+      <div class="window-content">
+        <p>
+          Hey, Du kannst Dich ganz einfach mit Deinem
+          Facebook-Profil anmelden.
+        </p>
+        <p>
+          <b>Keine Sorge:</b><br />
+          Wir schreiben <u>nichts</u> auf Deine Pinnwand.
+        </p>
+        <%= link_to "<i class='icon icon-facebook'></i> Mit Facebook anmelden".html_safe, user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-large" %>
+        <%= image_tag "losgehts.png", :alt => "Geschenkeheld werden" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if current_user %>
     <script type="text/javascript">
-      mixpanel.identify(<%= current_user.id %>);
+        mixpanel.identify(<%= current_user.id %>);
 
-      <% if @just_logged_in %>
+        <% if @just_logged_in %>
         mixpanel.people.set({
-          "$last_login": new Date()
+            "$last_login": new Date()
         });
-      <% end %>
+        <% end %>
     </script>
-  <% end %>
-  <%= javascript_include_tag "application" %>
-  <%= yield :javascript %>
+<% end %>
+<%= javascript_include_tag "application" %>
+<%= yield :javascript %>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-21521718-4']);
+    _gaq.push(['_setAccount', 'UA-65292598-1']);
     _gaq.push(['_setDomainName', 'geschenkeheld.de']);
     _gaq.push(['_trackPageview']);
 
     (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-  </script>
+</script>
 
-  <%= javascript_include_tag "shariff.min" %>
-</body>
+<script src="//js.smartredirect.de/js/?h=pf5Uwtt5" type="text/javascript" async></script></body>
 </html>
