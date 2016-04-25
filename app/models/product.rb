@@ -113,6 +113,19 @@ class Product < ActiveRecord::Base
     write_attribute(:price, price.gsub(',', '.'))
   end
 
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(current_user.oauth_token)
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError
+    logger.info e.to_s
+    nil
+  end
+
+  def likes_count
+    facebook.get_object(params[:id], :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
+  end
+
   private
 
   def setup_slug

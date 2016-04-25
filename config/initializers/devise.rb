@@ -207,9 +207,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   if Rails.env.development?
-    config.omniauth :facebook, "422248231184684", "2be8a451a1c6e6966302b10e0f5d641b", :image_size => :square #, :display => 'popup'
+    config.omniauth :facebook, "1687792004818557", "4ab7ec9cd202fd539a0f4ca27cb5b1b3", :image_size => :square #, :display => 'popup'
+    # config.omniauth :facebook, "422248231184684", "2be8a451a1c6e6966302b10e0f5d641b", :image_size => :square #, :display => 'popup'
   else
-    config.omniauth :facebook, "102969429752310", "1310e048ea8b9774b06eb294ea242bac", :image_size => :square #, :display => 'popup'
+    config.omniauth :facebook, "1687792004818557", "4ab7ec9cd202fd539a0f4ca27cb5b1b3", :image_size => :square #, :display => 'popup'
+    # config.omniauth :facebook, "102969429752310", "1310e048ea8b9774b06eb294ea242bac", :image_size => :square #, :display => 'popup'
   end
   # {:client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
       

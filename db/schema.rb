@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160329155216) do
+ActiveRecord::Schema.define(:version => 20160425081627) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20160329155216) do
     t.string   "image"
     t.text     "root_url"
     t.text     "criteria"
+    t.integer  "fb_likes",                                  :default => 0
   end
 
   add_index "products", ["clicks"], :name => "index_products_on_clicks"

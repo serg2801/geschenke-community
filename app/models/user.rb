@@ -16,17 +16,17 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       user = User.create(
-        provider:auth.provider,
-        uid:auth.uid,
-        email:auth.info.email,
-        name:auth.info.first_name,
-        image:auth.info.image,
-        password:Devise.friendly_token[0,20]
+          provider: auth.provider,
+          uid: auth.uid,
+          email: auth.info.email,
+          name: auth.info.first_name,
+          image: auth.info.image,
+          password: Devise.friendly_token[0, 20]
       )
     end
     return user
   end
-  
+
   private
 
   def setup_list
