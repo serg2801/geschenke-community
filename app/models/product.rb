@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  attr_accessible :clicks, :description, :name, :price, :slug, :url, :user_id
+  attr_accessible :clicks, :description, :name, :price, :slug, :url, :user_id, :fb_likes
   attr_accessible :image, :remote_image_url, :root_url
   attr_accessible :criteria
 
@@ -59,6 +59,7 @@ class Product < ActiveRecord::Base
       },
       :created_at => created_at,
       :updated_at => updated_at,
+      :fb_likes => fb_likes
     }.merge(criteria)
 
     return maps.to_json
@@ -76,7 +77,7 @@ class Product < ActiveRecord::Base
       sortfield = "created_at"
       sortorder = "desc"
     else
-      sortfield = "clicks"
+      sortfield = "fb_likes"
       sortorder = "desc"
     end
 
