@@ -167,15 +167,15 @@ class ProductsController < ApplicationController
 
   def likes_count
     product = Product.find(params[:product_id])
-    # binding.pry
     if !current_user.nil?
       @facebook ||= Koala::Facebook::API.new(session["devise.facebook_data"].credentials.token)
       block_given? ? yield(@facebook) : @facebook
-      shares = @facebook.get_object('', id: 'http://www.geschenkeheld.de' + "#{product_path(product.slug)}")["share"]["share_count"]
-      if product.fb_likes != shares
-        product.fb_likes = shares
-        product.save
-      end
+      shares = @facebook.get_object('', id: 'http://www.geschenkeheld.de' + "#{product_path(product.slug)}")
+      puts shares
+      # if product.fb_likes != shares
+      #   product.fb_likes = shares
+      #   product.save
+      # end
       redirect_to :back
     else
       redirect_to :back
