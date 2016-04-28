@@ -404,6 +404,8 @@
       <%= link_to "Helden des Monats", users_path, :class => "topic" %>
     </div>
   </div>
+  <%= javascript_include_tag "application" %>
+  <%= yield :javascript %>
   <div id="content">
     <%= yield %>
   </div>
@@ -481,8 +483,7 @@
         <% end %>
     </script>
 <% end %>
-<%= javascript_include_tag "application" %>
-<%= yield :javascript %>
+
 
 <script type="text/javascript">
 

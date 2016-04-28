@@ -1,0 +1,11 @@
+jQuery(document).ready(function(){
+    alert('info')
+    $.ajax({
+        type: 'GET',
+        dataType: 'JSON',
+        url: '<%= product_likes_count_path(@product) %>',
+        success: function(data){
+            alert(data);
+        }
+    });
+});

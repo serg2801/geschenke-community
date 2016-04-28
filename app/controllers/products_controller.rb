@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'koala'
 require 'nokogiri'
 require 'open-uri'
 require 'uri'
@@ -44,8 +44,8 @@ class ProductsController < ApplicationController
         else
           @title = "Geschenkideen"
         end
-      end      
-    end    
+      end
+    end
 
     # legacy check
     if @category.nil?
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
       if @legacy
         redirect_to @legacy.new_url, :status => 301
       else
-        render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404 
+        render :file => "#{Rails.root}/public/404.html", :layout => false, :status => 404
       end
     end
   end
@@ -76,8 +76,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_slug(params[:slug])
-    # @graph ||= Koala::Facebook::API.new(current_user.oauth_token)
-    #  @likes = @graph.get_object("#{@product.id}", :fields => "likes.summary(true)")["likes"]["summary"]["total_count"]
     if @product
       @title = "#{@product.name} auf GeschenkeHeld.de | Die Geschenke-Community"
     else
@@ -85,7 +83,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def own    
+  def own
     @user = current_user
     params[:ids] = @user.products.map(&:id) # TO-DO: Let ES look for user_id
     params[:sort] = "neuste-zuerst" if params[:sort].nil?
@@ -111,7 +109,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(params[:product])
-    @product.price = params[:product][:price].gsub(",",".")
+    @product.price = params[:product][:price].gsub(",", ".")
     @product.root_url = URI.parse(URI.encode(@product.url)).host
     if @product.save
       current_user.points += 5
@@ -136,7 +134,7 @@ class ProductsController < ApplicationController
       doc = Nokogiri::HTML(open(url).read)
       @results = []
       doc.xpath("//img/@src").each do |src|
-        @results.push(make_absolute(src,url))
+        @results.push(make_absolute(src, url))
       end
     end
   end
@@ -167,7 +165,27 @@ class ProductsController < ApplicationController
     render :json => "OK"
   end
 
-  private 
+  def likes_count
+    product = Product.find(params[:product_id])
+    # binding.pry
+    if !current_user.nil?
+      @facebook ||= Koala::Facebook::API.new(session["devise.facebook_data"].credentials.token)
+      block_given? ? yield(@facebook) : @facebook
+      shares = @facebook.get_object('', id: 'http://www.geschenkeheld.de' + "#{product_path(product.slug)}")["share"]["share_count"]
+      if product.fb_likes != shares
+        product.fb_likes = shares
+        product.save
+      end
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  rescue Koala::Facebook::APIError
+    logger.info
+    nil
+  end
+
+  private
 
   def make_absolute(href, root)
     begin

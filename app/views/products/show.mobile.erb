@@ -1,3 +1,12 @@
+<script>
+    jQuery(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            dataType: 'JSON',
+            url: '<%= product_likes_count_path(@product) %>'
+        });
+    });
+</script>
 <div id="products">
 
   <% if @product.user == current_user %>
@@ -130,4 +139,3 @@
 <!--//            $('textarea').autosize();-->
 <!--//        });-->
     <!--&lt;!&ndash;</script>&ndash;&gt;-->
-<%# end %>
