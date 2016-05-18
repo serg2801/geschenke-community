@@ -27,38 +27,28 @@
     <div id="product-image">
       <%= image_tag @product.image, :alt => @product.name %>
     </div>
-    <div id="product-socials">
-      <h3>Zeige dieses Geschenk Deinen Freunden!</h3>
+    <!--<div id="product-socials">-->
 
       <!--<div class="fb-like"-->
            <!--data-href="<%#= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"-->
-           <!--data-send="false"-->
-           <!--data-width="300"-->
            <!--data-layout="button_count"-->
+           <!--data-action="like"-->
            <!--data-show-faces="true"-->
-           <!--data-font="arial">-->
-        <!-- -->
+           <!--data-share="false">-->
+
       <!--</div>-->
 
-      <div class="fb-like"
-           data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"
-           data-layout="button_count"
-           data-action="like"
-           data-show-faces="true"
-           data-share="false">
-
-      </div>
-
-    </div>
+    <!--</div>-->
     <div class="">
       <div class="shariff"
            data-url= <%= "#{product_url}" %>
                    data-title= <%= "#{@product.name}" %>
            data-orientation="vertical"
            data-theme="grey"
-           data-services="[&quot;facebook&quot;,&quot;googleplus&quot;,&quot;twitter&quot;]" >
+           data-services="[&quot;facebook&quot;,&quot;whatsapp&quot;,&quot;googleplus&quot;,&quot;twitter&quot;,&quot;pinterest&quot;,&quot;tumblr&quot;]" >
       </div>
     </div>
+    <h3>Zeige dieses Geschenk Deinen Freunden!</h3>
   </div>
 
   <div id="product-comments">

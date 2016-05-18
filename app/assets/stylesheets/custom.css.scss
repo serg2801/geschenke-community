@@ -18,9 +18,17 @@
 .fb_iframe_widget {
   padding: 10px;
 }
-
-#page .shariff ul li a {
+#page .shariff {
+  margin: 0 auto;
   width: 50%;
+}
+#page .shariff ul li {
+  flex: none !important;
+  margin: 10px;
+  width: 140px;
+}
+#page .shariff ul li a {
+  width: 100%;
   display: inline-block;
   position: relative;
 }
@@ -53,26 +61,22 @@
 #page .btn_menu-mobile :last-child {
   margin: 0;
 }
+#top #login a.btn {
+  width: 100px;
+}
 
 @media screen and (min-width: 0px) and (max-width: 479px) {
+  #top #login a.btn {
+    width: 80px;
+  }
+
+  #page .shariff ul li {
+    margin: 5px;
+  }
+
   body {
     padding: 0;
   }
-  //#cookies-bar {
-  //  width: 100%;
-  //  margin: 0 auto;
-  //  padding: 5px;
-  //
-  //  .cookies-content {
-  //    .cookies-message {
-  //      font-size: 12px;
-  //      width: 80%;
-  //    }
-  //    .cookies-button-container {
-  //      padding: 10px;
-  //    }
-  //  }
-  //}
   #page {
     width: 100%;
 
@@ -404,7 +408,7 @@
         width: 80%;
       }
       #product-sidebar {
-        width: 33%;
+        width: 50%;
         float: none;
       }
       #product-comments {
