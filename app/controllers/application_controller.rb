@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   after_filter :store_location
   before_filter :prepare_for_mobile
+  before_filter :remote_ip
 
   def store_location
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users|\/admin/
@@ -29,6 +30,23 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = :de
+  end
+
+  def remote_ip
+    if request.remote_ip == '127.0.0.1'
+      # Hard coded remote address
+      '123.45.67.89'
+      new_ip_address(request.remote_ip)
+    else
+      new_ip_address(request.remote_ip)
+    end
+  end
+
+  def new_ip_address(ip)
+    ip_address = IpAddress.where(ip: ip)
+    if ip_address === []
+      IpAddress.create(ip: ip)
+    end
   end
 
   private

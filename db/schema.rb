@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160425081627) do
+ActiveRecord::Schema.define(:version => 20160518132505) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(:version => 20160425081627) do
     t.text   "value"
   end
 
+  create_table "ip_addresses", :force => true do |t|
+    t.string   "ip"
+    t.boolean  "mobile",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "legacy_links", :force => true do |t|
     t.string "name"
     t.string "slug"
@@ -126,6 +133,14 @@ ActiveRecord::Schema.define(:version => 20160425081627) do
   add_index "products", ["price"], :name => "index_products_on_price"
   add_index "products", ["slug"], :name => "index_products_on_slug"
   add_index "products", ["user_id"], :name => "index_products_on_user_id"
+
+  create_table "rating_products", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "ip_address_id"
+    t.boolean  "liked",         :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
