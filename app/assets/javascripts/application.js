@@ -20,3 +20,5 @@
 //= require js.cookie
 //= require app
 //= require main
+//= require jquery.raty
+//= require jquery.raty.min

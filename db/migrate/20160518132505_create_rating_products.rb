@@ -4,6 +4,7 @@ class CreateRatingProducts < ActiveRecord::Migration
 
       t.integer :product_id
       t.integer :ip_address_id
+      t.integer :evaluation, :default => 0
       t.boolean :liked, :default => false
 
       t.timestamps

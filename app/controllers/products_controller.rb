@@ -185,6 +185,26 @@ class ProductsController < ApplicationController
   #   nil
   # end
 
+  def count_likes
+    ip_address = IpAddress.find_by_ip(request.remote_ip)
+    @rating_product = RatingProduct.where(product_id: params[:product_id], ip_address_id: ip_address.id, liked: true)
+    if @rating_product.nil?
+      @rating_product = RatingProduct.new(product_id: params[:product_id], evaluation: params[:evaluation], ip_address_id: ip_address.id, liked: true)
+      if @rating_product.save
+        respond_to do |format|
+          format.js { render json: {  } }
+        end
+      end
+    # else
+    #   @rating_product = @rating_product.update(product_id: params[:product_id], evaluation: params[:evaluation], ip_address_id: ip_address.id)
+    #   if @rating_product.save
+    #     respond_to do |format|
+    #       format.js { render json: {  } }
+    #     end
+    #   end
+    end
+    end
+
   private
 
   def make_absolute(href, root)

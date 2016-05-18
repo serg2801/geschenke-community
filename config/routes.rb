@@ -19,7 +19,7 @@ App::Application.routes.draw do
     collection do
       post 'find_images', :as => :find_images
     end
-    # get '/likes_count' => 'products#likes_count'
+    get '/count_likes' => 'products#count_likes'
   end
 
   match '/angemeldet' => 'users#signed_up'

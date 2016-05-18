@@ -26,6 +26,7 @@ gem 'sass-rails',   '~> 3.2.3'
 
 gem 'bourbon'
 
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'rmagick'
