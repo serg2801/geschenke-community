@@ -165,25 +165,25 @@ class ProductsController < ApplicationController
     render :json => "OK"
   end
 
-  def likes_count
-    product = Product.find(params[:product_id])
-    if !current_user.nil?
-      @facebook ||= Koala::Facebook::API.new(session["devise.facebook_data"].credentials.token)
-      block_given? ? yield(@facebook) : @facebook
-      shares = @facebook.get_object('', id: 'http://www.geschenkeheld.de' + "#{product_path(product.slug)}")["shares"]
-      puts shares
-      if product.fb_likes != shares
-        product.fb_likes = shares
-        product.save
-      end
-      redirect_to :back
-    else
-      redirect_to :back
-    end
-  rescue Koala::Facebook::APIError
-    logger.info
-    nil
-  end
+  # def likes_count
+  #   product = Product.find(params[:product_id])
+  #   if !current_user.nil?
+  #     @facebook ||= Koala::Facebook::API.new(session["devise.facebook_data"].credentials.token)
+  #     block_given? ? yield(@facebook) : @facebook
+  #     shares = @facebook.get_object('', id: 'http://www.geschenkeheld.de' + "#{product_path(product.slug)}")["shares"]
+  #     puts shares
+  #     if product.fb_likes != shares
+  #       product.fb_likes = shares
+  #       product.save
+  #     end
+  #     redirect_to :back
+  #   else
+  #     redirect_to :back
+  #   end
+  # rescue Koala::Facebook::APIError
+  #   logger.info
+  #   nil
+  # end
 
   private
 
