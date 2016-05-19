@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :get_ip
   before_filter :set_locale
   after_filter :store_location
   before_filter :prepare_for_mobile
@@ -47,6 +48,17 @@ class ApplicationController < ActionController::Base
     if ip_address === []
       IpAddress.create(ip: ip)
     end
+  end
+
+  def show_modal
+    @ip_address = IpAddress.find_by_ip(request.remote_ip)
+    @ip_address.update_attributes(mobile: true)
+    render json: { }
+  end
+
+  def get_ip
+    @ip_address = IpAddress.find_by_ip(request.remote_ip)
+    @mobile = @ip_address.mobile
   end
 
   private

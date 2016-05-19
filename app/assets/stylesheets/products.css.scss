@@ -705,11 +705,12 @@
 }
 #social_services {
   #evaluation {
-
+    width: 150px !important;
+    padding: 5px;
     margin: 5px auto;
 
     .show_evaluation {
-      margin: 7px auto;
+      margin: 0 auto;
       width: 40px;
       border: solid 2px;
     }

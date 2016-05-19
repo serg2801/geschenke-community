@@ -22,3 +22,4 @@
 //= require main
 //= require jquery.raty
 //= require jquery.raty.min
+//= require jquery.reveal

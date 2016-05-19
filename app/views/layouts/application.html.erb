@@ -52,15 +52,41 @@
           <% if mobile_device? %>
               <%= link_to "Full Site", :mobile => 0, class: "version_site" %>
           <% else %>
-              <%= link_to "Mobile Site", :mobile => 1, class: "version_site" %>
+              <% if @mobile %>
+                  <%= link_to "Mobile Site", :mobile => 1, class: "version_site"%>
+              <% else %>
+                  <%= link_to "Mobile Site", "#", class: "version_site", id: "popap_window"%>
+              <% end %>
           <% end %>
           <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary cta-signup" %>
           oder
-          <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
-          %>
+          <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"%>
         </div>
     <% end %>
   </div>
+
+
+  <div id="modal">
+    <div id="modal_heading_js">
+
+    </div>
+
+    <div id="modal_content_js">
+      <p class="baher_modal">Möchten Sie zu unserer Mobil-Seite wechseln?</p>
+
+      <div class="btn_show_modal">
+        <%= link_to "JA", :mobile => 1, id: '1111' %>
+
+        <%= link_to "NEIN", "#", id: "hide_modal" %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
   <div id="header">
     <% if user_signed_in? %>
         <a class="btn btn-primary" id="add-product" href="<%= new_product_path %>">
@@ -499,6 +525,38 @@
     })();
 
 </script>
+<%= javascript_include_tag "jquery.reveal" %>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#popap_window').click(function(e) { // Button which will activate our modal
+            $('#modal').reveal({ // The item which will be opened with reveal
+                animation: 'fade',                   // fade, fadeAndPop, none
+                animationspeed: 600,                       // how fast animtions are
+                closeonbackgroundclick: true,              // if you click background will modal close?
+                dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+            });
+            return false;
+        });
+
+        $('#hide_modal').click(function(e) {
+            $('#modal').hide();
+            window.location.reload();
+        });
+
+        $('#popap_window').click(function(e) {
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: '<%= show_modal_path %>',
+//                data: { evaluation: score },
+                success: function (data) {
+                }
+            });
+        });
+
+    });
+</script>
+
 
 <%= javascript_include_tag "shariff.min" %>
 </body>

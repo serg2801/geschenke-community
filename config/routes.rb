@@ -22,6 +22,8 @@ App::Application.routes.draw do
     get '/count_likes' => 'products#count_likes'
   end
 
+  get '/show_modal' => 'application#show_modal'
+
   match '/angemeldet' => 'users#signed_up'
   match '/helden' => 'users#index', :as => :users
   match '/helden/:id' => 'users#show', :as => :user
