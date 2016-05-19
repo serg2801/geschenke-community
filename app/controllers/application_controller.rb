@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :get_ip
+  before_filter :remote_ip
   before_filter :set_locale
   after_filter :store_location
   before_filter :prepare_for_mobile
-  before_filter :remote_ip
-
+  before_filter :get_ip
   def store_location
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users|\/admin/
   end
@@ -58,7 +57,9 @@ class ApplicationController < ActionController::Base
 
   def get_ip
     @ip_address = IpAddress.find_by_ip(request.remote_ip)
-    @mobile = @ip_address.mobile
+    unless @ip_address.nil?
+      @mobile = @ip_address.mobile
+    end
   end
 
   private
