@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   before_filter :prepare_for_mobile
   before_filter :get_ip
+  before_filter :get_coocie_module
   def store_location
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users|\/admin/
   end
@@ -60,6 +61,11 @@ class ApplicationController < ActionController::Base
     unless @ip_address.nil?
       @mobile = @ip_address.mobile
     end
+  end
+
+  def get_coocie_module
+    @coocie_module = CoocieModule.first
+    @coocie = @coocie_module.body
   end
 
   private
