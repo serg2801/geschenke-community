@@ -1,3 +1,30 @@
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('#evaluation').raty({
+            click: function(score, evt) {
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'JSON',
+                    url: '<%= product_count_likes_path(@product.id) %>',
+                    data: { evaluation: score },
+                    success: function (data) {
+                        if (data.flag === false)
+                        {
+                            alert(" Sie haben Ihre Bewertung bereits hinterlassen.")
+                        }else
+                        {
+                            $("#evaluation .show_evaluation span").text(data.likes);
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+</script>
+
 <div id="products">
 
   <% if @product.user == current_user %>
@@ -30,7 +57,13 @@
       <!--</div>-->
 
     <!--</div>-->
-    <div class="">
+    <div id="social_services">
+
+      <div id="evaluation">
+        <p class="show_evaluation">
+          <span><%= @product.fb_likes %></span>
+        </p>
+      </div>
       <div class="shariff"
            data-url= <%= "#{product_url}" %>
                    data-title= <%= "#{@product.name}" %>

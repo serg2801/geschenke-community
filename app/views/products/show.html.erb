@@ -2,16 +2,21 @@
 
     $(document).ready(function(){
 
-        $('#click').raty({
+        $('#evaluation').raty({
             click: function(score, evt) {
-//                alert('ID: ' + '\nscore: ' + score + '\nevent: ' + evt);
                 $.ajax({
                     type: 'GET',
                     dataType: 'JSON',
                     url: '<%= product_count_likes_path(@product.id) %>',
                     data: { evaluation: score },
                     success: function (data) {
-//                window.location.reload();
+                        if (data.flag === false)
+                        {
+                            alert(" Sie haben Ihre Bewertung bereits hinterlassen.")
+                        }else
+                        {
+                            $("#evaluation .show_evaluation span").text(data.likes);
+                        }
                     }
                 });
             }
@@ -53,9 +58,13 @@
       <!--</div>-->
 
     <!--</div>-->
-    <div class="">
+    <div id="social_services">
 
-      <div id="click"></div>
+      <div id="evaluation">
+        <p class="show_evaluation">
+          <span><%= @product.fb_likes %></span>
+        </p>
+      </div>
       <div class="shariff"
            data-url= <%= "#{product_url}" %>
                    data-title= <%= "#{@product.name}" %>

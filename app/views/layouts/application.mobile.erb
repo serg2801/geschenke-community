@@ -4,6 +4,7 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "custom" if mobile_device? %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link href="/favicon.png" rel="shortcut icon">
 
@@ -481,7 +482,7 @@
         <% end %>
     </script>
 <% end %>
-<%= javascript_include_tag "application" %>
+
 <%= yield :javascript %>
 
 <script type="text/javascript">

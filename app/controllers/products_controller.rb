@@ -186,26 +186,41 @@ class ProductsController < ApplicationController
   # end
 
   def count_likes
+    product = Product.find(params[:product_id])
     ip_address = IpAddress.find_by_ip(request.remote_ip)
     @rating_product = RatingProduct.where(product_id: params[:product_id], ip_address_id: ip_address.id, liked: true)
-    if @rating_product.nil?
+    if @rating_product === []
       @rating_product = RatingProduct.new(product_id: params[:product_id], evaluation: params[:evaluation], ip_address_id: ip_address.id, liked: true)
       if @rating_product.save
-        respond_to do |format|
-          format.js { render json: {  } }
-        end
+        save_product_likes(params[:product_id])
+        product = Product.find(params[:product_id])
+        render json: {likes: product.fb_likes}
       end
-    # else
-    #   @rating_product = @rating_product.update(product_id: params[:product_id], evaluation: params[:evaluation], ip_address_id: ip_address.id)
-    #   if @rating_product.save
-    #     respond_to do |format|
-    #       format.js { render json: {  } }
-    #     end
-    #   end
+    else
+      # id_rating_product = @rating_product[0].id
+      # @rating_product = RatingProduct.find(id_rating_product)
+      # @rating = @rating_product.update_attributes(evaluation: params[:evaluation])
+      # save_product_likes(params[:product_id])
+      # product = Product.find(params[:product_id])
+
+      render json: {flag: false}
     end
-    end
+  end
 
   private
+
+  def save_product_likes(product_id)
+    @count_evaluation = 0.0
+    product = Product.find(product_id)
+    @rating_product = RatingProduct.where(product_id: product_id)
+    @count_rating_product = @rating_product.count
+    @rating_product.each do |i|
+      @count_evaluation = @count_evaluation + i.evaluation
+    end
+    like = @count_evaluation/@count_rating_product
+    product.fb_likes = like
+    product.save
+  end
 
   def make_absolute(href, root)
     begin
