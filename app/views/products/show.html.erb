@@ -62,14 +62,13 @@
 
       <div id="evaluation">
         <p class="show_evaluation">
-          <span><%= @product.fb_likes %></span>
+          <span><%= @product.fb_likes.round(1) %></span>
         </p>
       </div>
       <div class="shariff"
            data-url= <%= "#{product_url}" %>
                    data-title= <%= "#{@product.name}" %>
-           data-orientation="vertical"
-           data-theme="grey"
+           data-theme="standard"
            data-services="[&quot;facebook&quot;,&quot;whatsapp&quot;,&quot;googleplus&quot;,&quot;twitter&quot;,&quot;pinterest&quot;,&quot;tumblr&quot;]" >
       </div>
     </div>

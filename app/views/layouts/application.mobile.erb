@@ -50,11 +50,6 @@
     <% else %>
         <h1><%= @title %></h1>
         <div id="login">
-          <% if mobile_device? %>
-              <%= link_to "Full Site", :mobile => 0, class: "version_site" %>
-          <% else %>
-              <%= link_to "Mobile Site", :mobile => 1, class: "version_site" %>
-          <% end %>
           <%= link_to "Einloggen", user_omniauth_authorize_path(:facebook), :class => "btn btn-primary cta-signup" %>
           oder
           <%= link_to "Registrieren", nil, :class => "btn btn-primary cta-signup"
@@ -437,7 +432,13 @@
         © 2015
         | Alle Rechte vorbehalten | <a href="/impressum">Impressum</a>
         <br />
-
+        <div id="version_site">
+          <% if mobile_device? %>
+              <%= link_to "Full Site", :mobile => 0, class: "version_site" %>
+          <% else %>
+              <%= link_to "Mobile Site", :mobile => 1, class: "version_site" %>
+          <% end %>
+        </div>
       </div>
       <div id="sponsors">
         <% if request.path == "/" %>
