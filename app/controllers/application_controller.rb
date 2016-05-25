@@ -51,9 +51,13 @@ class ApplicationController < ActionController::Base
   end
 
   def show_modal
-    @ip_address = IpAddress.find_by_ip(request.remote_ip)
-    @ip_address.update_attributes(mobile: true)
-    render json: { }
+    if @ip_address.mobile
+      render json: {flag: false }
+    else
+      @ip_address = IpAddress.find_by_ip(request.remote_ip)
+      @ip_address.update_attributes(mobile: true)
+      render json: {flag: true }
+    end
   end
 
   def get_ip
@@ -77,6 +81,7 @@ class ApplicationController < ActionController::Base
       request.user_agent =~ /Mobile|webOS/
     end
   end
+
   helper_method :mobile_device?
 
   def prepare_for_mobile

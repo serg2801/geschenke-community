@@ -13,8 +13,8 @@
 	border-radius:8px;
 
 	position:absolute !important;
-	top:10% !important;
-	left:13% !important;
+	top:15% !important;
+	left:50% !important;
 	margin-top:-94px !important;
 	margin-left:-180px !important;
 	z-index:101;
@@ -22,9 +22,9 @@
 
 
 #modal_heading_js {
-    background: #005580;
-	width:250px;
-	height:30px;
+    background: #da155f;
+	width:350px;
+	height:50px;
 
 	background-image: -webkit-linear-gradient(top, rgb(249, 249, 249), rgb(233, 233, 233));
 	background-image: -moz-linear-gradient(top, rgb(249, 249, 249), rgb(233, 233, 233));
@@ -59,8 +59,8 @@
 }
 
 #modal_content_js {
-	width:250px;
-	height:100px;
+	width:350px;
+	height:150px;
 
 	background:#fcfcfc;
 

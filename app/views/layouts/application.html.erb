@@ -7,8 +7,6 @@
   <%= csrf_meta_tags %>
   <link href="/favicon.png" rel="shortcut icon">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-
   <script type="text/javascript" src="https://use.typekit.net/ugs2qht.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
@@ -529,32 +527,36 @@
 <%= javascript_include_tag "jquery.reveal" %>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#popap_window').click(function(e) { // Button which will activate our modal
-            $('#modal').reveal({ // The item which will be opened with reveal
-                animation: 'fade',                   // fade, fadeAndPop, none
-                animationspeed: 600,                       // how fast animtions are
-                closeonbackgroundclick: true,              // if you click background will modal close?
-                dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
-            });
-            return false;
-        });
-
         $('#hide_modal').click(function(e) {
             $('#modal').hide();
-            window.location.reload();
-        });
-
-        $('#popap_window').click(function(e) {
             $.ajax({
                 type: 'GET',
                 dataType: 'JSON',
                 url: '<%= show_modal_path %>',
-//                data: { evaluation: score },
                 success: function (data) {
+                    window.location.reload();
                 }
             });
         });
-
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $.ajax({
+                type: 'GET',
+                dataType: 'JSON',
+                url: '<%= show_modal_path %>',
+                success: function (data) {
+                    if (data.flag)
+                    {
+                        $('#modal').reveal({ // The item which will be opened with reveal
+                            animation: 'fade',                   // fade, fadeAndPop, none
+                            animationspeed: 600,                       // how fast animtions are
+                            closeonbackgroundclick: true,              // if you click background will modal close?
+                            dismissmodalclass: 'close'    // the class of a button or element that will close an open modal
+                        });
+                        return false;
+                    }
+                }
+            });
+        }
     });
 </script>
 

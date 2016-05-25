@@ -622,30 +622,42 @@ body {
   height: 30px;
 }
 #modal_heading_js {
-  background: #005580 !important;
+  background: #da155f !important;
 }
 #modal_content_js {
   .baher_modal {
     padding: 3px;
     text-align: center;
+    font-size: 21px;
+    margin-bottom: 25px;
   }
 
-  .btn_show_modal a {
-    float: left;
-    background: #005580;
-    color: white;
-    width: 50px;
-    height: 30px;
-    display: block;
-    margin-left: 44px;
-    text-align: center;
-    padding: 6px;
+  .btn_show_modal {
+
+    overflow: hidden;
+    margin: 0 auto;
+    width: 80%;
+
+    a {
+      float: left;
+      background: #da155f;
+      color: white;
+      width: 60px;
+      height: 40px;
+      display: block;
+      margin-left: 50px;
+      text-align: center;
+      padding: 10px;
+    }
   }
 }
 #version_site {
   position: absolute;
   top: 0;
   left: 250px;
+}
+#leaderboard {
+  float: left;
 }
 
 
